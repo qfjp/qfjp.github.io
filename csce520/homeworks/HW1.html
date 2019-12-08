@@ -136,8 +136,161 @@
 <p>The goal of this exercise is to work through the tutorial on the MySQL website, a link to which is given later in this handout. You will only need to work up through Section 3.3.4.5, Date Calculations (so you may stop before Section 3.3.4.6, Working with NULL Values). (You can certainly go further if you wish, and that’ll put you ahead on the learning curve.) This tutorial already assumes a working MySQL system and running server, however, and you are not there yet. Here is what you have to do first to get MySQL so that you can run the tutorial. This should work pretty much the same for any unix/linux/MacOS-like system, and I will assume you are using such a system and that the server is running on the same machine you are using as the client (e.g., your laptop). As I mentioned above, I don’t know about MS Windows other than what is absolutely necessary for my job. I’m sure this will all work on Windows with the right modifications.</p>
 <ol type="1">
 <li>Install and configure MySQL as directed above if you haven’t already.</li>
-<li>You will want to add the directory with the MySQL executables to your <code>PATH</code> variable. This is optional, but will make running mysql more convenient from the command line. On my Mac, where I use a terminal program running the bash shell, I put the following line at the end of my <code>.bashrc</code> file in my home directory: ```bash export PATH=&quot;/usr/local/mysql/bin:</li>
+<li><p>You will want to add the directory with the MySQL executables to your <code>PATH</code> variable. This is optional, but will make running mysql more convenient from the command line. On my Mac, where I use a terminal program running the bash shell, I put the following line at the end of my <code>.bashrc</code> file in my home directory:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">export</span> <span class="va">PATH=</span><span class="st">&quot;/usr/local/mysql/bin:</span><span class="va">$PATH</span><span class="st">&quot;</span></a></code></pre></div>
+which prepends the default directory for MySQL executables to my <code>PATH</code> variable. You’ll have to quit and restart the terminal program once for this to take effect.</li>
+<li><p>At the shell prompt ($), fire up a MySQL client (aka MySQL monitor) session as the root user:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">mysql</span> -u root -p</a></code></pre></div>
+Supply the root password when prompted. You should then be logged in as root and see the prompt <code>mysql&gt;</code>.</li>
+<li><p>You don’t want to habitually login to MySQL as root because you have arbitrary privileges, including the ability to really screw things up accidentally. So the first thing to do as root is to create a regular user account with limited privileges that you will use most of the time. Enter something like this at the prompt:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb3-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">CREATE</span> <span class="fu">USER</span> <span class="st">'steve'</span>@<span class="st">'localhost'</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">'some_good_password'</span>;</a></code></pre></div>
+<p>where <code>'steve'</code> is your regular account name on your computer, and <code>some_good_password</code> is any good password you can remember, which need not be the same password you use to login to your machine (don’t use your mysql root password, though). The quotes are all required, and <code>'localhost'</code> is typed literally (assuming you are running the client and server on the same machine).</p>
+Don’t forget the final semicolon. If you accidentally hit the return key before the semicolon, no problem; just put the semicolon on the next line and hit the return key again. For more information about this command, click <a href="https://dev.mysql.com/doc/refman/8.0/en/create-user.html#create-user-overview">here</a>.</li>
+<li><p>Enter the following (substituting your own login name)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb4-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">ON</span> menagerie.<span class="op">*</span> <span class="kw">TO</span> <span class="st">'steve'</span>@<span class="st">'localhost'</span>;</a></code></pre></div>
+This will give your regular MySQL user account complete permissions to access the menagerie database, once you create it in the tutorial.</li>
+<li><p>Quit your root login session by entering</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb5-1" title="1">mysql<span class="op">&gt;</span> QUIT;</a></code></pre></div>
+<p>You may quit any SQL session at any time by typing <code>QUIT</code> at the prompt. <code>EXIT</code> also works.</p></li>
 </ol>
+<p>You are now ready to start the <a href="https://dev.mysql.com/doc/refman/8.0/en/tutorial.html">tutorial</a>, using your regular (i.e., non-root) MySQL user account. There are a few discrepancies between the tutorial and what you will experience on your system. Note the following anomalies as you go through the tutorial:</p>
+<ol type="1">
+<li><p>Typing</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">shell</span><span class="op">&gt;</span> mysql --help</a></code></pre></div>
+<p>will scroll several screenfulls all at once. To view the output one screen at a time (on linux-like systems), type this instead:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">shell</span><span class="op">&gt;</span> mysql --help <span class="kw">|</span> <span class="fu">more</span></a></code></pre></div>
+and hit the space bar to see each successive screenfull.</li>
+<li><p>If you set things up as above, with your MySQL user name the same as your machine account name (mine is <code>steve</code>) and the server running on your machine, you can omit some options (namely <code>-h host</code> and <code>-u user</code>) when invoking <code>mysql</code> at the shell prompt. I log into my MySQL client account by typing</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">shell</span><span class="op">&gt;</span> mysql -p</a></code></pre></div>
+The <code>-p</code> option with nothing following it makes mysql prompt me for my password. This is the recommended way to login to the MySQL client.</li>
+<li><p>When you type</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb9-1" title="1">mysql<span class="op">&gt;</span> SHOW DATABASES;</a></code></pre></div>
+you won’t see any databases listed (except possibly <code>information_schema</code>) because you have not yet created any.</li>
+<li><p>Words given in all-caps, both in the tutorial and in this handout, are reserved words in SQL. Reserved words are case-insensitive, so you can enter them all lowercase if you want, e.g.,</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb10-1" title="1">show databases;</a></code></pre></div>
+I, for one, can type much more quickly in lowercase than uppercase.</li>
+<li><p>If you make a mistake with the <code>CREATE TABLE pet</code> command (e.g., a wrong column name or type), you can remove the table by typing</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb11-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">DROP</span> <span class="kw">TABLE</span> pet;</a></code></pre></div>
+then repeating the <code>CREATE TABLE</code> command.</li>
+<li><p>This is an important one. The <code>LOAD DATA LOCAL</code> command is disabled by default in MySQL 8.0 (for security reasons, no doubt.) For now, instead of changing the default, you can enter the data by first downloading <a href="https://cse.sc.edu/~fenner/csce520/mysql_tutorial/pet.sql">pet.sql</a>. (Peruse this file; it has SQL commands for inserting data into the pet table.) Then type</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb12-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">SOURCE</span> pet.sql</a></code></pre></div>
+<p>(no quotes and no semicolon needed). The <code>SOURCE</code> command reads and executes the SQL commands in the file one after another as if they were typed at the prompt. After this homework, the <code>SOURCE</code> command will be the principal way you interact with MySQL: put your SQL commands in a separate text file, then run it using <code>SOURCE</code> within <code>mysql</code>.</p>
+<p>To see the contents of the pet table at any time, type</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb13-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> pet;</a></code></pre></div>
+<p>Suppose you make a mistake. For example, if you run the <code>SOURCE pet.sql</code> command more than once, you’ll put duplicate entries into your table. You can empty out the table using</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb14-1" title="1">mysql<span class="op">&gt;</span> <span class="kw">DELETE</span> <span class="kw">FROM</span> pet;</a></code></pre></div>
+<p>then repopulate it with the <code>SOURCE</code> command again. (Be careful with the <code>DELETE</code> command!)</p></li>
+</ol>
+<h3 id="if-you-forget-your-mysql-user-password">If you forget your <code>mysql</code> user password</h3>
+<p>If you ever forget your regular user password for <code>mysql</code>, you can reset it by loggin in as root and giving the following command:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">ALTER</span> <span class="fu">USER</span> <span class="st">'steve'</span>@<span class="st">'localhost'</span> <span class="kw">IDENTIFIED</span> <span class="kw">BY</span> <span class="st">'some_new_password'</span>;</a></code></pre></div>
+<p>Of course, use your own user name instead of <code>steve</code>.</p>
+<h3 id="what-to-submit">What to Submit</h3>
+<p>After going through the tutorial up through Section 3.3.4.5, your <code>pet</code> table should have nine (9) rows, and the <code>SELECT * FROM pet;</code> command should return this:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">owner</th>
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">birth</th>
+<th style="text-align: left;">death</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fluffy</td>
+<td style="text-align: left;">Harold</td>
+<td style="text-align: left;">cat</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">1993-02-04</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Claws</td>
+<td style="text-align: left;">Gwen</td>
+<td style="text-align: left;">cat</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">1994-03-17</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Buffy</td>
+<td style="text-align: left;">Harold</td>
+<td style="text-align: left;">dog</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">1989-05-13</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fang</td>
+<td style="text-align: left;">Benny</td>
+<td style="text-align: left;">dog</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">1990-08-27</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bowser</td>
+<td style="text-align: left;">Diane</td>
+<td style="text-align: left;">dog</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">1989-08-31</td>
+<td style="text-align: left;">1995-07-29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chirpy</td>
+<td style="text-align: left;">Gwen</td>
+<td style="text-align: left;">bird</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">1998-09-11</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Whistler</td>
+<td style="text-align: left;">Gwen</td>
+<td style="text-align: left;">bird</td>
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">1997-12-09</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Slim</td>
+<td style="text-align: left;">Benny</td>
+<td style="text-align: left;">snake</td>
+<td style="text-align: left;">m</td>
+<td style="text-align: left;">1996-04-29</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Puffball</td>
+<td style="text-align: left;">Diane</td>
+<td style="text-align: left;">hamster</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: left;">1999-03-30</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+</tbody>
+</table>
+<p>Make sure that this is what your table contains.</p>
+<p>Outside of MySQL, edit a new text file called <code>hw1.sql</code> with the following four SQL statements in order, each terminated by a semicolon:</p>
+<ol type="1">
+<li>A <code>SELECT</code> statement that returns the names and owners of all female pets born after 1990, in alphabetical order by name;</li>
+<li>An <code>UPDATE</code> statement that changes the name of Gwen’s bird Whistler to <em>your own login name</em> (e.g. I would change it to <code>steve</code>);</li>
+<li>An <code>UPDATE</code> statement that sets the death date of Harold’s dog Buffy to the current date, whatever it is (this statement should work regardless of when it is executed);</li>
+<li>The statement <code>SELECT * FROM pet;</code></li>
+</ol>
+<p>For readability’s sake, separate your commands with an empty line between each one.</p>
+<p>The following applies to this and mutatis mutandis all future homeworks. To submit: From the shell prompt, login to mysql with the following shell command:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="ex">mysql</span> -p menagerie</a></code></pre></div>
+<p>and enter your user password when prompted (this will work on unix/linux/Mac systems; for Windows, YMMV). Including the database name on the command line automatically loads it, so you do not need to issue a <code>USE menagerie;</code> command inside MySQL. Inside MySQL, type</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb17-1" title="1">mysql<span class="op">&gt;</span> tee hw1.<span class="fu">log</span></a>
+<a class="sourceLine" id="cb17-2" title="2">mysql<span class="op">&gt;</span> <span class="kw">source</span> hw1.sql</a>
+<a class="sourceLine" id="cb17-3" title="3">mysql<span class="op">&gt;</span> notee</a>
+<a class="sourceLine" id="cb17-4" title="4">mysql<span class="op">&gt;</span> quit</a></code></pre></div>
+<p>The first command tells MySQL to append everything subsequently appearing in the session to the file hw1.log, until the <code>notee</code> command is given, which stops logging. The <code>source</code> command reads the <code>hw1.sql</code> file and runs its commands in order as if you had typed them at the prompt.</p>
+<p>You should make a zip file <code>hw1.zip</code> containing both <code>hw1.sql</code> and <code>hw1.log</code> files. Upload your zip file electronically using CSE Dropbox. You should submit your assignment to Section 001 regardless of which of these sections you are in.</p>
   </section>
 </article>
 
