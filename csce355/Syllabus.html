@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade Syllabus</title>
+      <link rel="stylesheet" href="../css/hakyll.css" />
+      <link rel="stylesheet" href="../css/latex.css">
+      <link rel="stylesheet" href="../css/responsive.css">
+      <link rel="stylesheet" href="../css/tocbot.css">
+      <link rel="stylesheet" href="../css/pygments.css">
+      
+      <link rel="stylesheet" href="Syllabus.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../csce355.html">CSCE 355</a>
+            </div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../csce355/Syllabus.html">Syllabus</a>
+                <a href="../csce355/Project.html">Project</a>
+                <a href="../csce355/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./Syllabus.pdf">pdf</a>,
+                    <a href="./Syllabus.tex">TeX</a>
+                </section>
+                
+
+                <div class="tabular">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><div class="multirow">
+<!--  rows=0  -->
+</div></td>
+<td style="text-align: left;"><span class="cmr-17">CSCE 355</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="cmr-17">Foundations of Computation</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="cmr-17">MW 05:30–06:45, SWGN 2A21</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="j_Syllabus_s1" class="sectionHead"><span class="titlemark">1</span> <span id="x1-10001"></span>Instructor</h3>
+<p><!-- tex4ht:inline --></p>
+<div class="tabular">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><div class="multirow">
+<!--  rows=0  -->
+</div></td>
+<td style="text-align: left;"><span class="cmr-12">Daniel J. Padé</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="cmti-12">See pdf for email</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><a href="http://cse.sc.edu/~pade/csce355" class="url"><span class="cmtt-12">http://cse.sc.edu/~pade/csce355</span></a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="cmr-12">SWGN 2D19</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><span class="cmr-12">Office Hours: Th/F 11:30–12:30</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><!-- l. 50 --></p>
+<h3 id="j_Syllabus_s2" class="sectionHead"><span class="titlemark">2</span> <span id="x1-20002"></span>Overview</h3>
+<p>This course is a mathematical introduction to the basic concepts underlying all computation. The goal is to discover the fundamental abilities and limitations of computers and to use mathematical rigor to prove facts about computation. We will study abstract models of computation, such as finite automata, grammars, and Turing machines. We will also set up a formal framework for defining computational problems as formal languages with the goal of studying the ultimate limits of computation. The core topics learned in this course pop up repeatedly in many areas of computer science and have close connections with logic and the foundations of mathematics. <!-- l. 62 --></p>
+<h4 id="j_Syllabus_s2.1" class="sectionHead"><span class="titlemark">2.1</span> <span id="x1-30002.1"></span>Prerequisites</h4>
+<p>CSCE 211, 212, 350. MATH 374 is highly recommended <!-- l. 65 --></p>
+<h4 id="j_Syllabus_s2.2" class="sectionHead"><span class="titlemark">2.2</span> <span id="x1-40002.2"></span>Text(s)</h4>
+<ul>
+<li>J.E. Hopcroft, R. Motwani, J.D. Ullman. <span class="cmti-10x-x-109">Automata Theory, Languages, and Computation</span>. Addison-Wesley-Pearson 2007.</li>
+</ul>
+<p><!-- l. 72 --></p>
+<h3 id="j_Syllabus_s3" class="sectionHead"><span class="titlemark">3</span> <span id="x1-50003"></span>Coursework and Grading</h3>
+<p>There will be weekly quizzes (11 in all), which will comprise 50% of your grade. Your lowest quiz grade will be dropped, and so each quiz is worth 5% of your grade. 16% of your grade will consist of a programming assignment. The remaining 34% of the grade is split equally between the midterm and final exam. <!-- l. 79 --></p>
+<p>Each quiz will be given at the start of class and last approximately 10 minutes. All quizzes are closed book, closed notes, and no electronic devices allowed, except for legitimate use by students with documented special needs. Each quiz will be a question or problem sampled from that week’s homework assignment, possibly modified somewhat.</p>
+<p><!-- l. 86 --></p>
+<p>The final exam is 2.5 hours on Wednesday, Apr 26, from 4:00pm to 6:30pm. It is open book, open notes. Electronic devices may be used, but only as timepieces and for passive viewing of locally stored content. Absolutely no electronic communication or computation is permitted. Exam questions will also be derived from the homework exercises, but more loosely.</p>
+<p><!-- l. 93 --></p>
+<p><span class="cmbx-10x-x-109">PLEASE NOTE:</span></p>
+<ul>
+<li>This course will go by quickly. The subject matter requires time and effort to digest, and so it is vital that you keep up with the homework and reading.</li>
+<li>The course is mathematical in nature. The third most important indicator of success in this course (second to hard work and internal motivation) is a certain level of “mathematical maturity”, that is, being able to: (a) understand mathematical definitions and theorems, (b) verify proofs, (c) solve mathematical problems, and (d) in simple cases, generate one’s own definitions, theorems, and proofs.</li>
+</ul>
+<p><!-- l. 109 --></p>
+<p>The homework is intended as a pool for quiz and exam questions and as timely feedback for you.</p>
+<p><!-- l. 112 --></p>
+<h3 id="j_Syllabus_s4" class="sectionHead"><span class="titlemark">4</span> <span id="x1-60004"></span>Course Policies</h3>
+<h4 id="j_Syllabus_s4.1" class="sectionHead"><span class="titlemark">4.1</span> <span id="x1-70004.1"></span>Reading and Lectures</h4>
+<ul>
+<li>You (the student) are expected to read all assigned material before the lecture begins. If for some reason you cannot attend class, you are responsible for any material covered during your absence.</li>
+<li>The textbook coordinates with a set of on-line resources (Gradiance). I will neither require nor assume you have access to these resources. I encourage it if you’d like some extra insight, but it’s purely optional. (My rationale for not requiring it is this: it appears that to access Gradiance you need to purchase a new, unused copy of the text.)</li>
+</ul>
+<p><!-- l. 129 --></p>
+<h4 id="j_Syllabus_s4.2" class="sectionHead"><span class="titlemark">4.2</span> <span id="x1-80004.2"></span>Quizzes and Exams</h4>
+<ul>
+<li>Exams are open book, open notes.</li>
+<li>Quizzes are <span class="cmbx-10x-x-109">closed note</span></li>
+<li><span class="cmbx-10x-x-109">No make-up quizzes or exams will be given</span> except under extreme circumstances with a valid excuse, in which case you must give me notice well before the exam or quiz if at all possible. Valid excuses include grave illness or death in the immediate family, or other dire emergency. They do not include car problems or non-emergency events (weddings, trips, sports meets, etc.).</li>
+</ul>
+<p><!-- l. 145 --></p>
+<h4 id="j_Syllabus_s4.3" class="sectionHead"><span class="titlemark">4.3</span> <span id="x1-90004.3"></span>Grades</h4>
+<ul>
+<li>Grades in the <span class="cmbx-10x-x-109">C</span> range represent performance that <span class="cmbx-10x-x-109">meets expectations</span>; Grades in the <span class="cmbx-10x-x-109">B</span> range represent performance that is <span class="cmbx-10x-x-109">substantially better</span> than the expectations; Grades in the <span class="cmbx-10x-x-109">A</span> range represent work that is <span class="cmbx-10x-x-109">excellent</span>.</li>
+</ul>
+<p><!-- l. 155 --></p>
+<p>Letter grades correspond to score percentages as follows:</p>
+<figure class="figure">
+<p><!-- tex4ht:inline --></p>
+<div class="tabular">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Grade</td>
+<td style="text-align: left;">Range</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A</td>
+<td style="text-align: left;">90 or above</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B+</td>
+<td style="text-align: left;">at least 86 and less than 90</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">at least 80 and less than 86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C+</td>
+<td style="text-align: left;">at least 76 and less than 80</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C</td>
+<td style="text-align: left;">at least 70 and less than 76</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D+</td>
+<td style="text-align: left;">at least 66 and less than 70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: left;">at least 60 and less than 66</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: left;">less than 60</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+<p><!-- l. 174 --></p>
+<h4 id="j_Syllabus_s4.4" class="sectionHead"><span class="titlemark">4.4</span> <span id="x1-100004.4"></span>Attendance</h4>
+<p>From the <a href="http://bulletin.sc.edu/content.php?catoid=52&amp;navoid=1280#Attendance_Policy">attendance policy</a>:</p>
+<ul>
+<li>Students are obligated to complete all assigned work promptly, to attend class regularly, and to participate in whatever class discussion may occur.</li>
+<li>Absence from more than 10 percent of the scheduled class sessions, whether excused or unexcused, is excessive and I may choose to exact a grade penalty for such absences.</li>
+<li><span class="cmbx-10x-x-109">It must be emphasized that the “10 percent rule” stated above applies to both excused and unexcused absences</span>.</li>
+</ul>
+<p><!-- l. 194 --></p>
+<h3 id="j_Syllabus_s5" class="sectionHead"><span class="titlemark">5</span> <span id="x1-110005"></span>Code of Student Academic Responsibility</h3>
+<p>You are expected to know the Academic Code of Responsibility as it appears in the Carolina Community: Student Policy Manual. <!-- l. 198 --></p>
+<p>You may not represent other people’s work as your own. More specifically, you cannot submit specific answers from other sources without proper attribution. If you copy or otherwise derive materials/answers from other people, books, the web, etc., you must cite your source(s) in a way that adheres to the usual standards for an academic paper. Deriving/copying without proper attribution is plagiarism, which I regard as a serious offense. (Exceptions: You do not need to explicitly cite any material you lift from the text or from my own lectures. You are also not required to explicitly cite any general background material you use for an answer but which does not specifically relate to the actual question being answered.)</p>
+<p><!-- l. 210 --></p>
+<p>Obtaining answers during an exam other than by the approved means (your own printed material, knowledge, and cleverness) is forbidden. Passing along questions or answers to an exam to anyone else before the exam is given is also forbidden.</p>
+<p><!-- l. 215 --></p>
+<p>Any violation of the rules above constitutes cheating, for which there is no excuse.</p>
+<p><!-- l. 218 --></p>
+<p><span class="cmbx-10x-x-109">The usual penalty for cheating is failure of the course</span>. The offense will also be reported to the appropriate University entities. The bare minimum penalty you may receive for an instance of cheating is double the points of the assignment off. That means that if an assignment/test is worth 10 points, your ultimate grade would be -20 for the assignment/test. Finally, as noted in the Student Policy Manual, the maximum penalty for cheating on an assignment is expulsion from the University. These penalties apply both to copier and copiee.</p>
+<p><!-- l. 228 --></p>
+<h3 id="j_Syllabus_s6" class="sectionHead"><span class="titlemark">6</span> <span id="x1-120006"></span>Tentative Course Outline</h3>
+<p>Course topics by chapter and the final exam date are given below. This schedule is flexible and is subject to some revision as the class proceeds. There may not be time to cover all the topics listed. You will be tested only on those topics that could be covered in class, which means that the content of the quizzes and exam may be adjusted.</p>
+<figure class="figure">
+<div class="tabular">
+<table id="TBL-4" class="tabular">
+<colgroup id="TBL-4-1g">
+<col id="TBL-4-1">
+</col>
+<col id="TBL-4-2">
+</col>
+<col id="TBL-4-3">
+</col>
+<col id="TBL-4-4">
+</col>
+</colgroup>
+<tr id="TBL-4-1-" style="vertical-align:baseline;">
+<td id="TBL-4-1-1" style="white-space:nowrap; text-align:left;" class="td11">
+<span class="cmbx-10x-x-109">Topic(s)</span>
+</div>
+</td>
+<td id="TBL-4-1-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">Chapter (ALC)</span></p>
+</td>
+<td id="TBL-4-1-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">Chapter (ITC)</span></p>
+</td>
+<td id="TBL-4-1-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">Week(s)</span></p>
+</td>
+</tr>
+<tr id="TBL-4-2-" style="vertical-align:baseline;">
+<td id="TBL-4-2-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Introduction: mathematical preliminaries, definitions, theorems, proofs, automata concepts: alphabets, strings, and languages
+</div>
+</td>
+<td id="TBL-4-2-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>1</p>
+</td>
+<td id="TBL-4-2-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>0</p>
+</td>
+<td id="TBL-4-2-4" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+1–2<br />
+<br />
+Jan. 16 — no class<br />
+Jan. 17 — W drop day
+</div>
+</td>
+</tr>
+<tr id="TBL-4-3-" style="vertical-align:baseline;">
+<td id="TBL-4-3-1" style="white-space:nowrap; text-align:left;" class="td11">
+<p>Deterministic finite automata</p>
+</td>
+<td id="TBL-4-3-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>2.1–2.2</p>
+</td>
+<td id="TBL-4-3-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>1.1</p>
+</td>
+<td id="TBL-4-3-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>3</p>
+</td>
+</tr>
+<tr id="TBL-4-4-" style="vertical-align:baseline;">
+<td id="TBL-4-4-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Nondeterministic finite automata, regular expressions
+</div>
+</td>
+<td id="TBL-4-4-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>2.3, 2.5</p>
+</td>
+<td id="TBL-4-4-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>1.2-1.3</p>
+</td>
+<td id="TBL-4-4-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>4</p>
+</td>
+</tr>
+<tr id="TBL-4-5-" style="vertical-align:baseline;">
+<td id="TBL-4-5-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Regular expressions (cont.), regular languages, equivalence to automata
+</div>
+</td>
+<td id="TBL-4-5-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>3.1–3.3</p>
+</td>
+<td id="TBL-4-5-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>1.3</p>
+</td>
+<td id="TBL-4-5-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>5</p>
+</td>
+</tr>
+<tr id="TBL-4-6-" style="vertical-align:baseline;">
+<td id="TBL-4-6-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Proving languages nonregular: pumping lemma
+</div>
+</td>
+<td id="TBL-4-6-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>4.1–4.2</p>
+</td>
+<td id="TBL-4-6-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>1.4</p>
+</td>
+<td id="TBL-4-6-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>6</p>
+</td>
+</tr>
+<tr id="TBL-4-7-" style="vertical-align:baseline;">
+<td id="TBL-4-7-1" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">MIDTERM EXAM</span></p>
+</td>
+<td id="TBL-4-7-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">1–4</span></p>
+</td>
+<td id="TBL-4-7-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">0-1</span></p>
+</td>
+<td id="TBL-4-7-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">Wed. Feb 22</span></p>
+</td>
+</tr>
+<tr id="TBL-4-8-" style="vertical-align:baseline;">
+<td id="TBL-4-8-1" style="white-space:nowrap; text-align:left;" class="td11">
+<p>Minimization of automata</p>
+</td>
+<td id="TBL-4-8-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>4.4</p>
+</td>
+<td id="TBL-4-8-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>Prob 7.42</p>
+</td>
+<td id="TBL-4-8-4" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+8<br />
+Mar 2. — WF drop day
+</div>
+</td>
+</tr>
+<tr id="TBL-4-9-" style="vertical-align:baseline;">
+<td colspan="4" style="white-space:nowrap; text-align:center;" class="td11" id="TBL-4-9-1">
+<div class="multicolumn" style="white-space:nowrap; text-align:center;">
+<span class="cmbx-10x-x-109">Spring Break — Mar. 5–12</span>
+</div>
+</td>
+</tr>
+<tr id="TBL-4-10-" style="vertical-align:baseline;">
+<td id="TBL-4-10-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Context-free grammars and languages, parse trees
+</div>
+</td>
+<td id="TBL-4-10-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>5.1–5.4</p>
+</td>
+<td id="TBL-4-10-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>2.1</p>
+</td>
+<td id="TBL-4-10-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>9–10</p>
+</td>
+</tr>
+<tr id="TBL-4-11-" style="vertical-align:baseline;">
+<td id="TBL-4-11-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Pushdown automata, equivalence to grammars
+</div>
+</td>
+<td id="TBL-4-11-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>6.1–6.3</p>
+</td>
+<td id="TBL-4-11-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>2.2</p>
+</td>
+<td id="TBL-4-11-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>11</p>
+</td>
+</tr>
+<tr id="TBL-4-12-" style="vertical-align:baseline;">
+<td id="TBL-4-12-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Normal forms of CFGs, pumping lemma for CFLs
+</div>
+</td>
+<td id="TBL-4-12-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>7.1–7.2</p>
+</td>
+<td id="TBL-4-12-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>2.3</p>
+</td>
+<td id="TBL-4-12-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>12</p>
+</td>
+</tr>
+<tr id="TBL-4-13-" style="vertical-align:baseline;">
+<td id="TBL-4-13-1" style="white-space:nowrap; text-align:left;" class="td11">
+<div class="minipage">
+Turing machines, notion of “algorithm”
+</div>
+</td>
+<td id="TBL-4-13-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>8</p>
+</td>
+<td id="TBL-4-13-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>3.1, 3.3</p>
+</td>
+<td id="TBL-4-13-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>13</p>
+</td>
+</tr>
+<tr id="TBL-4-14-" style="vertical-align:baseline;">
+<td id="TBL-4-14-1" style="white-space:nowrap; text-align:left;" class="td11">
+<p>Undecidability and intractability</p>
+</td>
+<td id="TBL-4-14-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p>9–10</p>
+</td>
+<td id="TBL-4-14-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p>4.1-4.2</p>
+</td>
+<td id="TBL-4-14-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p>14</p>
+</td>
+</tr>
+<tr id="TBL-4-15-" style="vertical-align:baseline;">
+<td id="TBL-4-15-1" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">FINAL EXAM (cumulative)</span></p>
+</td>
+<td id="TBL-4-15-2" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">all</span></p>
+</td>
+<td id="TBL-4-15-3" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">all</span></p>
+</td>
+<td id="TBL-4-15-4" style="white-space:nowrap; text-align:left;" class="td11">
+<p><span class="cmbx-10x-x-109">Apr. 26, 4:00pm</span></p>
+</td>
+</tr>
+<tr id="TBL-4-16-" style="vertical-align:baseline;">
+<td id="TBL-4-16-1" style="white-space:nowrap; text-align:left;" class="td11">
+</td>
+</tr>
+</table>
+</div>
+</figure>
+<h3 id="j_Syllabus_s7" class="sectionHead"><span class="titlemark">7</span> <span id="x1-130007"></span>Quiz Schedule</h3>
+<figure class="figure">
+<div class="tabular">
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">Date</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 1</td>
+<td style="text-align: left;">Wed 01/25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quiz 2</td>
+<td style="text-align: left;">Wed 02/01</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 3</td>
+<td style="text-align: left;">Wed 02/08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quiz 4</td>
+<td style="text-align: left;">Wed 02/15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 5</td>
+<td style="text-align: left;">Wed 03/01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quiz 6</td>
+<td style="text-align: left;">Wed 03/15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 7</td>
+<td style="text-align: left;">Wed 03/22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quiz 8</td>
+<td style="text-align: left;">Wed 03/29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 9</td>
+<td style="text-align: left;">Wed 04/05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quiz 10</td>
+<td style="text-align: left;">Wed 04/12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Quiz 11</td>
+<td style="text-align: left;">Wed 04/19</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+<h3 id="j_Syllabus_s8" class="sectionHead"><span class="titlemark">8</span> <span id="x1-140008"></span>Data for Research Disclosure</h3>
+<p>Any and all results of in-class and out-of-class assignments and examinations are data sources for research and may be used in published research. All such use will always be anonymous.</p>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../js/tocbot.min.js"></script>
+<script src="../js/toc.js"></script>
+
+    </body>
+</html>
+

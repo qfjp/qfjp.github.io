@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade PS10</title>
+      <link rel="stylesheet" href="../../css/hakyll.css" />
+      <link rel="stylesheet" href="../../css/latex.css">
+      <link rel="stylesheet" href="../../css/responsive.css">
+      <link rel="stylesheet" href="../../css/tocbot.css">
+      <link rel="stylesheet" href="../../css/pygments.css">
+      
+      <link rel="stylesheet" href="PS10.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../../csce355.html">CSCE 355</a>
+            </div>
+            <nav>
+                <a href="../../index.html">Home</a>
+                <a href="../../csce355/Syllabus.html">Syllabus</a>
+                <a href="../../csce355/Project.html">Project</a>
+                <a href="../../csce355/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./PS10.pdf">pdf</a>,
+                    <a href="./PS10.tex">TeX</a>
+                </section>
+                
+
+                <article>
+  <section class="header">
+    
+    April 20, 2016
+    
+    
+  </section>
+  <section>
+    <div class="maketitle">
+<h2 class="titleHead">PHYS 704<br />
+Homework 10</h2>
+<div class="author">
+<span class="cmr-12x-x-120">Daniel Padé</span>
+</div>
+<br />
+
+<div class="date">
+<span class="cmr-12x-x-120">April 20, 2016</span>
+</div>
+</div>
+<dl>
+<dt>1.</dt>
+<dd>A flat right rectangular loop carrying a constant currint \(I_1\) is placed near a long straight wire carrying a current \(I_2\). The loop is oriented so that its center is a perpendicular distance d from the wire; the sides of length \(a\) are parallel to the wire and the sides of length \(b\) make an angle \(\alpha \) with the plane containing the wire and the loop’s center. The direction of the current \(I_1\) is the same as that of \(I_2\) in the side of the rectangle nearest the wire.
+<dl>
+<dt>(a)</dt>
+<dd><p>Show that the interaction magnetic energy \begin{align*} W_{12} = \int \bs{J} \cdot \bs{A}_2 d^3x = I_1 F_2 \end{align*} <!-- l. 65 --></p>
+<p>(where \(F_2\) is the magnetic flux from \(I_2\) linking the rectangular circuit carrying \(I_1\)), is \begin{align*} W_{12} = \frac{\mu _0 I_1 I_2 a}{4 \pi } \ln \left [ \frac{4d^2 + b^2 + 4db \cos \alpha }{4d^2 + b^2 - 4db \cos \alpha } \right ] \end{align*}</p>
+<div class="newtheorem">
+<!-- l. 77 -->
+<p><span class="head"><span class="cmbx-12">Solution.</span></span> \begin{align*} W_{12} = I_1 \oint d\bs{l}_1 \cdot \bs{A}_2 \end{align*}</p>
+<!-- l. 81 -->
+<p>Take the loop to be in the x-y plane, centered at the origin, with the wire above it as shown:<br />
+</p>
+<figure class="figure">
+<object height="246.48256" width="278.31519" type="image/svg+xml" data="PS10-1.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 116 -->
+<p>So \(\bs{A}_2\) is given by \begin{align*} \bs{A}_2 = - \frac{I_2 \hat{\bs{y}}}{4 \pi } \ln \left [{\left ( x - d \cos \alpha \right )}^2{\left ( x - d \sin \alpha \right )}^2 \right ] \end{align*}</p>
+<!-- l. 129 -->
+<p>And only the sides of length \(a\) will contribute: \begin{align*} \Rightarrow W_{12} &amp;= I_1 \oint d\bs{l}_1 \cdot \bs{A}_2 \\ &amp;= \frac{\mu _0 I_1 I_2 a}{4 \pi } \ln \left [ \frac{{(-\frac{b}{2} - d \cos \alpha )}^2 -{(d \sin \alpha )}^2}{{(\frac{b}{2} - d \cos \alpha )}^2 +{(d \sin \alpha )}^2} \right ] \\ &amp;= \frac{\mu _0 I_1 I_2 a}{4 \pi } \ln \left [ \frac{4d^2 + b^2 + 4db \cos \alpha }{4d^2 + b^2 - 4db \cos \alpha } \right ] \end{align*}</p>
+</div>
+</dd>
+<dt>(b)</dt>
+<dd>Calculate the force between the loop and the wire for fixed currents.
+<div class="newtheorem">
+<!-- l. 156 -->
+<p><span class="head"><tspan font-size="12" font-family="cmbx">Solution.</tspan></span> \begin{align*} \bs{B} = \bs{\nabla } \times \bs{A} \end{align*}</p>
+<!-- l. 160 -->
+<p>Only the force on the sides of length a will be nonzero by symmetry \begin{align*} B_x(x, 0) &amp;= - \frac{\partial A_y}{\partial z} \biggr \vert _{z=0} \\ &amp;= \frac{-d \sin \alpha }{{(x - d \cos \alpha )}^2 +{(d \sin \alpha )}^2} \\ B_z(x, 0) &amp;= \frac{\partial A_y}{\partial x} \biggr \vert _{z=0} \\ &amp;= \frac{x-d \sin \alpha }{{(x - d \cos \alpha )}^2 +{(d \sin \alpha )}^2} \end{align*}</p>
+<!-- l. 194 -->
+<p>\begin{align*} F_x &amp;= I_1 \left [ B_z\left (\frac{b}{2}, 0\right ) - B_z\left (-\frac{b}{2}, 0\right ) \right ] \\ &amp;= \frac{2 \mu _0 I_1 I_2 a b}{\pi } \frac{4d^2 \cos (2\alpha ) - b^2}{b^4 - 8d^2\cos (2\alpha )b^2 + 16d^4} \\ F_z &amp;= - I_2 \left [ B_x\left (\frac{b}{2}, 0\right ) - B_x\left (-\frac{b}{2}, 0\right ) \right ] \\ &amp;= \frac{8 \mu _0 I_1 I_2 a b}{\pi } \frac{d^2 \sin (2\alpha )}{b^4 - 8d^2\cos (2\alpha )b^2 + 16d^4} \end{align*}</p>
+</div>
+</dd>
+<dt>(c)</dt>
+<dd><p>Repeat the calculation for a circular loop of radius \(a\), whose plane is parallel to the wire and makes an angle \(\alpha \) with respect to the plane containing the center of the loop and the wire. Show that the interaction energy is \begin{align*} W_{12} = \mu _0 I_1 I_2 d \cdot \Re \left \{ e^{i\alpha } - \sqrt{e^{2i\alpha } - a^2 / d^2} \right \} \end{align*} <!-- l. 208 --></p>
+<p>Find the force.</p>
+<div class="newtheorem">
+<!-- l. 209 -->
+<p><span class="head"><tspan font-size="12" font-family="cmbx">Solution.</tspan></span> Converting to cylindrical coordinates, \(x = a\cos \phi \) and \(dl_y = d\phi \; a \cos \phi \): \begin{align*} W_{12} = I_1 \int d\phi \; a \cos \phi A_y(a \cos \phi , 0) \end{align*}</p>
+<!-- l. 214 -->
+<p>Expand \(A_y\) in terms of \(1/d\): \begin{align*} W_{12} = \mu _0 I_1I_2 \left ( \frac{a^2 \cos{\alpha }}{2d} + \frac{a^4 \cos (3\alpha )}{8d^3} + \cdots \right ) \end{align*}</p>
+<!-- l. 227 -->
+<p>\begin{align*} \frac{1 - \sqrt{1-z^2}}{z} = \frac{z}{2} + \frac{z^3}{8} + \cdots \end{align*}</p>
+<!-- l. 228 -->
+<p>therefore \begin{align*} W_{12} &amp;= \mu _0 a I_1I_2 \Re \left ( \frac{1 - \sqrt{1 -{(\frac{a}{d}e^{i\alpha })}^2}}{\frac{a}{d}e^{i\alpha }} \right ) \\ &amp;= \mu _0 d I_1I_2 \Re \left ( e^{-i\alpha } - \sqrt{e^{-2i\alpha } - \frac{a^2}{d^2}} \right ) \\ &amp;= \mu _0 d I_1I_2 \Re \left ( e^{i\alpha } - \sqrt{e^{2i\alpha } - \frac{a^2}{d^2}} \right ) \end{align*}</p>
+<!-- l. 250 -->
+<p>The last step is obtained from taking the real part.<br />
+For the force, a similar process is applied to the following integral: \begin{align*} \bs{F} &amp;= \hat{\bs{x}} I_1 \int d\phi \; a \cos \phi B_z(a \cos \phi , 0) - \hat{\bs{z}}I_1 \int d\phi \; a \cos \phi B_x(a \cos \phi , 0) \end{align*}</p>
+<!-- l. 260 -->
+<p>yielding \begin{align*} F_x &amp;= \mu _0 I_1 I_2 \Re \left [ \frac{1}{\sqrt{1 - \left ( \frac{a}{d}E^{i\alpha } \right )}} \right ] \\ F_z &amp;= \mu _0 I_1 I_2 \Im \left [ \frac{1}{\sqrt{1 - \left ( \frac{a}{d}E^{i\alpha } \right )}} \right ] \end{align*}</p>
+</div>
+</dd>
+<dt>(d)</dt>
+<dd>For both loops, show that when \(d \gg a,b\) the interaction energy reduces to \(W_{12} \approx \bs{m} \cdot \bs{B}\), where \(\bs{m}\) is the magnetic moment of the loop. Explain the sign.
+<div class="newtheorem">
+<!-- l. 282 -->
+<p><span class="head"><tspan font-size="12" font-family="cmbx">Solution.</tspan></span> \begin{align} W_{12} &amp;= \frac{\mu _0 I_1 I_2 a}{4 \pi } \ln \left [ \frac{4d^2 + b^2 + 4db \cos \alpha }{4d^2 + b^2 - 4db \cos \alpha } \right ] \\ &amp;\approx \frac{\mu _0I_1I_2a}{4\pi } \frac{2b\cos (\alpha )}{d} \\ &amp;= (I_1ab) \frac{\mu _0 I_2 \cos \alpha }{2 \pi d} \\ &amp;= m_1 B_{2z} \end{align}</p>
+<!-- l. 303 -->
+<p>Similarly for the second case: \begin{align*} W_{12} &amp;\approx \mu _0 I_1 I_2 a \frac{a \cos \alpha }{2d} \\ &amp;= (I_1 \pi a^2) \frac{\mu _0 I_2 \cos \alpha }{2 \pi d} \\ &amp;= m_1 B_{2z} \end{align*}</p>
+<!-- l. 313 -->
+<p>The sign is positive because the magnetic field and the magnetic moment oppose each other.</p>
+</div>
+</dd>
+</dl>
+</dd>
+<dt>2.</dt>
+<dd><p>Show that the mutual inductance of two circular coaxial loops in a homogeneous medium of permeabililty \(\mu \) is \begin{align*} M_{12} = \mu \sqrt{ab} \left [ \left ( \frac{2}{k} - k \right ) K(k) - \frac{2}{k} E(k) \right ] \end{align*} <!-- l. 334 --></p>
+<p>where \begin{align*} k^2 = \frac{4ab}{(a + b^2) + d^2} \end{align*}</p>
+<p><!-- l. 339 --></p>
+<p>and \(a, b\) are the radii of the loops, \(d\) is the distance between their centers, and \(K\) and \(E\) are the complete elliptic integrals.</p>
+<p><!-- l. 343 --></p>
+<p>Find the limiting value when \(d \ll a,b\) and \(a \simeq b\)</p>
+<div class="newtheorem">
+<!-- l. 344 -->
+<p><span class="head"><tspan font-size="12" font-family="cmbx">Solution.</tspan></span></p>
+<figure class="figure">
+<object height="303.39122" width="295.12053" type="image/svg+xml" data="PS10-2.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 386 -->
+<p>\begin{align*} M_{ij} &amp;= \frac{1}{I_j} \int _{S_i} (\bs{\nabla } \times \bs{A}_{ij}) \cdot d\bs{a} \\ &amp;= \frac{1}{I_j} \oint _{C_i} \bs{A} \cdot d\bs{s_i} \\ &amp;= \frac{1}{I_j} \oint _{C_i} \left ( \frac{\mu I_j}{4 \pi } \oint _{C_j} \frac{d\bs{s}_j}{r} \right ) \cdot d\bs{s_i} \\ &amp;= \frac{\mu }{4 \pi } \oint _{C_i} \oint _{C_j} d\bs{s}_j \cdot d\bs{s}_i \end{align*}</p>
+<!-- l. 400 -->
+<p>\begin{align*} d\bs{s}_1 &amp;= a(-\hat{\bs{x}} \sin \phi _1 + \hat{\bs{y}}\cos \phi _1) d \phi _1 \\ d\bs{s}_2 &amp;= b(-\hat{\bs{x}} \sin \phi _2 + \hat{\bs{y}}\cos \phi _2) d \phi _2 \\ \Rightarrow d\bs{s}_1 \cdot d\bs{s}_2 &amp;= ab \left ( \sin \phi _1 \sin \phi _2 + \cos \phi _1 \cos \phi _2 \right ) d\phi _1 d\phi _2 \\ &amp;= ab \cos (\phi _1 - \phi _2) d\phi _1 d\phi _2 \end{align*}</p>
+<!-- l. 441 -->
+<p>\begin{align*} r_1 &amp;= a \left ( \hat{\bs{x}} \cos \phi _1 + \hat{\bs{y}} \sin \phi _1 \right ) + \frac{d}{2}\hat{\bs{z}} \\ r_2 &amp;= b \left ( \hat{\bs{x}} \cos \phi _2 + \hat{\bs{y}} \sin \phi _2 \right ) - \frac{d}{2}\hat{\bs{z}} \\ r^2 ={(r_2 - r_1)}^2 &amp;={\left [ (b \cos \phi _2 - a \cos \phi _1) \hat{\bs{x}} + (b \sin \phi _2 - a \sin \phi _1) \hat{\bs{y}} - d \hat{\bs{z}} \right ]}^2 \\ &amp;= a^2 + b^2 + d^2 - 2ab \left ( \cos \phi _1 \cos \phi _2 + \sin \phi _1 \sin \phi _2 \right ) \\ &amp;= a^2 + b^2 + d^2 - 2ab \cos (\phi _1 - \phi _2) \\ \Rightarrow r &amp;= \sqrt{a^2 + b^2 + d^2 - 2ab \cos (\phi _1 - \phi _2)} \end{align*}</p>
+<!-- l. 454 -->
+<p>\begin{align*} M_{12} = \frac{\mu }{4 \pi } \oint _{\phi _2} d\phi _2 \left ( \oint _{\phi _1} d\phi _1\; \frac{ab\cos (\phi _1 - \phi _2)}{\sqrt{a^2 + b^2 + d^2 - 2ab \cos (\phi _1 - \phi _2)}} \right ) \end{align*}</p>
+<!-- l. 455 -->
+<p>One of the integrals can be eliminated by performing the substitution \(u = \phi _1 - \phi _2\), \(du = d\phi _1\) \begin{align*} M_{12} &amp;= \frac{\mu }{4 \pi } \oint _{\phi _2} d\phi _2 \left ( \oint _{u} du\; \frac{ab\cos (u)}{\sqrt{a^2 + b^2 + d^2 - 2ab \cos (u)}} \right ) \\ &amp;= \frac{\mu }{4 \pi } \left ( \oint _{\phi _2} d\phi _2 \right ) \left ( \oint _{u} du\; \frac{ab\cos (u)}{\sqrt{a^2 + b^2 + d^2 - 2ab \cos (u)}} \right ) \\ &amp;= \frac{\mu }{2} \oint _{u} du\; \frac{ab\cos (u)}{\sqrt{a^2 + b^2 + d^2 - 2ab \cos (u)}} \end{align*}</p>
+<!-- l. 492 -->
+<p>From a table: \begin{align*} \oint d\phi \frac{\cos \phi }{\sqrt{A - B \cos \phi }} &amp;= \frac{4\sqrt{A + B}}{B} \left [ \left ( 1 - \frac{k^2}{2} \right ) K(k) - E(k) \right ], &amp; k = \sqrt{\frac{2B}{A + B}} \end{align*}</p>
+<!-- l. 505 -->
+<p>Using the following substitutions: \begin{align*} A &amp;\rightarrow \frac{a^2+b^2 +d^2}{a^2b^2} \\ B &amp;\rightarrow \frac{2}{ab} \\ k &amp;= \sqrt{ \frac{4ab}{a^2 + b^2 + d^2 + 4} } \\ M_{12} &amp;= \mu \sqrt{a^2 + b^2 + d^2 + 4} \left [ \left (1 - \frac{k^2}{2}\right )K(k) - E(k) \right ] \\ &amp;= \mu \frac{2\sqrt{ab}}{k} \left [ \left (1 - \frac{k^2}{2}\right )K(k) - E(k) \right ] \\ &amp;= \mu \sqrt{ab} \left [ \left (\frac{2}{k} - k\right )K(k) - E(k) \right ] \end{align*}</p>
+</div>
+</dd>
+<dt>3.</dt>
+<dd><p>A circular loop of mean radius \(a\) is made of wire having a circular cross section of radius \(b\), with \(b \ll a\). The sketch shows the relevant dimensions and coordinates for this problem.</p>
+<figure class="figure">
+<object height="172.51552" width="306.90195" type="image/svg+xml" data="PS10-3.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<dl>
+<dt>(a)</dt>
+<dd><p>Using (5.37), the expression for the vector potential of a filamentary circular loop, and appropriate approximations for the elliptic integrals, show that the vector potential at the point \(P\) near the wire is approximately \begin{align*} A_\phi = (\mu _0 I / 2\pi ) [\ln (8a / \rho ) - 2] \end{align*} <!-- l. 580 --></p>
+<p>where \(\rho \) is the transverse coordinate shown in the figure and corrections are of order \((\rho /a) \cos \phi \) and \({(\rho / a)}^2\)</p>
+<div class="newtheorem">
+<!-- l. 583 -->
+<p><span class="head"><tspan font-size="12" font-family="cmbx">Solution.</tspan></span> \begin{align*} A_\phi (r, \theta ) = \frac{\mu _0}{4\pi } \frac{4Ia}{\sqrt{a^2 + r^2 + 2ar \sin \theta }} \left [ \frac{(2-k^2)K(k) - 2E(k)}{k^2} \right ] \end{align*}</p>
+<!-- l. 593 -->
+<p>where k is defined as \begin{align*} k^2 = \frac{4ar \sin \theta }{a^2 + r^2 + 2ar\sin \theta } \end{align*}</p>
+<!-- l. 604 -->
+<p>\begin{align*} r &amp;= a + \rho \sin \phi \\ \Rightarrow a^2 + r^2 + 2ar \sin \theta = a^2 &amp;+{(a + \rho \sin \phi )}^2 + 2a(a + \rho \sin \phi )\sin \theta \end{align*}</p>
+<!-- l. 605 -->
+<p>For \(P\) close to the wire, \(\sin \theta \approx 1\) \begin{align*} \Rightarrow a^2 + r^2 + 2ar \sin \theta &amp;= a^2 +{(a + \rho \sin \phi )}^2 + 2a(a + \rho \sin \phi ) \\ &amp;= 4a^2 + \rho ^2 \sin ^2 \phi + 4 a \rho \sin \phi \end{align*}</p>
+<!-- l. 626 -->
+<p>\begin{align*} k^2 &amp;= \frac{4a^2 + a\rho \sin \phi }{4a^2 + \rho ^2 \sin ^2 \phi + 4 a \rho \sin \phi } \\ &amp;= \frac{4 + \frac{\rho }{a} \sin \phi }{4 + \frac{\rho ^2}{a^2}\sin ^2\phi + 4 \frac{\rho }{a}\sin \phi } \\ &amp;= 1 - 3 \frac{\rho }{4a} + \frac{\rho ^2}{2a^2} + \mathcal{O}\left (\frac{\rho ^3}{a^3}\right ) \end{align*}</p>
+<!-- l. 643 -->
+<p>\begin{align*} A_\phi (r, \theta ) &amp;= \frac{\mu _0}{4\pi } \frac{4Ia}{\sqrt{4a^2 + \rho ^2 \sin ^2 \phi + 4 a \rho \sin \phi }} \left [ \frac{(2 - k^2)K(k) - 2E(k)}{k^2} \right ] \\ &amp;= \frac{\mu _0}{4\pi } \frac{4I}{\sqrt{4 + \frac{\rho ^2}{a^2} \sin ^2 \phi + 4 \frac{\rho }{a} \sin \phi }} \left [ \frac{(1 + \frac{3\rho }{4a})K(k) - 2E(k)}{1 - \frac{3\rho }{4a}} \right ] \end{align*}</p>
+<!-- l. 672 -->
+<p>\begin{align*} K(k) = \int _0^{\frac{\pi }{2}} \frac{d\theta }{\sqrt{1 - k^2 \sin ^2 \theta }} &amp;= \frac{\pi }{2} \left \{ 1 + \frac{1}{4}\left (1 - \frac{3 \rho }{4 a}\right ) \right \} \\ &amp;= \frac{\pi }{8} \left ( 5 - \frac{3\rho }{4a} \right ) \\ E(k) = \int _0^{\frac{\pi }{2}} d\theta \;\sqrt{1 - k^2 \sin ^2 \theta } &amp;= \frac{\pi }{2} \left \{ 1 - \frac{1}{4}\left (1 - \frac{3 \rho }{4 a}\right ) \right \} \\ &amp;= \frac{3\pi }{8} \left ( 1 + \frac{\rho }{4a} \right ) \end{align*}</p>
+<!-- l. 720 -->
+<p>\begin{align*} A_\phi (r, \theta ) &amp;= \frac{\mu _0}{4\pi } \frac{4I}{\sqrt{4 + \frac{\rho ^2}{a^2} \sin ^2 \phi + 4 \frac{\rho }{a} \sin \phi }} \left [ \frac{\pi }{8} \frac{(1 + \frac{3\rho }{4a}) (5 - 3\rho / 4 a) - 2(3 + 3\rho / 4a)}{1 - \frac{3\rho }{4a}} \right ] \\ &amp;= \frac{\mu _0 I}{8} \left ( \frac{1}{2} - \frac{1}{4}\frac{\rho }{a}\sin \phi \right ) \left [ \frac{(1 + \frac{3\rho }{4a}) (5 - 3\rho / 4 a) - 2(3 + 3\rho / 4a)}{1 - \frac{3\rho }{4a}} \right ] \\ &amp;= \frac{\mu _0 I}{8} \left ( \frac{1}{2} - \frac{1}{4}\frac{\rho }{a}\sin \phi \right ) \left [ \frac{-1 + 21 \rho / 4 a}{1 - \frac{3\rho }{4a}} \right ] \\ &amp;= \frac{\mu _0 I}{8} \left ( \frac{1}{2} - \frac{1}{4}\frac{\rho }{a}\sin \phi \right ) \left [ \frac{-1 + 21 \rho / 4 a}{1 - \frac{3\rho }{4a}} \right ] \\ &amp;= \cdots \end{align*}</p>
+</div>
+</dd>
+<dt>(b)</dt>
+<dd>Since the vector potential of part a is, apart from a constant, just that outside a straight circular wire carrying a current \(I\), determine the vector potential inside the wire \((\rho &lt; b)\) in the same approximation by requiring continuity of \(A_\phi \) and its radial derivative at \(\rho = b\), assuming that the current is uniform in density inside the wire: \begin{align*} A_\phi &amp;= (\mu _0 I / 4 \pi )(1 - \rho ^2 / b^2) + (\mu _0 I / 2 \pi ) [\ln (8a / b) - 2], &amp; \rho &lt; b \end{align*}
+</dd>
+<dt>(c)</dt>
+<dd><p>Use (5.149) to find the magnetic energy, hence the self-inductance, \begin{align*} L = \mu _0a[\ln (8a/b) - 7/4] \end{align*} <!-- l. 745 --></p>
+<p>Are the corrections of order \(b/a\) or \({(b/a)}^2\)? What is the change in \(L\) if the current is assumed to flow only on the surface of the wire (as occurs at high frequencies when the skin depth is small compared to \(b\))?</p>
+</dd>
+</dl>
+</dd>
+</dl>
+  </section>
+</article>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../../js/tocbot.min.js"></script>
+<script src="../../js/toc.js"></script>
+
+    </body>
+</html>
+

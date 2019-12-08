@@ -1,0 +1,319 @@
+\documentclass[11pt]{article}
+\usepackage{ifpdf}
+\makeatletter
+\edef\texforht{TT\noexpand\fi
+  \@ifpackageloaded{tex4ht}
+    {\noexpand\iftrue}
+    {\noexpand\iffalse}}
+\makeatother
+\ifpdf
+  \usepackage[framemethod=TikZ]{mdframed}
+\else
+  \usepackage{framed}
+  \def\pgfsysdriver{pgfsys-tex4ht-alt.def}
+\fi
+\usepackage{amsfonts,amssymb,amsmath,amsthm,epsfig,mathtools,bm}
+\usepackage{tikz, float}
+\usepackage{parskip}
+\usepackage{advdate}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+
+\usetikzlibrary{shapes.geometric, arrows, automata, positioning, fit}
+\tikzset {
+    child/.style = {isosceles triangle, draw, shape border rotate = 90, anchor=north}
+}
+
+\newcommand{\nums}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\cpxs}{\mathbb{C}}
+\newcommand{\floor}[1]{{\lfloor{#1}\rfloor}}
+\newcommand{\ceiling}[1]{{\lceil{#1}\rceil}}
+\newcommand{\tuple}[1]{{\langle{#1}\rangle}}
+\newcommand{\set}[1]{{\left\{{#1}\right\}}}
+\newcommand{\bigfloor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\bigceiling}[1]{{\left\lceil{#1}\right\rceil}}
+\newcommand{\bigtuple}[1]{{\left\langle{#1}\right\rangle}}
+\newcommand{\card}[1]{{\|{#1}\|}}
+\newcommand{\bigcard}[1]{{\left\|{#1}\right\|}}
+\newcommand{\st}{\mathrel{:}}
+\newcommand{\symdiff}{\mathop{\triangle}}
+\newcommand{\emptystr}{\varepsilon}
+\newcommand{\eclose}{\textsc{eclose}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\merge}[2]{{{#1}\mathop{\textit{merge}}{#2}}}
+\newcommand{\blank}{\text{\textvisiblespace}}
+\newcommand{\Tau}{T}
+\newcommand{\myand}{\mathrel{\wedge}}
+\newcommand{\myor}{\mathrel{\vee}}
+\newcommand{\mynot}{\neg}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\mn}{\textup{min}}
+\newcommand{\map}[3]{{{#1}:{#2}\rightarrow{#3}}}
+\newcommand{\regexp}{\textup{REG}}
+\newcommand{\push}[1]{{\textup{push}\;{#1}}}
+\newcommand{\pop}{{\textup{pop}}}
+\newcommand{\turnstile}{\vdash}
+\newcommand{\Turnstile}[1]{\underset{#1}{\turnstile}}
+\newcommand{\turnstar}{\overset{*}{\vdash}}
+\newcommand{\Turnstar}[1]{\underset{#1}{\overset{*}{\vdash}}}
+\newcommand{\derives}{\Rightarrow}
+\newcommand{\Derives}[1]{\underset{#1}{\Rightarrow}}
+\newcommand{\derivestar}{\overset{*}{\derives}}
+\newcommand{\Derivestar}[1]{\underset{#1}{\overset{*}{\derives}}}
+\newcommand{\height}{\textup{height}}
+\newcommand{\tup}[1]{\langle{#1}\rangle}
+\newcommand{\powset}[1]{\mathcal{P}\left({#1}\right)}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{fact}{Fact}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{example}{Example}[section]
+
+\newenvironment{remark}{\paragraph{Remark.}}{}
+\newenvironment{automaton}{%
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick, on grid]
+    \tikzset{every state/.style={minimum size=1.8pt}}
+    \tikzset{every state/.style={inner sep=1.8pt}}
+    \tikzset{accepting/.style={double distance=2pt}}
+}{%
+\end{tikzpicture}
+}
+
+\ifpdf
+  \newenvironment{Framed}[1]{%
+    \mdfsetup{
+      frametitle={\colorbox{white}{\space #1 \space}},
+      innertopmargin=10pt,
+      frametitleaboveskip=-\ht\strutbox,
+      frametitlealignment=\center,
+    }
+    \begin{mdframed}[roundcorner=10pt]
+      \vspace{-5mm}
+  }{
+    \end{mdframed}
+  }
+\else
+  \newenvironment{Framed}[1]{%
+    \begin{framed}
+  }{
+    \end{framed}
+  }
+\fi
+\newenvironment{soln}[0]{%
+  \begin{Framed}{Solution}
+}{
+  \end{Framed}
+}
+\title{CSCE 355, Spring 2016, Assignment 9}
+\date{Due: \AdvanceDate[7]\today}
+\begin{document}
+
+\maketitle
+
+\begin{Framed}{Instructions}
+  Make sure to submit your homework on \textbf{SINGLE-SIDED 8.5x11
+  INCH PAPER}. Write your \textbf{NAME ON EVERY PAGE} and
+  \textbf{DO NOT STAPLE OR FOLD} the sheets.
+
+  In this and future homeworks, questions marked as optional will
+  not be used for quizzes or final exam questions.
+\end{Framed}
+
+The Exercises are taken out of Hopcroft, with their difficulty
+annotations preserved.
+
+\begin{description}
+
+  \item[Exercise~4.2.1:] Suppose $h$ is the homomorphism from the
+    alphabet $\{0,1,2\}$ to the alphabet $\{a,b\}$ defined by $h(0) =
+    a$; $h(1) = ab$, and $h(2) = ba$.
+    \begin{enumerate}[label={\alph*)}]
+      \item What is $h(0120)$?
+      \item What is $h(21120)$?
+      \item If $L$ is the language $L(\tb 0 \tb 1^*\tb 2)$, what is $h(L)$?
+      \item If $L$ is the language $L(\tb 0 + \tb{12})$, what is $h(L)$?
+      \item Suppose $L$ is the language $\{ababa\}$, that is, the language
+        consisting of only the one string $ababa$.  What is $h^{-1}(L)$?
+      \item If $L$ is the language $L(\tb a(\tb{ba})^*)$, what is
+        $h^{-1}(L)$?
+    \end{enumerate}
+
+\item[(not in text):]
+  Let $h$ be the homomorphism mapping strings in $\{a,b,c\}^*$ to strings in
+  $\{0,1\}^*$ such that
+  \begin{eqnarray*}
+    h(a) & = & 011, \\
+    h(b) & = & 0, \\
+    h(c) & = & 110.
+  \end{eqnarray*}
+  \begin{enumerate}[label={\alph*)}]
+    \item
+      Find $h^{-1}(L)$, where $L = \{ 00110, 000111 \}$.
+    \item
+      Using the transformation described in class, give a regular expression
+      for $h(M)$, where $M$ is the regular language denoted by $a^*(bc + ca)^*$.
+    \item
+      Using the construction described in class, construct a DFA for
+      $h^{-1}(N)$, where $N$ is recognized by the following DFA:
+      \begin{figure}[H]
+        \centering
+        \begin{automaton}
+          \node[state, initial] (q0) {$q_0$};
+          \node[state, accepting] (q1) [right = of q0] {$q_1$};
+          \node[state, accepting] (q2) [below = of q0] {$q_2$};
+          \node[state] (q3) [below = of q1] {$q_3$};
+
+          \path (q0) edge node {$0$} (q1)
+                     edge [bend right] node [left] {$1$} (q2);
+          \path (q1) edge [bend right = 60] node [above] {$0$} (q0)
+                     edge [] node [above] {$1$} (q2);
+          \path (q2) edge [] node [right] {$0$} (q0)
+                     edge [] node [above] {$1$} (q3);
+          \path (q3) edge [] node [right] {$0$} (q1)
+                     edge [loop right] node [right] {$1$} ();
+        \end{automaton}
+      \end{figure}
+  \end{enumerate}
+
+
+%\item[Exercise~4.2.5:] The operation of Exercise~4.2.3 is sometimes
+%  viewed as a ``derivative,'' and $a\backslash L$ is written
+%  $\frac{dL}{da}$.  These derivatives apply to regular expressions in
+%  a manner similar to the way ordinary derivatives apply to arithmetic
+%  expressions.  Thus, if $R$ is a regular expression, we shall use
+%  $\frac{dR}{da}$ to mean the same as $\frac{dL}{da}$, if $L = L(R)$.
+%\begin{enumerate}
+%\renewcommand{\theenumi}{\alph{enumi})}
+%\item Show that $\frac{d(R+S)}{da} = \frac{dR}{da} + \frac{dS}{da}$.
+%\item Give the rule for the ``derivative'' of $RS$.  \emph{Hint}: You
+%  need to consider two cases: if $L(R)$ does or does not contain
+%  $\emptystr$.  This rule is not quite the same as the ``product
+%  rule'' for ordinary derivatives, but is similar.
+%\item Give the rule for the ``derivative'' of a closure, i.e.,
+%  $\frac{d(R^*)}{da}$.
+%\item Use the rules from (a)--(c) to find the ``derivatives'' of
+%  regular expression $(\tb 0 + \tb 1)^*\tb{011}$ with respect to $0$
+%  and $1$.
+%\item Characterize those languages $L$ for which $\frac{dL}{d0} =
+%  \emptyset$.
+%\item Characterize those languages $L$ for which $\frac{dL}{d0} = L$.
+%\end{enumerate}
+
+\item[! Exercise 4.2.6: (optional)]
+  Show that the regular languages are closed under the following
+  operations:
+  \begin{enumerate}[label={\alph*)}]
+    \item $\textit{min}(L) = \{w\mid \mbox{$w$ is in $L$, but no proper
+      prefix of $w$ is in $L$} \}$.
+    \item $\textit{max}(L) = \{w\mid \mbox{$w$ is in $L$ and for no string $x$
+      other than $\emptystr$ is $wx$ in $L$} \}$.
+    \item $\textit{init}(L) = \{ w\mid \mbox{for some string $x$, $wx$ is in $L$}
+      \}$.
+  \end{enumerate}
+  \emph{Hint}: Like Exercise~4.2.2, it is easiest to start with a DFA
+  for $L$ and perform a construction to get the desired language.
+
+\item[*!! Exercise~4.2.8 (optional):] Let $L$ be a language.  Define
+  $\textit{half}(L)$ to be the set of first halves of strings in $L$,
+  that is, $\{ w \mid$ for some $x$ such that $|x|=|w|$, we have $wx$
+  in $L\}$.  For example, if $L = \{\emptystr,0010,011,010110\}$ then
+  $\textit{half}(L) = \{\emptystr,00,010\}$.  Notice that odd-length
+  strings do not contribute to $\textit{half}(L)$.  Prove that if $L$
+  is a regular language, so is $\textit{half}(L)$.
+
+\item[!! (not in text; optional):]  Let $L$ be a language.  Define
+  $\sqrt L$ to be the set $\{ w\mid \mbox{$ww$ is in $L$} \}$.  Prove
+  that if $L$ is regular, then so is $\sqrt L$.  \emph{Hint:} Given a
+  DFA for $L$ with $n$ many states, one can build a DFA for
+  $\sqrt L$ with $n^n$ many states.
+
+  More generally, for $k\ge 1$, define $\sqrt[k]{L}$ to be the set $\{ w
+  \mid \mbox{$w^k$ is in $L$} \}$.  Also define $\sqrt[*]{L}$ to be the
+  set $\{ w \mid \mbox{$w$ is in $\sqrt[k]{L}$ for some $k\ge 1$} \}$.
+  Similar constructions prove that if $L$ is regular, then all these
+  other languages are regular.
+
+\item[! Exercise~4.2.13:] We can use closure properties to help prove
+  certain languages are not regular.  Start with the fact that the
+  language
+  \[ L_{0n1n} = \{0^n1^n \mid n\ge 0\} \]
+  is not regular.  Prove the following languages not to be regular
+  by transforming them, using operations known to preserve regularity,
+  to $L_{0n1n}$:
+  \begin{enumerate}[label={\alph*)}]
+  \item $\{0^i1^j \mid i\ne j\}$.
+  \item $\{0^n1^m2^{n-m} \mid n\ge m \ge 0\}$.
+\end{enumerate}
+\item[Exercise~4.2.14:] In Theorem~4.8, we described the ``product
+  construction'' that took two DFAs and constructed one DFA whose
+  languages is the intersection of the languages of the first two.
+  \begin{enumerate}
+    \renewcommand{\theenumi}{\alph{enumi})}
+    \setcounter{enumi}{2}
+  \item Show how to modify the product construction so the resulting DFA
+    recognizes the difference of the languages of the two given DFAs.
+  \item Show how to modify the product construction so the resulting DFA
+    recognizes the union of the languages of the two given DFAs.
+\end{enumerate}
+
+\item[(not in text):] Let $L$ be a language.  Define
+  $\textit{subseq}(L)$ to be the set of all strings obtained by removing
+  zero or more symbols (anywhere) from a string in $L$ and closing up
+  the gaps.  For example, if $L = \{aabc,cab\}$, then
+  \[ \textit{subseq}(L) =
+  \{\emptystr,a,b,c,aa,ab,ac,bc,aab,aac,abc,ca,cb,cab\}. \]
+  Prove that if $L$ is regular, then so is $\textit{subseq}(L)$.
+  ($\textit{subseq}$ is short for ``subsequence.''  Actually, it is
+  known that if $L$ is \emph{any language whatsoever}, then
+$\textit{subseq}(L)$ is regular.)
+\emph{Hint}: You can do this either by transforming regular
+expressions or by transforming $\emptystr$-NFAs.
+
+\item[! (not in the text; optional)]
+  Let $x$ and $y$ be any two strings.  A \emph{merge} of $x$
+  and $y$ is any string obtained by merging the symbols of $x$ with
+  those of $y$ in some arbitrary way, maintaining the order of the
+  symbols from each string.  More exactly, if $|x|=m$ and $|y|=n$,
+  then a string $z = z_1\cdots z_k$ is a merge of $x$ and $y$ if and
+  only if
+  \begin{itemize}
+    \item $k = m+n$,
+    \item there exist $1\le i_1<i_2<\cdots<i_m\le k$ such that $x =
+      z_{i_1}z_{i_2}\cdots z_{i_m}$,
+    \item there exist $1\le j_1<j_2<\cdots<j_n\le k$ such that $y =
+      z_{j_1}z_{j_2}\cdots z_{j_n}$, and
+    \item $\{i_1,\ldots,i_m\} \cap \{j_1,\ldots,j_n\} = \emptyset$.
+  \end{itemize}
+  For example, there are five different merges of the strings $ab$ and
+  $bc$:
+  \[ abbc \;\; abcb \;\; babc \;\; bacb \;\; bcab \]
+
+  Let $A$ and $B$ be any languages over the same input alphabet
+  $\Sigma$.  Define
+  \begin{align*}
+    \merge{A}{B} \coloneqq \{ z\in\Sigma^* \mid \mbox{$z$ is a merge of some $x\in A$
+and some $y\in B$} \}.
+\end{align*}
+  Show that if $A$ and $B$ are regular, then so is $\merge{A}{B}$.
+  \emph{Hint}: Given a DFA for $A$ with $r$ many states and an DFA for
+  $B$ with $s$ many states, you can construct an \emph{NFA} for $\merge{A}{B}$
+  with $rs$ many states.
+
+\end{description}
+
+\end{document}

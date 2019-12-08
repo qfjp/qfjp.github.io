@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="rc-cross.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80.86731pt" height="80.86731pt" viewBox="-0.59999 -80.26732 80.86731 80.86731 "> 
+<g transform="translate(0, 0.59999 ) scale(1,-1) translate(0,80.26732 )"> 
+<g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <g stroke="#d9d9d9" fill="#d9d9d9">
+ <path d=" M 0.0 0.0 M 0.0 0.0 L 0.0 0.0 L 0.0 0.0 L 0.0 0.0 Z M 0.0 0.0  " stroke="none"/>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 0.0 0.0 M 0.0 -79.66733 L 79.66733 -79.66733 M 0.0 -59.75049 L 79.66733 -59.75049 M 0.0 -39.83366 L 79.66733 -39.83366 M 0.0 -19.91682 L 79.66733 -19.91682 M 0.0 -0.00699 L 79.66733 -0.00699 M 0.0 -79.66733 L 0.0 0.0 M 19.91682 -79.66733 L 19.91682 0.0 M 39.83366 -79.66733 L 39.83366 0.0 M 59.75049 -79.66733 L 59.75049 0.0 M 79.66032 -79.66733 L 79.66032 0.0 M 79.66733 -79.66733  " fill="none"/>
+ </g>
+ <g stroke-width="1.2">
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 0.0 L 79.66733 0.0  " fill="none"/>
+ </g>
+ </g>
+ <g stroke-width="1.2">
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 0.0 L 0.0 -79.66733  " fill="none"/>
+ </g>
+ </g>
+ <g stroke-width="1.2">
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 79.66733 0.0 L 79.66733 -79.66733  " fill="none"/>
+ </g>
+ </g>
+ <g stroke-width="1.2">
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 -79.66733 L 79.66733 -79.66733  " fill="none"/>
+ </g>
+ </g>
+ <g transform="translate(7.4584,-13.18062)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(27.37524,-13.18062)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(47.29207,-13.18062)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(67.20891,-13.18062)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(7.4584,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(27.37524,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(47.29207,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(67.20891,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(7.4584,-53.01428)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(27.37524,-53.01428)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(49.79207,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(69.70891,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(7.4584,-72.93112)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(27.37524,-72.93112)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(49.79207,-69.70891)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(69.70891,-69.70891)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ 
+                        </g> 
+</svg> 

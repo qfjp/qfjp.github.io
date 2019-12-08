@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no" ?> 
+<?xml-stylesheet href="HW02.css" type="text/css" ?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="225.74286pt" height="154.611pt" viewBox="-77.3055 -77.3055 225.74286 154.611 "> 
+<g transform="translate(0,
+     77.3055 ) scale(1,-1) translate(0,77.3055 )"> 
+                     <g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <path d=" M 0.0 0.0 M 56.9055 0.0 C 56.9055 31.42844 31.42844 56.9055 0.0 56.9055 C -31.42844 56.9055 -56.9055 31.42844 -56.9055 0.0 C -56.9055 -31.42844 -31.42844 -56.9055 0.0 -56.9055 C 31.42844 -56.9055 56.9055 -31.42844 56.9055 0.0 Z M 0.0 0.0  " fill="none"></path>
+ <path d=" M 71.13187 0.0 M 128.03737 0.0 C 128.03737 31.42844 102.5603 56.9055 71.13187 56.9055 C 39.70343 56.9055 14.22636 31.42844 14.22636 0.0 C 14.22636 -31.42844 39.70343 -56.9055 71.13187 -56.9055 C 102.5603 -56.9055 128.03737 -31.42844 128.03737 0.0 Z M 71.13187 0.0  " fill="none"></path>
+ <g transform="translate(-4.10625,41.78333)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.10625,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">A</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(66.70435,41.78333)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.42752,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">B</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <path d=" M -77.1055 77.1055 M -77.1055 77.1055 L -77.1055 -77.1055 L 148.23737 -77.1055 L 148.23737 77.1055 Z M 148.23737 -77.1055  " fill="none"></path>
+ </g>
+ </g>
+ 
+                                                    </g> 
+</svg> 

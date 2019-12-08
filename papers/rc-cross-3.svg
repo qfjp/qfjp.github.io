@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="rc-cross.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="180.05148pt" height="61.05281pt" viewBox="-0.4 -60.65282 180.05148 61.05281 "> 
+<g transform="translate(0, 0.4 ) scale(1,-1) translate(0,60.65282 )"> 
+<g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <g transform="translate(9.9584,-9.9584)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(25.4684,-11.36119)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.40685,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">c</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">1</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(45.38522,-11.36119)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.40685,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">c</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">2</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(65.30206,-11.36119)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.40685,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">c</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">3</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(85.21889,-11.36119)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.40685,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">c</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">4</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(106.68494,-12.11118)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">…</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(124.9642,-11.36119)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.49521,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">c</tspan><tspan baseline-shift="sub"><tspan font-family="cmmi" font-size="7">d</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(146.5186,-12.11118)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">…</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(166.43544,-12.11118)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">…</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(5.32066,-31.27803)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.63774,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">r</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="7">0</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(27.37524,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0 </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(47.29207,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 1 </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(67.20891,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0 </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(87.12573,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0 </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(106.68494,-32.02802)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.85764,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">…</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(126.95941,-33.09746)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(2.5,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> 0 </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(149.37624,-29.87524)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(169.29308,-29.87524)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(8.56952,-57.31984)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(1.38889,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> <img 
+src="rc-cross8x.svg" alt="..
+."  class="vdots"  /></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(29.87524,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(49.79207,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(69.70891,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(89.62573,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(109.54257,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(129.45941,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(149.37624,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(169.29308,-49.79207)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(0.0,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 19.91682 0.0 L 19.91682 -59.75049  " fill="none"/>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 139.41783 0.0 L 139.41783 -59.75049  " fill="none"/>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 0.0 -19.91682 L 179.2515 -19.91682  " fill="none"/>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 0.0 -39.83366 L 179.2515 -39.83366  " fill="none"/>
+ </g>
+ </g>
+ </g>
+ 
+                                                      </g> 
+</svg> 

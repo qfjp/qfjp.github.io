@@ -1,0 +1,231 @@
+\documentclass[11pt]{article}
+\usepackage{ifpdf}
+\makeatletter
+\edef\texforht{TT\noexpand\fi
+  \@ifpackageloaded{tex4ht}
+    {\noexpand\iftrue}
+    {\noexpand\iffalse}}
+\makeatother
+\ifpdf
+  \usepackage[framemethod=TikZ]{mdframed}
+\else
+  \usepackage{framed}
+  \def\pgfsysdriver{pgfsys-tex4ht-alt.def}
+\fi
+\usepackage{amsfonts,amssymb,amsmath,amsthm,epsfig,mathtools,bm}
+\usepackage{tikz, float}
+\usepackage{parskip}
+\usepackage{advdate}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+
+\usetikzlibrary{shapes.geometric, arrows, automata, positioning, fit}
+\tikzset {
+    child/.style = {isosceles triangle, draw, shape border rotate = 90, anchor=north}
+}
+
+\newcommand{\nums}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\cpxs}{\mathbb{C}}
+\newcommand{\floor}[1]{{\lfloor{#1}\rfloor}}
+\newcommand{\ceiling}[1]{{\lceil{#1}\rceil}}
+\newcommand{\tuple}[1]{{\langle{#1}\rangle}}
+\newcommand{\set}[1]{{\left\{{#1}\right\}}}
+\newcommand{\bigfloor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\bigceiling}[1]{{\left\lceil{#1}\right\rceil}}
+\newcommand{\bigtuple}[1]{{\left\langle{#1}\right\rangle}}
+\newcommand{\card}[1]{{\|{#1}\|}}
+\newcommand{\bigcard}[1]{{\left\|{#1}\right\|}}
+\newcommand{\st}{\mathrel{:}}
+\newcommand{\symdiff}{\mathop{\triangle}}
+\newcommand{\emptystr}{\varepsilon}
+\newcommand{\eclose}{\textsc{eclose}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\merge}[2]{{{#1}\mathop{\textit{merge}}{#2}}}
+\newcommand{\blank}{\text{\textvisiblespace}}
+\newcommand{\Tau}{T}
+\newcommand{\myand}{\mathrel{\wedge}}
+\newcommand{\myor}{\mathrel{\vee}}
+\newcommand{\mynot}{\neg}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\mn}{\textup{min}}
+\newcommand{\map}[3]{{{#1}:{#2}\rightarrow{#3}}}
+\newcommand{\regexp}{\textup{REG}}
+\newcommand{\push}[1]{{\textup{push}\;{#1}}}
+\newcommand{\pop}{{\textup{pop}}}
+\newcommand{\turnstile}{\vdash}
+\newcommand{\Turnstile}[1]{\underset{#1}{\turnstile}}
+\newcommand{\turnstar}{\overset{*}{\vdash}}
+\newcommand{\Turnstar}[1]{\underset{#1}{\overset{*}{\vdash}}}
+\newcommand{\derives}{\Rightarrow}
+\newcommand{\Derives}[1]{\underset{#1}{\Rightarrow}}
+\newcommand{\derivestar}{\overset{*}{\derives}}
+\newcommand{\Derivestar}[1]{\underset{#1}{\overset{*}{\derives}}}
+\newcommand{\height}{\textup{height}}
+\newcommand{\tup}[1]{\langle{#1}\rangle}
+\newcommand{\powset}[1]{\mathcal{P}\left({#1}\right)}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{fact}{Fact}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{example}{Example}[section]
+
+\newenvironment{remark}{\paragraph{Remark.}}{}
+\newenvironment{automaton}{%
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick, on grid]
+    \tikzset{every state/.style={minimum size=1.8pt}}
+    \tikzset{every state/.style={inner sep=1.8pt}}
+    \tikzset{accepting/.style={double distance=2pt}}
+}{%
+\end{tikzpicture}
+}
+
+\ifpdf
+  \newenvironment{Framed}[1]{%
+    \mdfsetup{
+      frametitle={\colorbox{white}{\space #1 \space}},
+      innertopmargin=10pt,
+      frametitleaboveskip=-\ht\strutbox,
+      frametitlealignment=\center,
+    }
+    \begin{mdframed}[roundcorner=10pt]
+      \vspace{-5mm}
+  }{
+    \end{mdframed}
+  }
+\else
+  \newenvironment{Framed}[1]{%
+    \begin{framed}
+  }{
+    \end{framed}
+  }
+\fi
+\newenvironment{soln}[0]{%
+  \begin{Framed}{Solution}
+}{
+  \end{Framed}
+}
+
+\title{Assignment 1: Basic Proofs}
+\date{Due: Jan 18, 2016}
+
+\begin{document}
+
+\maketitle
+
+\begin{Framed}{Instructions}
+  Make sure to submit your homework on \textbf{SINGLE-SIDED
+  8.5$\times$11 INCH PAPER}. Write your \textbf{NAME ON EVERY PAGE}
+  and \textbf{DO NOT STAPLE OR FOLD} the sheets.
+
+  In this and future homeworks, questions marked as optional will not
+  be used for quizzes or final exam questions.
+\end{Framed}
+
+The point of this homework is to give you practice proving basic facts
+in arithmetic (ones that you all know), but only using the barest of
+assumptions while doing so.  This promotes economy of expression and
+forces you to be very clear about the concepts involved.
+
+Here are some common letters we use to represent number systems:
+\begin{itemize}
+  \item
+    $\nums = \{0,1,2,\ldots\}$ is the set of \emph{natural numbers}.
+    Notice that this set includes zero.
+  \item
+    $\ints = \{\ldots,-2,-1,0,1,2,\ldots\}$ is the set of
+    \emph{integers}.
+  \item
+    $\rats = \{ a/b \mid a,b \in \ints \text{ and } b \ne 0
+    \}$ is the set of \emph{rational numbers}.
+  \item $\reals$ is the set of \emph{real numbers}.
+\end{itemize}
+We have $\nums \subseteq \ints \subseteq \rats \subseteq \reals$.
+Note that we include zero as the first natural number.  Other people
+start the natural numbers with one instead.
+
+\begin{definition}\label{def:even}\rm
+An integer $m$ is \emph{even} if $m = 2k$ for some integer $k$;
+otherwise, $m$ is \emph{odd}.
+\end{definition}
+
+\begin{definition}\label{def:tree}\rm
+    If $T_1, T_2, \ldots, T_k$ are trees, then we can form a new tree
+    as follows:
+    \begin{enumerate}
+        \item
+            Begin with a new node $N$, which is the root of the tree
+        \item
+            Add copies of all the trees $T_1, T_2, \ldots, T_k$
+        \item
+            Add edges from node $N$ to the roots of each of the trees
+            $T_1, T_2, \dots, T_k$
+    \end{enumerate}
+\end{definition}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+      \node[circle, draw]{N}
+          child[edge from parent path = {(\tikzparentnode) -- (\tikzchildnode.north)}] {node[child] (1) {$T_1$}}
+          child[edge from parent path = {(\tikzparentnode) -- (\tikzchildnode.north)}] {node[child] (2) {$T_2$}}
+          child[edge from parent path = {(\tikzparentnode) -- (\tikzchildnode.north)}] {node[child, xshift=1cm] (k) {$T_k$}};
+        \path (2) -- (k) node [midway] {$\circ\;\circ\;\circ$};
+  \end{tikzpicture}
+  \caption{Inductive construction of a tree}
+\end{figure}
+
+\section*{Exercises}
+\begin{enumerate}
+\item
+Using just Definition~\ref{def:even} above and elementary facts about
+arithmetic, prove directly that for integers $a$ and $b$, if at least
+one of them is even, then $ab$ is even.
+\item
+With the same assumptions as in the previous exercise, prove directly
+that if $a$ and $b$ are even, then $a+b$ and $-a$ are even.
+\item
+With the same assumptions as in the previous exercise, prove by
+\emph{contradiction} that if $a$ is even and $b$ is odd, then $a+b$ is
+odd.  That is, assume that $a$ is even and $b$ is odd, but that $a+b$
+is even; then derive a contradiction.  (The only fact you can use
+about a number being odd is that it is not even.  For example,
+\emph{don't} use the fact (not proven yet) that any odd number is of
+the form $2k+1$ for some integer $k$.)
+\item
+Now using the fact that all odd integers are of the form $2k+1$ where
+$k\in\ints$, prove directly that the sum of two odd integers is even.
+\item
+Prove the following facts hold for all natural numbers $n$ by using induction.
+\begin{itemize}
+  \item $\sum\limits_{i=1}^n i = \dfrac{n(n+1)}{2}$
+  \item $\sum\limits_{i=1}^n i^3 = \frac{1}{4}(n^4 + 2n^3 + n^2) = \dfrac{n^2{(n+1)}^2}{4}$
+ \end{itemize}
+%\item
+%Consider the inductive definition of a tree given in Section~1.4 of
+%the text (Definition ~\ref{def:tree} above).  Using this definition, give an inductive definition of the
+%\emph{depth} of a tree (i.e., the longest length of a simple path from the
+%root to any node).
+\item
+What is the largest integer that cannot be expressed as a sum of
+$4$'s and $7$'s?  That is, find the largest integer $n$ such that $n \ne
+4k+7\ell$ for any integers $k,\ell \ge 0$.  Prove your answer.  (Your
+proof should use induction.)
+\item
+The \emph{associative law} (for real multiplication) states that, for any $a,b,c\in \reals$, we have $(ab)c = a(bc)$.  Using just this law (repeatedly), prove that $((ab)c)d = a(b(cd))$ for any $a,b,c,d\in\reals$.  To avoid ambiguity, you should fully parenthesize all your expressions.  A string of equalities is a valid method of proof.
+\end{enumerate}
+
+\end{document}

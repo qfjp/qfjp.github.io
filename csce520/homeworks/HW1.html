@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade Homework 1</title>
+      <link rel="stylesheet" href="../../css/hakyll.css" />
+      <link rel="stylesheet" href="../../css/latex.css">
+      <link rel="stylesheet" href="../../css/responsive.css">
+      <link rel="stylesheet" href="../../css/tocbot.css">
+      <link rel="stylesheet" href="../../css/pygments.css">
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../../csce520/index.html">CSCE 520</a>
+            </div>
+            <nav>
+                <a href="../../index.html">Home</a>
+                <a href="https://cse.sc.edu/~fenner/csce520/Syllabus.html">Syllabus</a>
+                <a href="../../csce520/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <h1>Homework 1</h1>
+                
+
+                <article>
+  <section class="header">
+    
+    Due: September 5, 2019
+    
+    
+    by Dr. Fenner
+    
+  </section>
+  <section>
+    <h3 id="reading">Reading</h3>
+<p>Read Chapter 1 and sections 2.1, 2.2, and 2.3 of Chapter 2. This should not be taxing, as it is mostly nontechnical.</p>
+<h3 id="doing">Doing</h3>
+<p>The purpose of the rest of this assignment is to get you to install and start using MySQL on your computer by working through an online tutorial. You will use MySQL throughout the course. (When I have taught this course previously, we used a centralized Oracle SQL server on the lab machines, which required people to log into the lab machine first, then the oracle server remotely. MySQL has the advantage of running on your own machine, so you can take it with you. You’ll need about 0.5 Gb of space to install it, though.)</p>
+<p>Before reading further, please note: <em>The rest of this handout has been tested on a Mac OS system. I have not used any of the MS Windows operating systems for over a decade, and I currently have no device running any Microsoft OS. I imagine you can get MySQL running on such a system, but I personally can be of little or no help for you to do it. The TA is much more likely to be able to help you if you need it.</em></p>
+<p>MySQL is a client-server application, even if the client and server are running on the same machine. When you run a MySQL session, you are actually interacting with a client program <code>mysql</code> on your local machine, which then sends commands and retrieves data from the MySQL server (started automatically at system start-up or by invoking <code>mysqld</code> from the shell prompt). Your MySQL sessions will involve simple scrolling text only. You may use a GUI if you want, but it is not required, and I won’t be able to answer GUI-related questions.</p>
+<h4 id="installing-and-setting-up-mysql">Installing and Setting Up MySQL</h4>
+<p>I’m going to assume that you have never used MySQL before. One way to install MySQL, the one I recommend, is to go to the <a href="https://www.mysql.com">MySQL website</a>, click the Downloads tab, and follow the links to download and install the MySQL Community Edition (GPL), MySQL Community Server (the latest version is 8.0). Select your platform (I use MacOS for my Macbook). I chose the DMG archive and all the default configuration options, including having the MySQL server start up at system start-up. Your milage may vary. For security, you should choose a good root password and <strong>REMEMBER IT</strong>! You won’t need it that often, but sometimes you’ll have to do some administrative stuff and you’ll need root privileges for that. Also, if you ever forget your regular user password, you can reset it while logged in as root (see below for how to do this). If you ever forget your root password, however, I don’t know of any way to recover short of reinstalling MySQL from scratch. (That’s not a total disaster for this class, because all entered data will come from stored external files.) Having a root password is actually optional, but <em>strongly recommended</em> for security.</p>
+<p>An alternative way to install MySQL is to follow the (somewhat dated) instructions <a href="https://cse.sc.edu/~farkas/csce520-2015/installation-mysql.pdf">here</a>, but for a Mac this requires also installing Homebrew, so I didn’t do it.</p>
+<h4 id="mysql-exercise">MySQL Exercise</h4>
+<p>The goal of this exercise is to work through the tutorial on the MySQL website, a link to which is given later in this handout. You will only need to work up through Section 3.3.4.5, Date Calculations (so you may stop before Section 3.3.4.6, Working with NULL Values). (You can certainly go further if you wish, and that’ll put you ahead on the learning curve.) This tutorial already assumes a working MySQL system and running server, however, and you are not there yet. Here is what you have to do first to get MySQL so that you can run the tutorial. This should work pretty much the same for any unix/linux/MacOS-like system, and I will assume you are using such a system and that the server is running on the same machine you are using as the client (e.g., your laptop). As I mentioned above, I don’t know about MS Windows other than what is absolutely necessary for my job. I’m sure this will all work on Windows with the right modifications.</p>
+<ol type="1">
+<li>Install and configure MySQL as directed above if you haven’t already.</li>
+<li>You will want to add the directory with the MySQL executables to your <code>PATH</code> variable. This is optional, but will make running mysql more convenient from the command line. On my Mac, where I use a terminal program running the bash shell, I put the following line at the end of my <code>.bashrc</code> file in my home directory: ```bash export PATH=&quot;/usr/local/mysql/bin:</li>
+</ol>
+  </section>
+</article>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../../js/tocbot.min.js"></script>
+<script src="../../js/toc.js"></script>
+
+    </body>
+</html>
+

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade rc-cross</title>
+      <link rel="stylesheet" href="../css/hakyll.css" />
+      <link rel="stylesheet" href="../css/latex.css">
+      <link rel="stylesheet" href="../css/responsive.css">
+      <link rel="stylesheet" href="../css/tocbot.css">
+      <link rel="stylesheet" href="../css/pygments.css">
+      
+      <link rel="stylesheet" href="rc-cross.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../index.html">Daniel J Padé</a>
+            </div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../research.html">Research</a>
+                <a href="../teaching.html">Teaching</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./rc-cross.pdf">pdf</a>,
+                    <a href="./rc-cross.tex">TeX</a>
+                </section>
+                
+
+                <div class="maketitle">
+<h2 class="titleHead">Complexity of Regex Crosswords</h2>
+<div class="author">
+<span class="cmr-12">Stephen Fenner</span><br />
+<span class="cmr-12">Daniel Padé</span>
+</div>
+<br />
+
+<div class="date">
+<span class="cmr-12">February 2019</span>
+</div>
+</div>
+<div class="abstract">
+<div class="center">
+<!-- l. 295 -->
+<!-- l. 295 -->
+<p><span class="cmbx-9">Abstract</span></p>
+</div>
+<!-- l. 296 -->
+<p><span class="cmr-9">In a regular expression crossword puzzle, one is given two non-empty lists</span> \(\tup{\tup{R_1,\ldots , R_m}$ and $\tup{C_1, \ldots , C_n}}\) <span class="cmr-9">over some alphabet, and</span> <span class="cmr-9">the challenge is to fill in an</span> \(m\times n\) <span class="cmr-9">grid of characters such that the string formed by the</span> \(i^\text{th}\) <span class="cmr-9">row is in</span> \(L(R_i)\) <span class="cmr-9">and the</span> <span class="cmr-9">string in the</span> \(j^\text{th}\) <span class="cmr-9">column is in</span> \(L(C_j)\)<span class="cmr-9">. We consider a restriction of this puzzle where all the</span> \(R_i\) <span class="cmr-9">are equal to one another</span> <span class="cmr-9">and similarly the</span> \(C_j\)<span class="cmr-9">. We consider a 2-player version of this puzzle, showing it to be</span> \(\relax \mathbf{PSPACE}\)<span class="cmr-9">-complete. Using a</span> <span class="cmr-9">reduction from</span> \(\relax \mathbf{3SAT}\)<span class="cmr-9">, we also give a new, simple proof of the known result that the existence problem of a</span> <span class="cmr-9">solution for the restricted (1-player) puzzle is</span> \(\relax \mathbf{NP}\)<span class="cmr-9">-complete.</span></p>
+</div>
+<h3 id="j_rc-cross_s1" class="sectionHead"><span class="titlemark">1</span> <span id="x1-10001"></span>Introduction</h3>
+<p><!-- l. 301 --></p>
+<p>Regular expression crossword puzzles (regex crosswords, for short) share some traits in common with traditional crossword puzzles and with sudoku. One is typically given two lists \(R_1,\ldots ,R_m\) and \(C_1,\ldots ,C_n\) of regular expressions labeling the rows and columns, respectively, of an \(m\times n\) grid of blank squares. The object is to fill in the squares with letters so that each row, read left to right as a string, <span class="cmti-10">matches</span> (i.e., is in the language denoted by) the corresponding regular expression, and similarly for each column, read top to bottom. The solution itself may have some additional property, e.g., spelling out a phrase or sentence in row major order.</p>
+<p><!-- l. 303 --></p>
+<p>Regex crosswords have enjoyed some recent popularity, having been discussed in several popular media sources [<span class="cmbx-10">?</span> <span class="cmbx-10">?</span> ], and thanks to some websites where people can solve the puzzles online [<span class="cmbx-10">? ?</span> ]. Some variants of the basic puzzle have also been posed [<span class="cmbx-10">?</span> ].</p>
+<p><!-- l. 305 --></p>
+<p>A natural complexity theoretic question to ask is: How hard is it to solve a regex crossword in general?<span class="footnote-mark"><a href="#fn1x0" id="fn1x0-bk"><sup>1</sup></a></span><span id="x1-1001f1"></span> The folklore answer—easy to show and apparently found by several people independently—is that it is \(\relax \mathbf{NP}\)-hard, and the corresponding decision problem (“Does a solution exist?”) is \(\relax \mathbf{NP}\)-complete.</p>
+<p><!-- l. 307 --></p>
+<p>In this paper, we consider two variations on the basic regex crossword puzzle: (1) a restriction of the puzzle where all the row regexes \(R_1,\ldots ,R_m\) are equal and all the column regexes \(C_1,\ldots ,C_n\) are equal; and (2) a 2-player game where players take turns attempting to fill in successive rows and columns of the grid. Variation (2) can also be restricted to having equal row regexes and equal column regexes for the two players. These variants have corresponding decision problems: Let \(\relax \mathbf{RC}\) be the solution existence problem for variation (1), \(\relax \mathbf{RCG'}\) the first-player-win problem for variation (2), and \(\relax \mathbf{RCG}\) the first-player-win problem for the restricted version of (2) (see Sections <a href="#x1-60003">3<!-- tex4ht:ref: sec:np  --></a> and <a href="#x1-90004">4<!-- tex4ht:ref: sec:pspace  --></a> for precise definitions). Our main result is that \(\relax \mathbf{RCG'}\) and \(\relax \mathbf{RCG}\) are both \(\relax \mathbf{PSPACE}\)-complete (see Section <a href="#x1-90004">4<!-- tex4ht:ref: sec:pspace  --></a>, below). We give explicit polynomial reductions from \(\relax \mathbf{TQBF}\) to \(\relax \mathbf{RCG'}\) and from \(\relax \mathbf{RCG'}\) to \(\relax \mathbf{RCG}\).</p>
+<p><!-- l. 309 --></p>
+<p>The \(\relax \mathbf{NP}\)-completeness of \(\relax \mathbf{RC}\) was shown in [<span class="cmbx-10">?</span> ],<span class="footnote-mark"><a href="#fn2x0" id="fn2x0-bk"><sup>2</sup></a></span><span id="x1-1002f2"></span> but the polynomial reduction used there was indirect and needlessly complicated for its purpose. As a warm-up to our main result, we give a simple, straightforward polynomial reduction from \(\relax \mathbf{3SAT}\) to \(\relax \mathbf{RC}\).</p>
+<p><!-- l. 311 --></p>
+<p>In the spirit of the Post Correspondence Problem in computability, our results have the pedagogical benefit of showing the hardness of some decision problems in automata theory that are simply stated and accessible to any undergraduate theory student. The proofs given here are similarly accessible.</p>
+<p><!-- l. 313 --></p>
+<h4 id="j_rc-cross_s1.1" class="sectionHead"><span class="titlemark">1.1</span> <span id="x1-20001.1"></span>Connections to other work</h4>
+<p><!-- l. 315 --></p>
+<p>Regex crossword techniques bear some similarity to results in cellular automata, to the Cook-Levin theorem, and to results of Berger from the 1960s showing the undecidability of tiling the plane with Wang tiles (the so-called “domino problem” [<span class="cmbx-10">?</span> ], which was the first proof that there exist finite tile sets that tile the whole plane but only aperiodically).</p>
+<p><!-- l. 317 --></p>
+<p>The particular problems we study here are perhaps chiefly inspired by results in the theory of two-dimensional languages (picture languages) from formal language theory [<span class="cmbx-10">?</span> ]. Given two regexes \(R\) and \(C\) for the rows and columns, respectively, the <span class="cmti-10">unbounded</span> \((R,C)\)-crossword problem asks whether a solution grid exists of <span class="cmti-10">any size</span>. One can show that the recognizable picture languages coincide exactly with the letter-to-letter projections of \((R,C)\)-crossword solutions [<span class="cmbx-10">?</span> , Theorem 8.6] (except that the empty picture may also be included in the language). Recognizable picture languages can be defined in terms of finite objects known as tiling systems [<span class="cmbx-10">?</span> ] (cf. [<span class="cmbx-10">?</span> , Definition 7.2]), and given a tiling system \(\mathcal{T}\), it is not hard to show that one can effectively find two regular expressions \(R\) and \(C\) (over some alphabet) and a projection \(\pi \) that defines the same picture language as \(\mathcal{T}\). The existence problem for recognizable picture languages (“Given a tiling system, does it define a nonempty language?”) is known to be undecidable ([<span class="cmbx-10">?</span> , Theorem 9.1]), and so, putting these results together, we get that the existence problem for unbounded \((R,C)\)-crosswords is undecidable as well. A much more direct reduction from the halting problem to unbounded \((R,C)\)-crossword existence was given in [<span class="cmbx-10">?</span> ], where it was also shown that one could even fix the column regex \(C\) once and for all, as well as restricting \(R\) and \(C\) to be over a binary alphabet.</p>
+<p><!-- l. 319 --></p>
+<p>The unbounded regex crossword problem naturally assumes one regex \(R\) for all rows and one regex \(C\) for all columns, since the number of rows and columns is unspecified. This directly motivates us to impose similar restrictions on the bounded regex crossword problems we study here, where the dimensions of the grid are given as part of the input.</p>
+<p><!-- l. 323 --></p>
+<p>We give some basic concepts and definitions in Section <a href="#x1-30002">2<!-- tex4ht:ref: sec:prelims  --></a>. Section <a href="#x1-60003">3<!-- tex4ht:ref: sec:np  --></a> gives our polynomial reduction from \(\relax \mathbf{3SAT}\) to \(\relax \mathbf{RC}\). This reduction suggests the technique we use to show our main results about 2-player crossword games in Section <a href="#x1-90004">4<!-- tex4ht:ref: sec:pspace  --></a>. We give open problems in Section <a href="#x1-140005">5<!-- tex4ht:ref: sec:open  --></a>.</p>
+<p><!-- l. 325 --></p>
+<h3 id="j_rc-cross_s2" class="sectionHead"><span class="titlemark">2</span> <span id="x1-30002"></span>Preliminaries</h3>
+<p>We fix an alphabet \(\Sigma \) once and for all and assume it contains the symbols \(0\) and \(1\) at least. For the \(\relax \mathbf{NP}\)-completeness result of Section <a href="#x1-60003">3<!-- tex4ht:ref: sec:np  --></a>, one can assume that \(\Sigma = \{0,1\}\). For the \(\relax \mathbf{PSPACE}\)-completeness result of Section <a href="#x1-90004">4<!-- tex4ht:ref: sec:pspace  --></a>, it suffices that \(\Sigma = \{0,1,2\}\). <!-- l. 328 --></p>
+<h4 id="j_rc-cross_s2.1" class="sectionHead"><span class="titlemark">2.1</span> <span id="x1-40002.1"></span>3SAT</h4>
+<p>An instance of \(\relax \mathbf{3SAT}\) is described by a Boolean formula \(\p \) over \(k\) variables \(x_1,\ldots ,x_k\), given in conjunctive normal form: \begin{align*} \p \coloneqq C_i \land \cdots \land C_d \end{align*} <!-- l. 333 --></p>
+<p>where each \(C_i\) is a clause of three literals (each a variable or its negation) connected by disjunctions: \begin{align*} C_i \coloneqq \ell _{i,1} \lor \ell _{i,2} \lor \ell _{i,3} \end{align*}</p>
+<p><!-- l. 338 --></p>
+<p>The question is, is \(\p \) true (is it <span class="cmti-10">satisfied</span>) for some assignment of the variables. This is the canonical complete problem for \(\relax \mathbf{NP}\). In Section <a href="#x1-60003">3<!-- tex4ht:ref: sec:np  --></a> we show that the language \(\relax \mathbf{RC}\) — the language of \((R,C)\)-crosswords — is \(\relax \mathbf{NP}\)-complete by giving reduction from \(\relax \mathbf{3SAT}\).</p>
+<p><!-- l. 340 --></p>
+<h4 id="j_rc-cross_s2.2" class="sectionHead"><span class="titlemark">2.2</span> <span id="x1-50002.2"></span>TQBF</h4>
+<p><!-- l. 342 --></p>
+<p>An instance of \(\relax \mathbf{TQBF}\) is described by a closed Boolean formula \(\p \), given in prenex normal form: \begin{align} \label{eqn:qbf} \p \coloneqq \exists x_0 \forall y_0 \cdots \exists x_{k-1} \forall y_{k-1}\exists x_k \tilde{\p }(x_0, y_0, \ldots , x_{k-1}, y_{k-1}, x_k) \end{align}</p>
+<p><!-- l. 347 --></p>
+<p>where \(\tilde{\p }\) is a quantifier-free Boolean formula which can be assumed to be in conjunctive normal form with \(c\) clauses and \(2k+1\) variables, for some positive \(c\) and \(k\).</p>
+<p><!-- l. 349 --></p>
+<p>The sentence \(\p \) is naturally viewed as a two-player game, where the players alternate choosing truth values for the variables in order, the first player wishing to make the formula \(\tilde{\p }\) true and second player wishing to make it false. The question to be answered is whether \(\p \) is true when the quantified variables range over the Boolean values \(\False \) and \(\True \). <span class="footnote-mark"><a href="#fn3x0" id="fn3x0-bk"><sup>3</sup></a></span><span id="x1-5001f3"></span> That is, whether the first player has a winning strategy in the corresponding game.</p>
+<p><!-- l. 351 --></p>
+<p>As \(\relax \mathbf{3SAT}\) is for \(\relax \mathbf{NP}\), \(\relax \mathbf{TQBF}\) is the canonical complete problem for \(\relax \mathbf{PSPACE}\). In Section <a href="#x1-90004">4<!-- tex4ht:ref: sec:pspace  --></a>, \(\relax \mathbf{RCG}\) — the language of (R,C)-crossword games (defined below) with a winning strategy for the first player — is \(\relax \mathbf{PSPACE}\)-complete by reduction from \(\relax \mathbf{TQBF}\).</p>
+<p><!-- l. 353 --></p>
+<h3 id="j_rc-cross_s3" class="sectionHead"><span class="titlemark">3</span> <span id="x1-60003"></span>(R,C)-crosswords</h3>
+<p>For two given regexes \(R\) and \(C\) over \(\Sigma \), an \((R,C)\)<span class="cmti-10">-crossword solution</span> is a two-dimensional \(m\) by \(n\) grid of symbols from the alphabet. Interpreting rows and columns as strings, each row must match \(R\) and each column must match \(C\). <!-- l. 356 --></p>
+<p>An \((R,C)\)<span class="cmti-10">-crossword</span> is represented as a 4-tuple \(\tup{0^m, 0^n, R, C}\) where the number of rows and columns are given in unary as \(m\) and \(n\), and \(R\) and \(C\) are row and column regexes over \(\Sigma \) (defined in the usual way, using the operators \(\cup \), \(\|\), \(*\), where \(\|\) or juxtaposition both indicate concatenation).</p>
+<div class="newtheorem">
+<!-- l. 358 -->
+<p><span class="head"><span id="x1-6001r1"></span> <span class="cmbx-10">Definition 1.</span></span> The language \(\relax \mathbf{RC}\) is the set of all \((R,C)\)-crosswords for which there exists an \((R,C)\)-crossword solution of the given dimensions.</p>
+</div>
+<p><!-- l. 362 --></p>
+<p>\(\relax \mathbf{RC}\) was shown to be \(\relax \mathbf{NP}\)-complete in [<span class="cmbx-10">?</span> ] via an indirect, complicated reduction. In this section, we give a much more straightforward polynomial reduction from \(\relax \mathbf{3SAT}\) to \(\relax \mathbf{RC}\).</p>
+<p><!-- l. 365 --></p>
+<h4 id="j_rc-cross_s3.1" class="sectionHead"><span class="titlemark">3.1</span> <span id="x1-70003.1"></span>The reduction</h4>
+<p><!-- l. 367 --></p>
+<p>Given a Boolean formula \(\p \) with \(k\ge 1\) variables and \(d\) clauses as defined in Section <a href="#x1-40002.1">2.1<!-- tex4ht:ref: sec:3sat  --></a> above (where we can assume \(d\ge 3\)), we construct an instance \(\tup{0^{d+1},0^{k+d},R,C}\) of \(\relax \mathbf{RC}\) as follows: For \(1 \le i \le d\), we define \(t_i\) to be the regex \begin{align*} t_i &amp; = \0^{i-1}\1\0^{d-i} = \underbrace{\0 \cdots \0}_{i - 1} \1 \underbrace{\0 \cdots \0}_{d - i}\;. \\ \shortintertext{Then we define} S &amp; = \1^d\0^* \\ R &amp; = \left ( \displaystyle \bigcup _{i=1}^{d} t_i R_i \right ) \cup S \\ C &amp; = \1\left (\0^*\1\0^*\right ) \cup \0(\0^* \cup \1^*) \end{align*}</p>
+<p><!-- l. 375 --></p>
+<p>where \(S\) is called the ‘spine,’ and for \(1\le i\le d\),  \(R_i\) is derived from the formula \(\p \) as follows: \begin{align*} R_i &amp; = (a_{i,1} \cdots a_{i,k}) \cup (b_{i,1} \cdots b_{i,k}) \cup (c_{i,1} \cdots c_{i,k}) \\ \shortintertext{where, for $1 \le j \le k$,} a_{i,j} &amp; = \left \{ \begin{array}{ll} \1 &amp; \text{ if the first literal in the } i^{\text{th}} \text{ clause is } x_j \\ \0 &amp; \text{ if the first literal in the } i^{\text{th}} \text{ clause is } \overline{x_j} \\ (\1 \cup \0) &amp; \text{ otherwise } \end{array} \right . \end{align*}</p>
+<p><!-- l. 386 --></p>
+<p>and \(b_{i,j},\;c_{i,j}\) are set similarly according to the second and third literals in each clause.</p>
+<p><!-- l. 388 --></p>
+<p>We show that \(\p \) is satisfiable iff an \((R, C)\)-crossword solution exists.</p>
+<p><!-- l. 390 --></p>
+<p>First, assuming that \(\p \) is satisfiable, where \(\tup{z_1, \ldots , z_k}\) is a satisfying assignment, then this sets up a \(d+1\) by \(d+k\) crossword solution of the following form:</p>
+<figure class="figure">
+<p><span id="x1-7001r1"></span> <!-- l. 401 --></p>
+<p><object width="244.73346" type="image/svg+xml" height="161.40068" data="rc-cross-1.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<p><span id="x1-7002"></span></p>
+</p>
+<figcaption class="caption">
+<p><span class="id">Figure 1:</span><span class="content">Solution</span></p>
+</figcaption>
+<p><!-- tex4ht:label?: x1-7001r3.1  --></p>
+</figure>
+<p><!-- l. 404 --></p>
+<p>Here, the first row is the spine (matching \(S\)); the block on the left below the spine is akin to an identity matrix; and the block on the right consists of columns where each column is either all \(1\)’s or all \(0\)’s (save the first element, which is always \(0\)), according to each \(z_i\). An overview representation is shown below:</p>
+<figure class="figure">
+<p><!-- l. 415 --></p>
+<p><object width="787.9729" type="image/svg+xml" height="77.40701" data="rc-cross-2.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+</p>
+</figure>
+<p><!-- l. 418 --></p>
+<p>Where the spine is the string that matches \(S\). The ‘clause verification region’ is determined by the satisfying assignment to \(\p \), i.e., if \(z_j\) is true in the satsifying assignment, then column \(c_{d + j}\) will match the regex \(\0\1^*\); otherwise it will match \(\0\0^*\).</p>
+<p><!-- l. 420 --></p>
+<p>By construction, it is clear that if \(\p \) is satisfiable, then the \((R, C)\)-crossword constructed above is solvable. In other words, there is a way to fill in the crossword such that all rows match the regular expression \(R\), and all columns match the regular expression \(C\).</p>
+<p><!-- l. 422 --></p>
+<p>In fact, since the calibration region requires only one \(1\) per row and column, the solution given in table <a href="#x1-7001r1">1<!-- tex4ht:ref: table:solution  --></a> is not the only valid one. It is easy to see that once any solution is given, any rearranging of the (non-spine) rows gives another valid solution. Due to this fact it is guaranteed that for each \(i\), some row matches \(t_i R_i\), which is important for the converse below.</p>
+<h4 id="j_rc-cross_s3.2" class="sectionHead"><span class="titlemark">3.2</span> <span id="x1-80003.2"></span>An \((R, C)\)-crossword solution guarantees \(\p \) is satisfiable</h4>
+<p>To complete the proof, it must be shown that if the crossword is solvable, this implies that \(\p \) is satisfiable. We do this via a series of lemmas. <!-- l. 427 --></p>
+<p>Here we assume an \((R, C)\)-crossword solution exists with rows \(\tup{r_0, \ldots , r_d}\) and columns \(\tup{c_1, \ldots , c_{d+k}}\).</p>
+<p><!-- l. 429 --></p>
+<p>Observe that since each \(r_j\) matches \(R\), it must either start with \(d\) many \(1\)’s or else have exactly one \(1\) among its first \(d\) symbols.</p>
+<div class="newtheorem">
+<!-- l. 431 -->
+<p><span class="head"><span id="x1-8001r2"></span> <tspan font-family="cmbx" font-size="10">Lemma 2.</tspan></span> The string \(r_0\) matches \(S\).</p>
+</div>
+<p><!-- l. 434 --></p>
+<div class="proof">
+<!-- l. 435 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> Assume not. Then \(r_0\) must match \(t_iR_i\) for some \(1\le i\le d\). Fix such an \(i\). The picture below shows the case where \(r_0\) matches \(t_2R_2\), i.e., \(r_0 = 010 \cdots \):</p>
+<figure class="figure">
+<object width="241.06772" type="image/svg+xml" height="82.40343" data="rc-cross-3.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 444 -->
+<p>From the definition of \(C\), we see that \(c_i\) must match \(\1(\0^*\1\0^*)\), that is, \(c_i = 10^{j-1}10^{d-j}\) for some \(1\le j\le d\). The picture below shows the case where \(i=2\) and \(j=2\), that is, where \(c_i = c_2 = 10100 \cdots 0\):</p>
+<figure class="figure">
+<object width="241.06772" type="image/svg+xml" height="162.07047" data="rc-cross-4.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 456 -->
+<p>For \(r_j\), we have two cases, both leading to contradiction:</p>
+<dl>
+<dt>\(r_j\) <tspan font-family="cmbx" font-size="10">matches</tspan> \(S\)<tspan font-family="cmbx" font-size="10">:</tspan></dt>
+<dd>This requires that all of the first \(d\) columns other than \(c_i\) match \(\0\1^*\), which means \(r_{j'}\) starts with \(1^{i-1}01^{d-i}\cdots \) for all \(j'\ge 1\) such that \(j' \ne j\). These rows do not match \(R\).
+</dd>
+<dt>\(r_j\) <tspan font-family="cmbx" font-size="10">matches</tspan> \(t_i R_i\)<tspan font-family="cmbx" font-size="10">, that is,</tspan> \(r_j = 0^{i-1}10^{d-i}\cdots \)<tspan font-family="cmbx" font-size="10">:</tspan></dt>
+<dd>This requires that all of the first \(d\) columns other than \(c_i\) match \(\0^*\), which means no rows other than \(r_j\) and \(r_0\) will match \(R\), since they all start with \(0^d\).
+</dd>
+</dl>
+<!-- l. 463 -->
+<p>This proves the lemma. □</p>
+</div>
+<p><!-- l. 466 --></p>
+<p>By Lemma <a href="#x1-8001r2">2<!-- tex4ht:ref: lemma:spinelemma  --></a>, the first \(d\) columns must match \(\1(\0^*\1\0^*)\); we call such columns <tspan font-family="cmti" font-size="10">calibration columns</tspan>.</p>
+<div class="newtheorem">
+<!-- l. 467 -->
+<p><span class="head"><span id="x1-8002r3"></span> <tspan font-family="cmbx" font-size="10">Lemma 3.</tspan></span> <tspan font-family="cmti" font-size="10">No row other than</tspan> \(r_0\) <tspan font-family="cmti" font-size="10">matches</tspan> \(S\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 470 --></p>
+<div class="proof">
+<!-- l. 471 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> Again assume this not the case. By the previous lemma, \(r_0\) must match \(S\). Suppose \(r_j\) also matches \(S\) for some \(j\ge 1\). Then \(C\) forces \(r_{j'}\) to start with \(d\) many \(0\)’s for all \(1\le j'\ne j\), because the calibration columns are only allowed a single \(1\) below the spine. Thus none of these \(r_{j'}\) matches \(R\). □</p>
+</div>
+<div class="newtheorem">
+<!-- l. 474 -->
+<p><span class="head"><span id="x1-8003r4"></span> <tspan font-family="cmbx" font-size="10">Lemma 4.</tspan></span> <tspan font-family="cmti" font-size="10">For any</tspan> \(i\)<tspan font-family="cmti" font-size="10">,</tspan> \(1 \le i \le d\)<tspan font-family="cmti" font-size="10">, some row matches</tspan> \(t_i R_i\)</p>
+</div>
+<p><!-- l. 477 --></p>
+<div class="proof">
+<!-- l. 478 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> By Lemmas <a href="#x1-8001r2">2<!-- tex4ht:ref: lemma:spinelemma  --></a> &amp; <a href="#x1-8002r3">3<!-- tex4ht:ref: lemma:highlander  --></a>, we have that \(r_0\) is the only row to match the spine \(S\). Since \(R = (\bigcup _{i=1}^d t_i R_i) \cup S\), it follows that each of the other rows matches \(t_{i}R_{i}\) for some \(i\). For the purposes of contradiction, assume that there is some \(t_iR_i\) not matched by any row. Then by the pigeonhole principle, there must be two distinct rows \(r_n\) and \(r_m\) both matching \(t_\ell{R}_\ell \) for the same \(\ell \). By the definition of \(t_\ell \), the column \(c_\ell \) will thus have at least two \(1\)’s:</p>
+<figure class="figure">
+<object width="267.62341" type="image/svg+xml" height="188.62614" data="rc-cross-5.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 491 -->
+<p>But then column \(c_\ell \) does not match \(C\). This completes the proof. □</p>
+</div>
+<div class="newtheorem">
+<!-- l. 494 -->
+<p><span class="head"><span id="x1-8004r5"></span> <tspan font-family="cmbx" font-size="10">Lemma 5.</tspan></span> \(\p \) <tspan font-family="cmti" font-size="10">is satisfiable.</tspan></p>
+</div>
+<p><!-- l. 498 --></p>
+<div class="proof">
+<!-- l. 499 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> Because of the spine in the first row, note that for \(1\le j\le k\),  \(c_{d+j}\) matches either \(\0\1^*\) or \(\0\0^*\). Set \[ z_j = \left \{\begin{array}{ll} 1 &amp; \mbox{if $c_{d+j}$ matches $\0\1^*$,} \\ 0 &amp; \mbox{if $c_{d+j}$ matches $\0\0^*$.} \end{array}\right . \] We show that \(\tup{z_1,\ldots ,z_k}\) is a satisfying truth assignment for \(\p \). Consider the \(i^\text{th}\) clause \(C_i\) of \(\p \). By Lemma <a href="#x1-8003r4">4<!-- tex4ht:ref: lemma:all-clauses  --></a>, some non-spine row matches \(t_iR_i\). Let \(r\) be the suffix of that row obtained by removing its first \(d\) symbols. Then \(r\) matches either \(a_{i,1}\cdots a_{i,k}\), \(b_{i,1}\cdots b_{i,k}\), or \(c_{i,1}\cdots c_{i,k}\). Suppose \(r\) matches \(a_{i,1}\cdots a_{i,k}\) (the other two cases are handled similarly). Let \(x_j\) be the variable mentioned by the first literal \(\ell _{i,1}\) of \(C_i\). If \(\ell _{i,1} = x_j\), then \(a_{i,j} = \1\), whence \(r\) has a \(1\) as its \(j^{\text{th}}\) symbol, whence \(c_{d+j}\) matches \(\0\1^*\), whence \(z_j = 1\), which makes \(\ell _{i,1}\) true, satisfying \(C_i\). Similarly, if \(\ell _{i,1} = \overline{x_j}\), then \(z_j = 0\), also satisfying \(C_i\).</p>
+<!-- l. 504 -->
+<p>Since \(i\) was arbitrary, we have that \(\p \) is satisfied by \(\tup{z_1,\ldots ,z_k}\). □</p>
+</div>
+<p><!-- l. 507 --></p>
+<h3 id="j_rc-cross_s4" class="sectionHead"><span class="titlemark">4</span> <span id="x1-90004"></span>(R,C)-crossword games</h3>
+<p><!-- l. 509 --></p>
+<p>For two given regexes \(R\) and \(C\) over \(\Sigma \), an \((R,C)\)<tspan font-family="cmti" font-size="10">-game</tspan> is a two-player combinatorial game that can be thought of as follows: we start with a two-dimensional grid \(X\) with \(m\) rows and \(n\) columns (\(m\) and \(n\) are positive integers). \(X\) is initially empty. Player 1, who we call <tspan font-family="cmti" font-size="10">Rose</tspan>, fills in the first row of \(X\) with symbols from \(\Sigma \) to form a string matching \(R\).</p>
+<p><!-- l. 511 --></p>
+<p>Player 2, who we call <tspan font-family="cmti" font-size="10">Colin</tspan>, responds by filling the remainder of the first column of \(X\) with symbols from \(\Sigma \) so that the entire column matches \(C\). Rose then fills the remainder of the second row so that it matches \(R\), then Colin the remainder of the second column to match \(C\), etc. The first player unable to fill a row (respectively, column) in this way loses, and the other player wins.<span class="footnote-mark"><a href="#fn4x0" id="fn4x0-bk"><sup>4</sup></a></span><span id="x1-9001f4"></span></p>
+<p><!-- l. 513 --></p>
+<p>We represent an \((R,C)\)-game as a 4-tuple \(\tup{0^m,0^n,R,C}\), where \(m\) and \(n\) are positive integers (the number of rows and columns of the grid, respectively), and \(R\) and \(C\) are the corresponding regexes over \(\Sigma \) (defined in the usual way, using the operators \(\cup \), \(\|\), \(*\)).</p>
+<p><!-- l. 515 --></p>
+<p>Note that the numbers \(m\) and \(n\) are given in <tspan font-family="cmti" font-size="10">unary</tspan>.</p>
+<div class="newtheorem">
+<!-- l. 517 -->
+<p><span class="head"><span id="x1-9002r6"></span> <tspan font-family="cmbx" font-size="10">Definition 6.</tspan></span> The language \(\relax \mathbf{RCG}\) is the set of all \((R,C)\)-games where Rose has a winning strategy.</p>
+</div>
+<p><!-- l. 521 --></p>
+<h4 id="j_rc-cross_s4.1" class="sectionHead"><span class="titlemark">4.1</span> <span id="x1-100004.1"></span>\(\relax \mathbf{RCG}\) \(\in \lang{PSPACE}\)</h4>
+<p><!-- l. 523 --></p>
+<p>It is straightforward to observe that \(\relax \mathbf{RCG}\) \(\in \lang{PSPACE}\). This follows from the properties of \((R,C)\)-games: Given an instance of \(\relax \mathbf{RCG}\) of size \(N = m \cdot n\),</p>
+<ul>
+<li>all game positions are representable by strings of polynomial length (in \(N\)),</li>
+<li>any play of the game lasts for at most polynomially many turns, and</li>
+<li>given any game position, whether a given next move is legal can be determined in polynomial space (polynomial time, in fact).</li>
+</ul>
+<p><!-- l. 532 --></p>
+<p>For this it is crucial that the dimensions of the board be given in unary. If the dimensions were given in binary, then we conjecture that the corresponding language would be complete for \(\relax \mathbf{EXPSPACE}\). Also note that the regex matching problem (“Given a regex \(E\) and string \(w\), does \(w\) match \(E\)?”) is in \(\relax \mathbf{P}\).</p>
+<p><!-- l. 534 --></p>
+<h4 id="j_rc-cross_s4.2" class="sectionHead"><span class="titlemark">4.2</span> <span id="x1-110004.2"></span>Hardness of \(\relax \mathbf{RCG}\)</h4>
+<p><!-- l. 536 --></p>
+<p>Here is the main result of our paper.</p>
+<div class="newtheorem">
+<!-- l. 538 -->
+<p><span class="head"><span id="x1-11001r7"></span> <tspan font-family="cmbx" font-size="10">Theorem 7.</tspan></span> \(\reducp{\lang{TQBF}}{\lang{RCG}}\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 542 --></p>
+<p>To prove Theorem <a href="#x1-11001r7">7<!-- tex4ht:ref: thm:RCG-hard  --></a>, our main result, we first consider a variant of \(\relax \mathbf{RCG}\), where each row and each column may correspond to a different regex, that is, the input is a pair \(\tup{\tup{R_1,\ldots ,R_m},\tup{C_1,\ldots ,C_n}}\) of lists of regexes. Rose and Colin alternate turns as before, but on her \(i^\text{th}\) turn, Rose must fill the remainder of the \(i^\text{th}\) row so that it matches \(R_i\), and similarly, on his \(j^\text{th}\) turn, Colin must fill the remainder of the \(j^\text{th}\) column so that it matches \(C_j\). Call this variant \(\relax \mathbf{RCG'}\).</p>
+<p><!-- l. 544 --></p>
+<p>We show our main result in two steps: in Lemma <a href="#x1-11002r8">8<!-- tex4ht:ref: lem:RCG-prime  --></a> we show how to polynomially reduce \(\relax \mathbf{TQBF}\) to \(\relax \mathbf{RCG'}\); then we give a polynomial reduction from \(\relax \mathbf{RCG'}\) to \(\relax \mathbf{RCG}\) (Theorem <a href="#x1-12001r9">9<!-- tex4ht:ref: thm:constant-regexes  --></a> below). In using \(\relax \mathbf{RCG'}\), the goal is to first consider a ‘simpler’ game to verify that there is a correspondence between the formulæ in \(\relax \mathbf{TQBF}\) and the possible games in \(\relax \mathbf{RCG}\).</p>
+<div class="newtheorem">
+<!-- l. 546 -->
+<p><span class="head"><span id="x1-11002r8"></span> <tspan font-family="cmbx" font-size="10">Lemma 8.</tspan></span> \(\reducp{\lang{TQBF}}{\lang{RCG'}}\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 550 --></p>
+<div class="proof">
+<!-- l. 551 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> Given an instance \(\p \) of \(\TQBF \) as in Equation (<tspan font-family="cmbx" font-size="10">??</tspan>) of Section <a href="#x1-50002.2">2.2<!-- tex4ht:ref: sec:tqbf  --></a> with \(c\) clauses and \(2k+1\) variables, we construct an equivalent instance of \(\relax \mathbf{RCG'}\) with \(m\coloneqq k+c+1\) rows and \(n\coloneqq k+c\) columns. The intersection of the first \(k+1\) rows and first \(k+1\) columns we will call the <tspan font-family="cmti" font-size="10">variable region</tspan>. There are \(c\) rows below this region, one for each clause of \(\tilde{\p }\), which we collectively call the <tspan font-family="cmti" font-size="10">clause</tspan> <tspan font-family="cmti" font-size="10">region</tspan>. The regular expressions for each player in \(\relax \mathbf{RCG'}\) are over the alphabet \(\{0,1\}\) and are defined as follows (with an explanation afterward): for \(1\le i\le m\), we let \begin{align*} R_i &amp; \coloneqq \left \{ \begin{array}{ll}{(\0\cup \1)}^*\0^{c-1} &amp; \mbox{if $1\le i\le k+1$,} \\{(\0\cup \1)}^*\1{(\0\cup \1)}^*\0^{c-1} &amp; \mbox{ if $k+2 \le i \le m$,} \end{array}\right . \shortintertext{and for all $1\le i\le n$, we let} C_i &amp; \coloneqq \left \{ \begin{array}{ll} \bigcup \limits _{a,b\in \{\0,\1\}}{(\0\cup \1)}^{i-1}ab{(\0\cup \1)}^{k-i}\| S_{iab} &amp; \mbox{ if $1\le i\le k$,} \\ \bigcup \limits _{a\in \{\0,\1\}}{(\0\cup \1)}^k a\| T_a &amp; \mbox{ if $i=k+1$,} \\ \0^* &amp; \mbox{ if $k+2 \le i \le n$,} \end{array}\right . \end{align*}</p>
+<!-- l. 569 -->
+<p>where given \(1\le i\le k+1\), and \(a,b\in \{\0,\1\}\), the regexes \(S_{iab}\) and \(T_a\) are defined as follows: First, for \(1\le j\le c\) let \begin{align*} u_j &amp; \coloneqq \left \{ \begin{array}{ll} \0 &amp; \mbox{if $x_{i-1}$ occurs negatively in the $j$th clause,} \\ \1 &amp; \mbox{if $x_{i-1}$ occurs positively in the $j$th clause,} \\ \bot &amp; \mbox{if $x_{i-1}$ does not occur in the $j$th clause.} \end{array}\right . &amp; v_j &amp; \coloneqq \left \{ \begin{array}{ll} \0 &amp; \mbox{if $y_{i-1}$ occurs negatively in the $j$th clause,} \\ \1 &amp; \mbox{if $y_{i-1}$ occurs positively in the $j$th clause,} \\ \bot &amp; \mbox{if $y_{i-1}$ does not occur in the $j$th clause.} \end{array}\right . \end{align*}</p>
+<!-- l. 583 -->
+<p>Now for \(1\le j \le c\), define \begin{align*} d_j &amp; \coloneqq \left \{ \begin{array}{ll} \1 &amp; \mbox{if $u_j=a$ or $v_j=b$,} \\ \0 &amp; \mbox{otherwise.} \end{array}\right . &amp; e_j &amp; \coloneqq \left \{ \begin{array}{ll} \1 &amp; \mbox{if $u_j=a$,} \\ \0 &amp; \mbox{otherwise.} \end{array}\right . \end{align*}</p>
+<!-- l. 595 -->
+<p>Finally, we let \(S_{iab} := d_1\|\cdots \|d_n\) and \(T_a\coloneqq e_1\|\cdots \| e_n\).</p>
+<!-- l. 597 -->
+<p>Each of the first \(k+1\) rows and columns corresponds to the truth value (\(0\) or \(1\)) of one or two particular variables in the original formula, as depicted in Figure <a href="#x1-11003r2">2<!-- tex4ht:ref: fig:var-region  --></a>. The remainder of the rows (\(c\) of them) correspond to the clauses of \(\p \).</p>
+<figure class="figure">
+<span id="x1-11003r2"></span>
+<object width="135.37834" type="image/svg+xml" height="135.37834" data="rc-cross-6.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+<span id="x1-11004"></span>
+<figcaption class="caption">
+<span class="id">Figure 2:</span><span class="content">The layout of the variable region. The question marks represent either \(0\) or \(1\).</span>
+</figcaption>
+<!-- tex4ht:label?: x1-11003r4.2  -->
+</figure>
+<!-- l. 611 -->
+<p>Here is how this \(\lang{\RCG '}\) game reflects the original instance of \(\lang{\TQBF }\) viewed as a game. When Rose plays the \(i\)th row (for \(1\le i\le k+1\)) she is able to choose the truth value of \(x_{i-1}\) by placing a \(0\) or \(1\) in the corresponding square in Figure <a href="#x1-11003r2">2<!-- tex4ht:ref: fig:var-region  --></a> (Rose can play any binary string in the remainder of her row, because \(R_i ={(\0\cup \1)}^*\)). Then when Colin plays the remainder of the \(i\)th column according to \(C_i\), he can similarly choose the truth value of \(y_{i-1}\) by placing a \(0\) or \(1\) in the corresponding square. However, because of the \(S_{iab}\) component of \(C_i\), Colin is forced to then place a \(1\) in each of the last \(c\) positions corresponding to a clause that is satisfied by the truth settings of these two variables. (The minor exception is the \((k+1)\)st column, where there is only the variable \(x_k\) to consider.)</p>
+<!-- l. 613 -->
+<p>Also note that in order for Rose to complete the board, there must be a \(1\) in at least one of the first \(k+1\) positions in every row of the clause region. That is, Rose can win just when the chosen truth values of the variables satisfy all clauses of \(\tilde{\p }\), making the two games equivalent. Our construction is clearly polynomial time, which finishes the proof. □</p>
+</div>
+<p><!-- l. 616 --></p>
+<h4 id="j_rc-cross_s4.3" class="sectionHead"><span class="titlemark">4.3</span> <span id="x1-120004.3"></span>Constraining the Players</h4>
+<div class="newtheorem">
+<!-- l. 617 -->
+<p><span class="head"><span id="x1-12001r9"></span> <tspan font-family="cmbx" font-size="10">Theorem 9.</tspan></span> \(\reducp{\lang{RCG'}}{\lang{RCG}}\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 620 --></p>
+<p>The rest of this section is a proof of Theorem <a href="#x1-12001r9">9<!-- tex4ht:ref: thm:constant-regexes  --></a>. To reduce from \(\relax \mathbf{RCG'}\) to \(\relax \mathbf{RCG}\) we need to provide a method to consolidate the families of regular expressions into one regex per player. Here, we present a generic construction that forces the players to play in order, which can be applied to any \(\lang{RCG'}\) game — forcing each player to play their families of regexes in index order.</p>
+<p><!-- l. 622 --></p>
+<p>Given an arbitrary instance \(G \coloneqq \tup{\tup{R_1,\ldots ,R_m},\tup{C_1,\ldots ,C_n}}\) of \(\relax \mathbf{RCG'}\), we construct an equivalent instance of \(\relax \mathbf{RCG}\). Our construction requires the alphabet \(\Sigma \) to contain a third symbol “\(2\)” that is not part of any string matching any of the \(R_i\) or \(C_i\). We currently do not know how to remove this requirement. We can assume that the given \(\relax \mathbf{RCG'}\) grid is square, i.e., \(m=n\): Suppose this is not the case; for example, suppose \(m &lt; n\). Then we can pad the grid with \(n-m\) bottom rows by</p>
+<ul>
+<li>concatenating each \(C_i\) with \(\0^{n-m}\) on the right, and</li>
+<li>defining \(R_i \coloneqq \1^*\) for \(m &lt; i \le n\),</li>
+</ul>
+<p><!-- l. 629 --></p>
+<p>yielding an evidently equivalent \(n\times n\) game. We can do something similar if \(m &gt; n\). The instance of \(\lang{\RCG }\) we construct from \(G\) will then be a \((2n+1)\times (2n+1)\) game \(H \coloneqq \tup{0^{2n+1},0^{2n+1},R,C}\). We may also assume that \(n\ge 2\).</p>
+<p><!-- l. 631 --></p>
+<p>The regular expressions \(R\) and \(C\) we construct for the respective players are given below, again with explanations afterwards:</p>
+<figure class="figure">
+<p><span id="x1-12004r3"></span> <!-- l. 634 --></p>
+<p><!-- l. 647 --></p>
+<p>\begin{align} R \;\coloneqq \; &amp; \2\1\0^* \;\;\mathrel \cup \label{eqn:ros-spine} \\ &amp; \underbracket{\bigcup \limits _{i=0}^{n-2} \0^i\1^3\0^{n-i-2}}_{\rm I} \| \underbracket{\0^i \1 \0^{n-i-1}}_{\rm II}\;\;\mathrel \cup \label{eqn:ros-cal1} \\ &amp; \underbracket{\0 \0^{n-2} \1\1}_{\rm Ir} \| \underbracket{\0^{n-1}\1}_{\rm II} \;\;\mathrel \cup \label{eqn:ros-cal2} \\ &amp; \bigcup \limits _{i=1}^n \underbracket{\0^i \1 \0^{n-i}}_{\rm III} \| R_i \label{eqn:ros-generic} \end{align} <span id="x1-12002r1"></span> <tspan font-family="cmbx" font-size="9">(a)</tspan> <tspan font-family="cmr" font-size="9">Rose’s regular expression. Regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">)</tspan> <tspan font-family="cmr" font-size="9">is the ‘spine’, while regexes</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">–</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">) define</tspan> <tspan font-family="cmr" font-size="9">the ‘calibration’ region (I, II). Regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">)</tspan> <tspan font-family="cmr" font-size="9">continues calibration in region III while also</tspan> <tspan font-family="cmr" font-size="9">including the row regexes from</tspan> \(G\)<tspan font-family="cmr" font-size="9">.</tspan></p>
+<p><!-- l. 667 --></p>
+<p>\begin{align} C \;\coloneqq \; &amp; \2\1\0^* \;\;\mathrel \cup \label{eqn:col-spine} \\ &amp; \underbracket{\bigcup \limits _{i=0}^{n-2} \0^i \1^3 \0^{n-i-2}}_{\rm I} \| \underbracket{\0^i \1 \0^{n-i-1}}_{\rm III} \;\;\mathrel \cup \label{eqn:col-cal1} \\ &amp; \underbracket{\0 \0^{n-2} \1\1}_{\rm Ic} \| \underbracket{\0^{n-1}\1}_{\rm III} \;\;\mathrel \cup \label{eqn:col-cal2} \\ &amp; \underbracket{\bigcup \limits _{i=1}^{n} \0^i \1 \0^{n-i}}_{\rm II} \| C_i \;\;\mathrel \cup \label{eqn:col-generic} \\ &amp; (\0 \cup \1 \cup \1\0\0\cup \0\0^*\1\0)\2^*\label{eqn:col-bomb} \end{align} <span id="x1-12003r2"></span> <tspan font-family="cmbx" font-size="9">(b)</tspan> <tspan font-family="cmr" font-size="9">Colin’s regular expression. Regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">) is</tspan> <tspan font-family="cmr" font-size="9">the ‘spine’, regexes</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">–</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">) are the calibration</tspan> <tspan font-family="cmr" font-size="9">region (I and III), regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">) continues</tspan> <tspan font-family="cmr" font-size="9">calibration in region II while also including</tspan> <tspan font-family="cmr" font-size="9">the column regexes from</tspan> \(G\)<tspan font-family="cmr" font-size="9">, and regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">) is a</tspan> <tspan font-family="cmr" font-size="9">‘bomb’ to punish Rose for cheating.</tspan> <span id="x1-12005"></span></p>
+<figcaption class="caption">
+<p><span class="id">Figure 3:</span><span class="content">The regular expressions wrapping games in \(\relax \mathbf{RCG}\). Regexes are bracketed with the regions they describe, illustrated in Figure <a href="#x1-12006r1">4a<!-- tex4ht:ref: fig:regions  --></a>.</span></p>
+</figcaption>
+<p><!-- tex4ht:label?: x1-12004r4.3  --></p>
+</figure>
+<p><!-- l. 673 --></p>
+<p>Figure <a href="#x1-12006r1">4a<!-- tex4ht:ref: fig:regions  --></a> illustrates how \(H\) ‘wraps’ around the game \(G\): players first fill in the spine, then regions I, II, and III before simulating the game \(G\) in the lower right square (light grey).</p>
+<figure class="figure">
+<p><span id="x1-12008r4"></span> <!-- l. 677 --></p>
+<p><!-- l. 704 --></p>
+<p><object width="171.43037" type="image/svg+xml" height="171.43037" data="rc-cross-7.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<p><span id="x1-12006r1"></span> <tspan font-family="cmbx" font-size="9">(a)</tspan> <tspan font-family="cmr" font-size="9">Regions of the board</tspan> <span id="x1-12007r2"></span></p>
+</p>
+<p><!-- l. 710 --></p>
+<p><tspan font-family="cmbx" font-size="9">(b)</tspan> <tspan font-family="cmr" font-size="9">An example of normal play</tspan> <span id="x1-12009"></span></p>
+<figcaption class="caption">
+<p><span class="id">Figure 4:</span><span class="content">Regions to constrain the players. Each ‘block’ is a \(n \times n\) square.</span></p>
+</figcaption>
+<p><!-- tex4ht:label?: x1-12008r4.3  --></p>
+</figure>
+<h4 id="j_rc-cross_s4.4" class="sectionHead"><span class="titlemark">4.4</span> <span id="x1-130004.4"></span>Normal Play</h4>
+<p><!-- l. 718 --></p>
+<p>By a <tspan font-family="cmti" font-size="10">round</tspan>, we mean a pair of consecutive turns, starting with Rose. We index the rounds starting with round \(0\). Normal play is in three stages:</p>
+<dl>
+<dt><tspan font-family="cmbx" font-size="10">Spine:</tspan></dt>
+<dd>In round \(0\), both players play the spine, i.e., a string matching \(\2\1\0^*\).
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">Calibration:</tspan></dt>
+<dd>In round \(i\), where \(1\le i\le n\), Rose and Colin each play a ‘calibration string,’ i.e. either the string matching \(\0^i\1^3\0^{n-i-2}\|\0^i\1\0^{n-i-1}\) (if \(i&lt;n\)) or \(\0\0^{n-2}\1\1\|\0^{n-1}\1\) (if \(i=n\)).
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">Simulation:</tspan></dt>
+<dd>Rose and Colin now simulate the given \(\lang{\RCG '}\) game: In round \((n+i)\), for \(1\le i\le n\), Rose plays a string matching \(\0^i\1\0^{n-i-1}\|R_i\) (if she can), and Colin plays a string matching \(\0^i\1\0^{n-i-1}\|C_i\) (if he can).
+</dd>
+</dl>
+<p><!-- l. 729 --></p>
+<p>Figure <a href="#x1-12007r2">4b<!-- tex4ht:ref: fig:normal-play  --></a> illustrates the state of the grid after round \(n\) of normal play (here, \(n=16\)). If either player deviates from normal play, we say that the first player to do so is <tspan font-family="cmti" font-size="10">cheating</tspan>. The next lemmas show that Colin cannot cheat, and if Rose cheats, then Colin can force her to lose in a constant number of rounds by playing a <tspan font-family="cmti" font-size="10">bomb</tspan>, i.e., a string matching \((\0 \cup \1 \cup \1\0\0\cup \0\0^*\1\0)\2^*\), once or twice.</p>
+<div class="newtheorem">
+<!-- l. 731 -->
+<p><span class="head"><span id="x1-13001r10"></span> <tspan font-family="cmbx" font-size="10">Lemma 10.</tspan></span> <tspan font-family="cmti" font-size="10">In round</tspan><tspan font-family="cmti" font-size="10"> </tspan>\(0\)<tspan font-family="cmti" font-size="10">, if Rose does not play the spine, then Colin can win; otherwise, Colin must also</tspan> <tspan font-family="cmti" font-size="10">play the spine.</tspan></p>
+</div>
+<p><!-- l. 734 --></p>
+<div class="proof">
+<!-- l. 735 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> If Rose does not play \(\2\1\0^*\), she has two choices for the first character. If she chooses \(0\), say, then Colin has a quick kill by playing a bomb (see Figure <a href="#x1-13002r5">5<!-- tex4ht:ref: fig:bomb  --></a>), with similar results if she cheats with a \(1\).</p>
+<figure class="figure">
+<span id="x1-13002r5"></span> 0: <!-- l. 746 -->
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-8.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<!-- l. 756 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-9.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<br />
+1: <!-- l. 768 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-10.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<!-- l. 778 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-11.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<br />
+2: <!-- l. 790 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-12.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<!-- l. 799 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-13.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<span id="x1-13003"></span>
+</p>
+<figcaption class="caption">
+<span class="id">Figure 5:</span><span class="content">Each round when Rose cheats with \(0\cdots \) in her first move and Colin plays a bomb. Note that Rose has no regex to match the prefix \(20\). We replace a ‘?’ with a \(1\) in round \(1\) to show the worst case, where Colin must survive through round \(2\) (not required in the \(0\) case).</span>
+</figcaption>
+<!-- tex4ht:label?: x1-13002r4.4  -->
+</figure>
+<!-- l. 803 -->
+<p>In either case, Rose would quickly lose. If Rose does play \(\2\1\0^*\) on her first turn, Colin must play a string prefixed with \(2\), his only option matching the regex \(\2\1\0^*\). □</p>
+</div>
+<div class="newtheorem">
+<!-- l. 805 -->
+<p><span class="head"><span id="x1-13004r11"></span> <tspan font-family="cmbx" font-size="10">Lemma 11.</tspan></span> <tspan font-family="cmti" font-size="10">After normal play through round</tspan><tspan font-family="cmti" font-size="10"> </tspan>\((i-1)\) <tspan font-family="cmti" font-size="10">for</tspan> \(1\le i\le n\)<tspan font-family="cmti" font-size="10">, Rose prefers regex</tspan><tspan font-family="cmti" font-size="10"> (</tspan><tspan font-family="cmbx" font-size="10">??</tspan><tspan font-family="cmti" font-size="10">) to regex</tspan><tspan font-family="cmti" font-size="10"> (</tspan><tspan font-family="cmbx" font-size="10">??</tspan><tspan font-family="cmti" font-size="10">) in round</tspan><tspan font-family="cmti" font-size="10"> </tspan>\(i\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 808 --></p>
+<div class="proof">
+<!-- l. 809 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> If \(i=1\), then Rose must play a string with prefix \(1\), and so she must play a string matching regex (<tspan font-family="cmbx" font-size="10">??</tspan>). Now suppose \(i\ge 2\), and consider the following portion of the board at the start of round \(i\) when both players have been playing normally:</p>
+<figure class="figure">
+<object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-14.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+<!-- l. 819 -->
+<p>Rose has a choice of regexes (<tspan font-family="cmbx" font-size="10">??</tspan>) or (<tspan font-family="cmbx" font-size="10">??</tspan>), as each can match a string prefixed by \(0^{i-1}1\). Say Rose chooses regex (<tspan font-family="cmbx" font-size="10">??</tspan>), thus playing a string matching \(\0^{i-1}\1\0^{n-i} \| R_{i-1}\). Colin can then respond with a bomb:</p>
+<figure class="figure">
+<!-- l. 829 -->
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-15.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<span id="x1-13005r1"></span> <tspan font-family="cmbx" font-size="9">(a)</tspan> <tspan font-family="cmr" font-size="9">Rose plays regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">)</tspan>       <!-- l. 840 -->
+</p>
+<p><object width="108.82266" type="image/svg+xml" height="108.82266" data="rc-cross-16.svg"></p>
+<p>SVG-Viewer needed.</p>
+</object>
+<span id="x1-13006r2"></span> <tspan font-family="cmbx" font-size="9">(b)</tspan> <tspan font-family="cmr" font-size="9">Colin plays regex</tspan><tspan font-family="cmr" font-size="9"> (</tspan><tspan font-family="cmbx" font-size="9">??</tspan><tspan font-family="cmr" font-size="9">),</tspan> <tspan font-family="cmr" font-size="9">Rose loses</tspan>
+</p>
+</figure>
+<!-- l. 844 -->
+<p>Rose cannot then play any string with prefix \(0^i2\), so she loses in round \((i+1)\). □</p>
+</div>
+<div class="newtheorem">
+<!-- l. 846 -->
+<p><span class="head"><span id="x1-13007r12"></span> <tspan font-family="cmbx" font-size="10">Lemma 12.</tspan></span> <tspan font-family="cmti" font-size="10">Colin cannot cheat in rounds</tspan> \(1\) <tspan font-family="cmti" font-size="10">through</tspan> \(n\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 849 --></p>
+<div class="proof">
+<!-- l. 850 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> By Lemma <a href="#x1-13001r10">10<!-- tex4ht:ref: lem:spine  --></a>, we begin round 1 with the spine having been played by both players. Rose is then forced to play a string prefixed with \(1\), the only matching regex being regex (<tspan font-family="cmbx" font-size="10">??</tspan>) with \(i = 0\): \(\1\1\1\0^{n-2} \| \1\0^{n-1}\). From this point on through round \(n\), assuming Rose plays normally, Colin will be faced with prefix \(0^{i-1}11\) in round \(i\), and thus must play a string matching regex (<tspan font-family="cmbx" font-size="10">??</tspan>) or (<tspan font-family="cmbx" font-size="10">??</tspan>), i.e., play normally. □</p>
+</div>
+<p><!-- l. 853 --></p>
+<p>The preceding lemmas show that normal play is optimal for both players (even required for Colin) through round \(n\). Thus we can assume normal play through round \(n\), filling regions II and III of the grid with \(1\)’s along their diagonals and \(0\)’s elsewhere (as with the identity matrix).</p>
+<div class="newtheorem">
+<!-- l. 855 -->
+<p><span class="head"><span id="x1-13008r13"></span> <tspan font-family="cmbx" font-size="10">Lemma 13.</tspan></span> <tspan font-family="cmti" font-size="10">Assume normal play through round</tspan><tspan font-family="cmti" font-size="10"> </tspan>\(n\)<tspan font-family="cmti" font-size="10">. For</tspan> \(1\le i\le n\)<tspan font-family="cmti" font-size="10">, in round</tspan><tspan font-family="cmti" font-size="10"> </tspan>\((n+i)\)<tspan font-family="cmti" font-size="10">, Rose must play a string matching</tspan> \(\0^i\1\0^{n-i}\|R_i\) <tspan font-family="cmti" font-size="10">and</tspan> <tspan font-family="cmti" font-size="10">Colin must play a string matching</tspan> \(\0^i\1\0^{n-i}\|C_i\)<tspan font-family="cmti" font-size="10">.</tspan></p>
+</div>
+<p><!-- l. 858 --></p>
+<div class="proof">
+<!-- l. 859 -->
+<p><span class="head"><tspan font-family="cmti" font-size="10">Proof.</tspan></span> In round \((n+i)\), Rose and Colin are both faced with prefix \(0^i10^{n-i}\), and the only regexes that this matches are the respective regexes given above for Rose and Colin. □</p>
+</div>
+<p><!-- l. 862 --></p>
+<p>In rounds \((n+1)\) through \(2n\), the players are essentially playing the game \(G\) in region IV, so the winner of \(H\) is the winner of \(G\). This completes the proof of Theorem <a href="#x1-12001r9">9<!-- tex4ht:ref: thm:constant-regexes  --></a>.</p>
+<p><!-- l. 864 --></p>
+<h3 id="j_rc-cross_s5" class="sectionHead"><span class="titlemark">5</span> <span id="x1-140005"></span>Open Problems</h3>
+<p><!-- l. 866 --></p>
+<p>The most immediate question arising from our work is whether \(\relax \mathbf{RCG}\) is \(\relax \mathbf{PSPACE}\)-hard restricted to a binary alphabet. Our proof shows only that it is \(\relax \mathbf{PSPACE}\)-hard for a ternary alphabet. Doing without the third symbol “\(2\)” in the alphabet currently seems like a daunting task, despite the fact that under normal play, that symbol appears only once in the upper left-hand corner.</p>
+<p><!-- l. 868 --></p>
+<p>Another question is whether we still get \(\relax \mathbf{PSPACE}\)-hardness if we restict the regexes \(R\) and \(C\) to be equal to each other. If one can show \(\relax \mathbf{PSPACE}\)-hardness for \(\relax \mathbf{RCG'}\) restricted so that \(R_i = C_i\) for all \(i\), then it may be easy to get \(R=C\) for the constructed instance of \(\relax \mathbf{RCG}\), since these two latter regexes are close to being equal anyway.</p>
+<p><!-- l. 870 --></p>
+<h3 class="likesectionHead"><span id="x1-150005"></span>Acknowledgments</h3>
+<p><!-- l. 872 --></p>
+<p>We would like to thank Thomas Thierauf for several interesting discussions on this topic and to Joshua Cooper for finding for us a particularly challenging and fun regex crossword puzzle. We are also grateful to Klaus-Jörn Lange for suggesting the connection between our work and the theory of picture languages.</p>
+<div class="footnotes">
+<!-- l. 305 -->
+<p><span class="footnote-mark"><a href="#fn1x0-bk" id="fn1x0"><sup>1</sup></a></span><tspan font-family="cmr" font-size="8">Glen Takahashi posted this question to Stack Exchange in 2012</tspan><tspan font-family="cmr" font-size="8"> [</tspan><tspan font-family="cmbx" font-size="8">?</tspan> <tspan font-family="cmr" font-size="8">], but it has been asked by others independently.</tspan></p>
+<!-- l. 309 -->
+<p><span class="footnote-mark"><a href="#fn2x0-bk" id="fn2x0"><sup>2</sup></a></span><tspan font-family="cmr" font-size="8">In the same paper, a restriction of</tspan> \(\relax \mathbf{RC}\) <tspan font-family="cmr" font-size="8">where the unique row and column regexes are equal to</tspan> <tspan font-family="cmti" font-size="8">each other</tspan> <tspan font-family="cmr" font-size="8">was also shown</tspan> \(\relax \mathbf{NP}\)<tspan font-family="cmr" font-size="8">-complete.</tspan></p>
+<!-- l. 349 -->
+<p><span class="footnote-mark"><a href="#fn3x0-bk" id="fn3x0"><sup>3</sup></a></span><tspan font-family="cmr" font-size="8">More precisely, the question is whether the sentence</tspan> \(\exists x_0 \forall y_0 \cdots \exists x_{k-1} \forall y_{k-1}\exists x_k [\tilde{\p }(x_0, y_0, \ldots , x_{k-1}, y_{k-1}, x_k) = \True ]\) <tspan font-family="cmr" font-size="8">holds in the two-element Boolean algebra</tspan> \((\{\False ,\True \},\myand ,\myor ,\mynot )\)<tspan font-family="cmr" font-size="8">.</tspan></p>
+<!-- l. 511 -->
+<p><span class="footnote-mark"><a href="#fn4x0-bk" id="fn4x0"><sup>4</sup></a></span><tspan font-family="cmr" font-size="8">For the last move of the game, Rose or Colin may encounter a row or column, respectively, that is already</tspan> <tspan font-family="cmr" font-size="8">completely filled in. In this case, she or he wins if and only if the row or column matches the corresponding regular</tspan> <tspan font-family="cmr" font-size="8">expression.</tspan></p>
+</div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../js/tocbot.min.js"></script>
+<script src="../js/toc.js"></script>
+
+    </body>
+</html>
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no" ?> 
+<?xml-stylesheet href="PS5.css" type="text/css" ?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="172.92627pt" height="148.94061pt" viewBox="-86.46313 -74.4703 172.92627 148.94061 "> 
+<g transform="translate(0, 74.4703 ) scale(1,-1) translate(0,74.4703 )"> 
+                      <g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <g stroke-dasharray="3.0,3.0" stroke-dashoffset="0.0">
+ <g stroke-width="0.8">
+ <path d=" M 0.0 -56.9046 L 0.0 56.9046  " fill="none"></path>
+ <g transform="translate(-10.76035,-69.55411)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(10.76035,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none">  <tspan font-family="cmsy" font-size="10">&#x02212; </tspan><tspan font-family="cmmi" font-size="12">&#x003BB;</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-10.76035,62.2208)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(10.76035,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none">  <tspan font-family="cmsy" font-size="10">&#x02212; </tspan><tspan font-family="cmmi" font-size="12">&#x003BB;</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g stroke-dasharray="3.0,3.0" stroke-dashoffset="0.0">
+ <g stroke-width="0.8">
+ <path d=" M -56.9046 0.0 L 56.9046 0.0  " fill="none"></path>
+ <g transform="translate(-82.54694,-3.70834)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(10.66307,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none">  + <tspan font-family="cmmi" font-size="12">&#x003BB;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(61.2208,-3.70834)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(10.66307,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none">  + <tspan font-family="cmmi" font-size="12">&#x003BB;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ <g transform="translate(53.9046,-2.66667)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.0,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmsy" font-size="10">&#8226;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-3.0,54.23793)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.0,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmsy" font-size="10">&#8226;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-59.9046,-2.66667)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.0,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmsy" font-size="10">&#8226;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(-3.0,-59.57127)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.0,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmsy" font-size="10">&#8226;</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ <g stroke-width="0.8">
+ <path d=" M 0.0 0.0 M 56.9046 0.0 C 56.9046 31.42795 31.42795 56.9046 0.0 56.9046 C -31.42795 56.9046 -56.9046 31.42795 -56.9046 0.0 C -56.9046 -31.42795 -31.42795 -56.9046 0.0 -56.9046 C 31.42795 -56.9046 56.9046 -31.42795 56.9046 0.0 Z M 0.0 0.0  " fill="none"></path>
+ </g>
+ <g stroke-dasharray="3.0,3.0" stroke-dashoffset="0.0">
+ <path d=" M 0.0 0.0 L -52.01987 21.54778  " fill="none"></path>
+ <g transform="matrix(-0.92383,0.38266,-0.38266,-0.92383,-52.01985,21.54776)">
+ <g stroke-dasharray="none" stroke-dashoffset="0.0">
+ <g stroke-linecap="round">
+ <g stroke-linejoin="miter">
+ <path d=" M -2.91765 1.79997 L 0.2 0.0 L -2.91765 -1.79997  " fill="none"></path>
+ </g>
+ </g>
+ </g>
+  </g>
+ </g>
+ <g transform="translate(-29.36823,15.002)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.08398,0)" text-anchor="middle" font-size="12"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="12">a</tspan> </g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+               </g> 
+</svg> 

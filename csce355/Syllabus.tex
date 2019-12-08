@@ -1,0 +1,349 @@
+% This syllabus template was created by:
+% Brian R. Hall
+% Assistant Professor, Champlain College
+% www.brianrhall.net
+
+% Document settings
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{multirow}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{ifpdf}
+\setlist{nolistsep}
+
+\usepackage{float}
+\usepackage{booktabs}
+
+\pagestyle{plain}
+\usepackage{hyperref}
+\setlength\parindent{0pt}
+
+\newenvironment{leftcell}
+{
+  \begin{minipage}{5cm}
+}{
+\end{minipage}
+}
+
+\begin{document}
+
+% Course information
+\begin{tabular}{ l l }
+  \multirow{3}{*}{} & \LARGE CSCE 355 \\\\
+                    & \LARGE Foundations of Computation \\\\
+                    & \LARGE MW 05:30--06:45, SWGN 2A21
+\end{tabular}
+
+\section{Instructor}
+% Professor information
+\begin{tabular}{ l l }
+  \multirow{6}{*}{} & \large Daniel J. Pad\'e \\
+                    & \large \ifpdf djpade@gmail.com \else \emph{See pdf for email} \fi \\
+                    & \large \url{http://cse.sc.edu/~pade/csce355} \\
+                    & \large SWGN 2D19 \\
+                    & \large Office Hours: Th/F 11:30--12:30
+\end{tabular}
+
+% Course details
+\section{Overview}
+This course is a mathematical introduction to the basic concepts
+underlying all computation. The goal is to discover the fundamental
+abilities and limitations of computers and to use mathematical rigor
+to prove facts about computation. We will study abstract models of
+computation, such as finite automata, grammars, and Turing machines.
+We will also set up a formal framework for defining computational
+problems as formal languages with the goal of studying the ultimate
+limits of computation. The core topics learned in this course pop up
+repeatedly in many areas of computer science and have close
+connections with logic and the foundations of mathematics.
+
+\subsection{Prerequisites}
+CSCE 211, 212, 350. MATH 374 is highly recommended
+
+\subsection{Text(s)}
+\begin{itemize}
+    \item
+        J.E. Hopcroft, R. Motwani, J.D. Ullman.
+        \emph{Automata Theory, Languages, and Computation}. Addison-Wesley-Pearson 2007.
+\end{itemize}
+
+\section{Coursework and Grading}
+There will be weekly quizzes (11 in all), which will comprise 50\% of
+your grade. Your lowest quiz grade will be dropped, and so each quiz
+is worth 5\% of your grade. 16\% of your grade will consist of a
+programming assignment. The remaining 34\% of the grade is split equally
+between the midterm and final exam.
+
+Each quiz will be given at the start of class and last approximately
+10 minutes. All quizzes are closed book, closed notes, and no
+electronic devices allowed, except for legitimate use by students with
+documented special needs. Each quiz will be a question or problem
+sampled from that week's homework assignment, possibly modified
+somewhat.
+
+The final exam is 2.5 hours on Wednesday, Apr 26, from 4:00pm to
+6:30pm. It is open book, open notes. Electronic devices may be used,
+but only as timepieces and for passive viewing of locally stored
+content. Absolutely no electronic communication or computation is
+permitted. Exam questions will also be derived from the homework
+exercises, but more loosely.
+
+\textbf{PLEASE NOTE:}
+\begin{itemize}
+    \item
+        This course will go by quickly. The subject matter requires
+        time and effort to digest, and so it is vital that you keep up
+        with the homework and reading.
+    \item
+        The course is mathematical in nature. The third most important
+        indicator of success in this course (second to hard work and
+        internal motivation) is a certain level of ``mathematical
+        maturity'', that is, being able to: (a) understand
+        mathematical definitions and theorems, (b) verify proofs, (c)
+        solve mathematical problems, and (d) in simple cases, generate
+        one's own definitions, theorems, and proofs.
+\end{itemize}
+
+The homework is intended as a pool for quiz and exam questions and as timely feedback for you.
+
+% Course Policies. These are just examples, modify to your liking.
+\section{Course Policies}
+\subsection{Reading and Lectures}
+\begin{itemize}
+  \item
+    You (the student) are expected to read all assigned
+    material before the lecture begins. If for some reason
+    you cannot attend class, you are responsible for any
+    material covered during your absence.
+  \item
+    The textbook coordinates with a set of on-line
+    resources (Gradiance). I will neither require nor
+    assume you have access to these resources. I encourage
+    it if you'd like some extra insight, but it's purely
+    optional. (My rationale for not requiring it is this:
+    it appears that to access Gradiance you need to
+    purchase a new, unused copy of the text.)
+\end{itemize}
+\subsection{Quizzes and Exams}
+\begin{itemize}
+  \item
+    Exams are open book, open notes.
+  \item
+    Quizzes are \textbf{closed note}
+  \item
+    \textbf{No make-up quizzes or exams will be given}
+    except under extreme circumstances with a valid
+    excuse, in which case you must give me notice well
+    before the exam or quiz if at all possible. Valid
+    excuses include grave illness or death in the
+    immediate family, or other dire emergency. They do not
+    include car problems or non-emergency events
+    (weddings, trips, sports meets, etc.).
+\end{itemize}
+\subsection{Grades}
+\begin{itemize}
+  \item
+    Grades in the \textbf{C} range represent performance
+    that \textbf{meets expectations}; Grades in the
+    \textbf{B} range represent performance that is
+    \textbf{substantially better} than the expectations;
+    Grades in the \textbf{A} range represent work that is
+    \textbf{excellent}.
+\end{itemize}
+Letter grades correspond to score percentages as follows:
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{l l}
+    \toprule
+    Grade & Range                        \\
+    \midrule
+    A     & 90 or above                  \\
+    B+    & at least 86 and less than 90 \\
+    B     & at least 80 and less than 86 \\
+    C+    & at least 76 and less than 80 \\
+    C     & at least 70 and less than 76 \\
+    D+    & at least 66 and less than 70 \\
+    D     & at least 60 and less than 66 \\
+    F     & less than 60                 \\
+    \bottomrule
+  \end{tabular}
+\end{figure}
+
+\subsection{Attendance}
+From the
+\href{http://bulletin.sc.edu/content.php?catoid=52&navoid=1280#Attendance_Policy}{attendance
+policy}:
+\begin{itemize}
+  \item Students are obligated to complete all assigned
+    work promptly, to attend class regularly, and to
+    participate in whatever class discussion may occur.
+  \item
+    Absence from more than 10 percent of the scheduled class
+    sessions, whether excused or unexcused, is excessive and
+    I may choose to exact a grade penalty for
+    such absences.
+  \item
+    \textbf{It must be emphasized that the ``10 percent rule''
+      stated above applies to both excused and unexcused
+    absences}.
+\end{itemize}
+
+% College Policies
+\section{Code of Student Academic Responsibility}
+You are expected to know the Academic Code of Responsibility as it
+appears in the Carolina Community: Student Policy Manual.
+
+You may not represent other people's work as your own. More
+specifically, you cannot submit specific answers from other sources
+without proper attribution. If you copy or otherwise derive
+materials/answers from other people, books, the web, etc., you must
+cite your source(s) in a way that adheres to the usual standards for
+an academic paper. Deriving/copying without proper attribution is
+plagiarism, which I regard as a serious offense. (Exceptions: You do
+not need to explicitly cite any material you lift from the text or
+from my own lectures. You are also not required to explicitly cite any
+general background material you use for an answer but which does not
+specifically relate to the actual question being answered.)
+
+Obtaining answers during an exam other than by the approved means
+(your own printed material, knowledge, and cleverness) is forbidden.
+Passing along questions or answers to an exam to anyone else before
+the exam is given is also forbidden.
+
+Any violation of the rules above constitutes cheating, for which there
+is no excuse.
+
+\textbf{The usual penalty for cheating is failure of the course}. The offense
+will also be reported to the appropriate University entities. The bare
+minimum penalty you may receive for an instance of cheating is double
+the points of the assignment off. That means that if an
+assignment/test is worth 10 points, your ultimate grade would be -20
+for the assignment/test. Finally, as noted in the Student Policy
+Manual, the maximum penalty for cheating on an assignment is expulsion
+from the University. These penalties apply both to copier and copiee.
+% Course Outline
+
+\newpage
+\section{Tentative Course Outline}
+Course topics by chapter and the final exam date are given below.
+This schedule is flexible and is subject to some revision as the
+class proceeds. There may not be time to cover all the topics listed.
+You will be tested only on those topics that could be covered in
+class, which means that the content of the quizzes and exam may be
+adjusted.
+
+\begin{figure}[H]
+  \begin{tabular}{llll} % {p{7cm}lll}
+        \toprule
+        \textbf{Topic(s)} & \textbf{Chapter (ALC)} & \textbf{Chapter (ITC)} & \textbf{Week(s)} \\
+        \midrule
+        \begin{leftcell}
+          Introduction: mathematical preliminaries, definitions,
+          theorems, proofs, automata concepts: alphabets, strings, and
+          languages
+        \end{leftcell}
+        & 1 & 0 &
+        \begin{leftcell}
+          1--2 \\\\
+          Jan. 16 --- no class \\
+          Jan. 17 --- W drop day
+        \end{leftcell}
+        \\
+        \midrule
+        Deterministic finite automata & 2.1--2.2 & 1.1 & 3 \\
+        \midrule
+        \begin{leftcell}
+          Nondeterministic finite automata, regular expressions
+        \end{leftcell}
+        & 2.3,
+        2.5 & 1.2-1.3 & 4 \\
+        \midrule
+        \begin{leftcell}
+          Regular expressions (cont.), regular languages, equivalence to
+          automata
+        \end{leftcell}
+        & 3.1--3.3 & 1.3 & 5 \\
+        \midrule
+        \begin{leftcell}
+          Proving languages nonregular: pumping lemma
+        \end{leftcell}
+        &  4.1--4.2 & 1.4 & 6
+        \\
+        \midrule
+        \textbf{MIDTERM EXAM} & \textbf{1--4} & \textbf{0-1} & \textbf{Wed. Feb 22}\\
+        \midrule
+        Minimization of automata  & 4.4  & Prob 7.42 &
+        \begin{minipage}{3cm}
+        8 \\
+        Mar 2. --- WF drop day
+        \end{minipage}
+        \\
+        \midrule
+        \multicolumn{4}{c}{\textbf{Spring Break --- Mar. 5--12}}
+        \\
+        \midrule
+        \begin{leftcell}
+          Context-free grammars and languages, parse trees
+        \end{leftcell}
+        &  5.1--5.4 &
+        2.1 & 9--10 \\
+        \midrule
+        \begin{leftcell}
+          Pushdown automata, equivalence to grammars
+        \end{leftcell}
+        & 6.1--6.3 & 2.2 & 11 \\
+        \midrule
+        \begin{leftcell}
+          Normal forms of CFGs, pumping lemma for CFLs
+        \end{leftcell}
+        & 7.1--7.2 & 2.3 & 12
+        \\
+        \midrule
+        \begin{leftcell}
+          Turing machines, notion of ``algorithm''
+        \end{leftcell}
+        & 8 & 3.1, 3.3 & 13 \\
+        \midrule
+        Undecidability and intractability & 9--10 & 4.1-4.2 & 14 \\
+        \midrule
+        \textbf{FINAL EXAM (cumulative)} &  \textbf{all}  & \textbf{all} &  \textbf{Apr. 26, 4:00pm} \\
+        \bottomrule
+    \end{tabular}
+  \end{figure}
+
+\section{Quiz Schedule}
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{ll}
+    \toprule
+    Number & Date \\
+    \midrule
+    Quiz 1  & Wed 01/25  \\
+    Quiz 2  & Wed 02/01 \\
+    Quiz 3  & Wed 02/08 \\
+    Quiz 4  & Wed 02/15 \\
+    Quiz 5  & Wed 03/01 \\
+    Quiz 6  & Wed 03/15 \\
+    Quiz 7  & Wed 03/22 \\
+    Quiz 8  & Wed 03/29 \\
+    Quiz 9  & Wed 04/05 \\
+    Quiz 10 & Wed 04/12 \\
+    Quiz 11 & Wed 04/19 \\
+    \bottomrule
+  \end{tabular}
+\end{figure}
+
+\section{Data for Research Disclosure}
+Any and all results of in-class and out-of-class assignments and examinations are data sources for research and may be used in published research. All such use will always be anonymous.
+
+\end{document}
+
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

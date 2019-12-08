@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade Homework 4</title>
+      <link rel="stylesheet" href="../../css/hakyll.css" />
+      <link rel="stylesheet" href="../../css/latex.css">
+      <link rel="stylesheet" href="../../css/responsive.css">
+      <link rel="stylesheet" href="../../css/tocbot.css">
+      <link rel="stylesheet" href="../../css/pygments.css">
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../../csce520/index.html">CSCE 520</a>
+            </div>
+            <nav>
+                <a href="../../index.html">Home</a>
+                <a href="https://cse.sc.edu/~fenner/csce520/Syllabus.html">Syllabus</a>
+                <a href="../../csce520/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <h1>Homework 4</h1>
+                
+
+                <article>
+  <section class="header">
+    
+    Due: October 22, 2019
+    
+    
+    by Dr. Fenner
+    
+  </section>
+  <section>
+    <h3 id="reading">Reading</h3>
+<ul>
+<li>§ 3.1</li>
+<li>§ 3.2</li>
+<li>§ 3.3</li>
+</ul>
+<h3 id="to-submit">To Submit</h3>
+<h4 id="written">Written</h4>
+<dl>
+<dt>
+<strong>Required</strong>
+</dt>
+<dd>
+<ul>
+<li>
+Exercise 3.1.1
+</li>
+<li>
+Exercise 3.2.1
+</li>
+<li>
+Exercise 3.2.2(ii)
+</li>
+<li>
+Exercise 3.2.4
+</li>
+<li>
+Exercise 3.2.10(a,c)
+</li>
+<li>
+Exercise 3.3.1(b,d)
+</li>
+<li>
+Exercise 3.3.4
+</li>
+</ul>
+</dd>
+<dt>
+<strong>Graduate Students Only</strong>
+</dt>
+<dd>
+<ul>
+<li>
+Exercise 3.2.3(a,b)
+</li>
+<li>
+Exercise 3.2.10(b,d)
+</li>
+<li>
+Exercise 3.3.1(a,c)
+</li>
+</ul>
+</dd>
+</dl>
+<h4 id="sql">SQL</h4>
+<p>Recall the database schema of <a href="HW2.html#e2.4.1">Exercise 2.4.1</a>. Writ eSQL queries for the following things:</p>
+<ol type="1">
+<li>The number of PC’s made by each maker.</li>
+<li>The maximum screen size of a laptop made by E.</li>
+<li>The average price of products made by each maker (but only if that average price is at least 200), in descending order of price.</li>
+</ol>
+<p>In each case, give your column headings reasonably descriptive names. Your queries must be correct in general, that is, they must work for any instance of the DB, not just the one presented in the book. Place your queries in a file <code>hw4.sql</code> and test them in MySQL.</p>
+<p>The following applies to this and mutatis mutandis all future homeworks. To submit: From the shell prompt, login to mysql with the following shell command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">mysql</span> -p sales</a></code></pre></div>
+<p>and enter your user password when prompted (this will work on unix/linux/Mac systems; for Windows, YMMV). Including the database name on the command line automatically loads it, so you do not need to issue a “USE sales” command inside mysql. Inside mysql, type</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql"><code class="sourceCode sql"><a class="sourceLine" id="cb2-1" title="1">tee hw4.<span class="fu">log</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw">source</span> hw4.sql</a>
+<a class="sourceLine" id="cb2-3" title="3">notee</a>
+<a class="sourceLine" id="cb2-4" title="4">quit</a></code></pre></div>
+<p>The <code>tee</code> command tells mysql to append everything subsequently appearing in the session to the file <code>hw4.log</code>, until the <code>notee</code> command is given, which stops logging. The <code>source</code> command reads the <code>hw4.sql</code> file and runs its command in order as if you had typed them at the prompt.</p>
+<p>You should make a .zip file <code>hw4.zip</code> containing both <code>hw4.sql</code> and <code>hw4.log</code> files. Upload your .zip file electronically using <a href="https://dropbox.cse.sc.edu">CSE Dropbox</a>. If you are in Sections 001, H10, or J60, you should submit your assignment to Section 001 regardless of which of these sections you are in. If you are in Section 002, then submit to Section 002.</p>
+<hr />
+<h3 id="reference">Reference</h3>
+  </section>
+</article>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../../js/tocbot.min.js"></script>
+<script src="../../js/toc.js"></script>
+
+    </body>
+</html>
+

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade Project</title>
+      <link rel="stylesheet" href="../css/hakyll.css" />
+      <link rel="stylesheet" href="../css/latex.css">
+      <link rel="stylesheet" href="../css/responsive.css">
+      <link rel="stylesheet" href="../css/tocbot.css">
+      <link rel="stylesheet" href="../css/pygments.css">
+      
+      <link rel="stylesheet" href="Project.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../csce355.html">CSCE 355</a>
+            </div>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../csce355/Syllabus.html">Syllabus</a>
+                <a href="../csce355/Project.html">Project</a>
+                <a href="../csce355/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./Project.pdf">pdf</a>,
+                    <a href="./Project.tex">TeX</a>
+                </section>
+                
+
+                <div class="maketitle">
+<h2 class="titleHead">CSCE 355 Programming Assignment</h2>
+<div class="author">
+<span class="cmr-12">Spring 2017</span>
+</div>
+<br />
+
+<div class="date">
+<span class="cmr-12">Due Mon, Apr 24, 2017 at 11:55 pm EST</span>
+</div>
+</div>
+<p><!-- l. 15 --></p>
+<p>For the programming portion of the course (10% of your grade) you are to write programs that perform two or more of a choice of six tasks involving DFAs. You may choose to implement two or more of the following functions:</p>
+<dl>
+<dt><span class="cmbx-10x-x-109">Simulating a DFA.</span></dt>
+<dd>After reading the description of a DFA \(N\) from a text file, read any number of strings over \(N\)’s alphabet from another text file, indicating (to standard output) whether \(N\) accepts or rejects each of the strings.
+</dd>
+<dt><span class="cmbx-10x-x-109">Minimizing a DFA.</span></dt>
+<dd>Read the description of a DFA from a text file, and write (to standard output) the description of a minimal equivalent DFA.
+</dd>
+<dt><span class="cmbx-10x-x-109">Text search.</span></dt>
+<dd>Read a string \(w\) from a text file, and write to standard output the description of a DFA that accepts a string \(x\) iff \(w\) is a substring of \(x\).
+</dd>
+<dt><span class="cmbx-10x-x-109">Closure properties: complement and intersection.</span></dt>
+<dd>Read one or two descriptions of DFAs from text files (depending on the type of transformation asked for), and write to standard output a description of the transformed DFA—either the complementary DFA or the product construction.
+</dd>
+<dt><span class="cmbx-10x-x-109">Closure property: inverse homomorphic image.</span></dt>
+<dd>Read from a text file the description of a DFA \(A\) over some alphabet \(\Gamma \) and (from another text file) the description of a homomorphism \(h:\Sigma ^*\rightarrow \Gamma ^*\) (where \(\Sigma \) is some alphabet), and write to standard output the description of a DFA recognizing \(h^{-1}(L(A))\).
+</dd>
+<dt><span class="cmbx-10x-x-109">Determining properties of a DFA.</span></dt>
+<dd>Read from a text file the description of a DFA \(A\) and write to standard output (a) whether or not \(L(A) = \emptyset \) and (b) whether or not \(L(A)\) is finite.
+</dd>
+</dl>
+<h3 id="j_Project_s1" class="sectionHead"><span class="titlemark">1</span> <span id="x1-10001"></span>Details</h3>
+<p><!-- l. 51 --></p>
+<p>You are only required to implement your choice of <span class="cmti-10x-x-109">two</span> of the six alternatives above, but you may implement more than two if you want a modest amount of extra credit (1% of your final grade per additional task correctly implemented). As you decide which two, notice that some combinations of tasks can share code. For example, all except the third require reading and internalizing a DFA description; the second, third, fourth, and fifth require writing a DFA description (see Section <a href="#x1-100001.2.1">1.2.1<!-- tex4ht:ref: sec:dfa-format  --></a>).</p>
+<p><!-- l. 60 --></p>
+<p>The grading of your work will be automated via scripts run on Linux (These scripts are found from the project homepage: <a href="http://www.cse.sc.edu/~pade/csce355/" class="url"><span class="cmtt-10x-x-109">http://www.cse.sc.edu/~pade/csce355/</span></a>). Therefore we are requiring you to stick to a simple, uniform interface for your program: Your program must be able to be run via a simple command-line invocation on a GNU/Linux box in the department (e.g., oak or ash), and all I/O will be ASCII text. Input is read either from text files (given as command line arguments) or standard input, and output is written to standard output. You may write your program in any programming language you want, provided it is implemented on the Linux machines in the CSCE lab. We recommend Java or C or C++ or Perl or Python or Ruby or ML or Haskell or …. To repeat: your program (after compiling, if necessary) should be a stand-alone executable that can be run directly from the Linux shell, requiring no special user interface to execute (e.g., Eclipse).<span class="footnote-mark"><a href="#fn1x0" id="fn1x0-bk"><sup>1</sup></a></span><span id="x1-1001f1"></span> More about this below.</p>
+<p><!-- l. 78 --></p>
+<p>This assignment is not meant to be overly taxing or time-consuming. Most of the time spent will probably be to get the input read in correctly.</p>
+<p><!-- l. 82 --></p>
+<h4 id="j_Project_s1.1" class="sectionHead"><span class="titlemark">1.1</span> <span id="x1-20001.1"></span>Tasks</h4>
+<p><!-- l. 84 --></p>
+<p>Here are more specific details for each of the six options above:</p>
+<p><!-- l. 86 --></p>
+<h5 id="j_Project_s1.1.1" class="sectionHead"><span class="titlemark">1.1.1</span> <span id="x1-30001.1.1"></span>Simulation</h5>
+<p>First read the description of the DFA. The description is in a file named by the first command line argument (see Section <a href="#x1-100001.2.1">1.2.1<!-- tex4ht:ref: sec:dfa-format  --></a> for information about the format of this file). Next read a series of zero or more strings from another text file named by the second command line argument. These are inputs to the DFA. Each string will take up an entire line of text, ending with a newline character (which is not included in the string). For each string, write to standard output either “accept” or “reject” according to the behavior of the DFA on the string. End each output word with a newline. <!-- l. 98 --></p>
+<h5 id="j_Project_s1.1.2" class="sectionHead"><span class="titlemark">1.1.2</span> <span id="x1-40001.1.2"></span>Minimization</h5>
+<p>The input DFA is read from a text file given as the first command line argument, and the output DFA is written to standard output. You should use the table-of-distinguishable-states method described in class to do the minimization. You do not need to output the distinguishability table, but you may optionally do so to standard error if you want. Both the input and output DFA descriptions adhere to the format described below. The ordering of the states of the output DFA is not completely determined, so correct answers may differ up to the ordering of states. That’s OK; we’ll take that into account using our own script that determines whether two DFAs are the same up to reordering states. <!-- l. 111 --></p>
+<h5 id="j_Project_s1.1.3" class="sectionHead"><span class="titlemark">1.1.3</span> <span id="x1-50001.1.3"></span>Text search</h5>
+<p>This task is similar to Assignment 4, problem 1. The name of the file containing the text string is given as the sole command line argument. You should assume that the input string and the output DFA are both over the alphabet consisting of the 26 lower case letters <span class="texttt">abcdefghijklmnopqrstuvwxyz</span> only. <!-- l. 118 --></p>
+<h5 id="j_Project_s1.1.4" class="sectionHead"><span class="titlemark">1.1.4</span> <span id="x1-60001.1.4"></span>Bool Ops</h5>
+<p>There will be either one or two command line arguments. If one, then it is the name of a file containing the description of a DFA \(A\), and you are to output the complementary DFA \(\neg A\) (see Definition 7.4 of the course notes). If two arguments, then they both are names of text files containing DFAs \(A\) and \(B\), and you are to output the product construction \(A\wedge B\) (see Definition 7.4 of the course notes). \(A\) and \(B\) will have the same alphabet. In each case, write to standard output. <!-- l. 128 --></p>
+<h5 id="j_Project_s1.1.5" class="sectionHead"><span class="titlemark">1.1.5</span> <span id="x1-70001.1.5"></span>Inv. Hom. Image</h5>
+<p>The first command line argument is the name of a text file containing the description of the DFA, and the second argument gives a text file containing the description of the homomorphism. See Section <a href="#x1-110001.2.2">1.2.2<!-- tex4ht:ref: sec:hom-format  --></a> for the description format for the homomorphism. Output is to standard output. <!-- l. 135 --></p>
+<h5 id="j_Project_s1.1.6" class="sectionHead"><span class="titlemark">1.1.6</span> <span id="x1-80001.1.6"></span>Properties</h5>
+<p>The sole command line argument gives the file describing the DFA. Output is to standard output and consists of just two words separated by whitespace: the first is either “<span class="texttt">empty</span>” or “<span class="texttt">nonempty</span>”, and the second is either “<span class="texttt">finite</span>” or “<span class="texttt">infinite</span>”. Note that the language of a DFA is nonempty iff some final state is reachable from the start state, and the language is infinite iff there is some cycle that is reachable from the start state and from which a final state is reachable. <!-- l. 146 --></p>
+<p>In all cases, you may assume that the files adhere to their respective formats, i.e., you won’t need to error-check an input file. Note that all input is from text files given as command line arguments; your programs should not expect any input from standard input. Your programs’ “official” output goes to standard output (not a text file), but you may also print anything you want to standard error; the grading program will ignore anything sent to standard error.<span class="footnote-mark"><a href="#fn2x0" id="fn2x0-bk"><sup>2</sup></a></span><span id="x1-8001f2"></span></p>
+<p><!-- l. 163 --></p>
+<p>Your code should be economically written, well-structured, and well-commented, following the common stylistic guidelines of the programming language you use. The code should also be reasonably efficient, but this is a secondary requirement. If your code runs correctly, we won’t really look too closely at the source code. If it does not run correctly, however, the source code style is more important.</p>
+<p><!-- l. 171 --></p>
+<h4 id="j_Project_s1.2" class="sectionHead"><span class="titlemark">1.2</span> <span id="x1-90001.2"></span>File Formats</h4>
+<p><!-- l. 173 --></p>
+<h5 id="j_Project_s1.2.1" class="sectionHead"><span class="titlemark">1.2.1</span> <span id="x1-100001.2.1"></span>DFA</h5>
+<p><!-- l. 175 --></p>
+<p>We will use a common ASCII text format for describing DFAs. If you read a DFA description as input, you can expect it to be in this format, i.e., you don’t need to error-check the description. If you write a DFA as output, you must use the same format. (This allows the flexibility of using the output of one program as the input to another.) The format is meant to be both simple to parse and easily readable by humans.</p>
+<p><!-- l. 183 --></p>
+<p>Here is a sample description of a \(5\)-state DFA that accepts a binary string iff the numerical value of the string differs by \(1\) from a multiple of \(5\):</p>
+<div id="verbatim-1" class="verbatim">
+Number of states: 5  <br />
+Accepting states: 1 4  <br />
+Alphabet: 01  <br />
+0 1  <br />
+2 3  <br />
+4 0  <br />
+1 2  <br />
+3 4
+</div>
+<p><!-- l. 195 --></p>
+<p><!-- l. 197 --></p>
+<p>Generally,</p>
+<ul>
+<li>The first line starts with “Number of states: ” followed by a single positive decimal integer giving the number of states of the DFA. If the DFA has \(n\) states, then we assume that the state set is \(Q = \{0,1,2,\ldots , n-1\}\), with \(0\) <span class="cmti-10x-x-109">always</span> being the start state.</li>
+<li>The second line starts with “Accepting states: ” followed by a list of nonnegative integers indicating the states that are accepting. The numbers are separated by white space (strings of one or more space characters) and should appear in increasing order.</li>
+<li>The third line starts with “Alphabet: ” followed by a single string of characters that takes up the rest of the line. The characters in the string form the alphabet of the DFA. They should come in order of increasing ASCII code, with no duplicates. We will restrict our alphabets to printable ASCII characters only, i.e., no control characters like carriage returns, line feeds, newlines, etc. The space character is considered printable—and thus allowed—but the tab and DEL characters are not. This means that the printable ASCII characters run from 32 through 126 (decimal), inclusive. The alphabet string starts with the first character after the space after the first colon, and runs through the end of the line (not including the final newline).</li>
+<li>The rest of the description consists of the transition table. The rows of the table (each terminated with a newline character) correspond to the states of the DFA in numerical order. Each row consists of a sequence of nonnegative integers separated by white space, one number for each alphabet symbol. These numbers correspond to the destination states given the initial state and the alphabet symbol. The order of entries within each row must correspond to the order of characters in the alphabet string given earlier.</li>
+</ul>
+<p><!-- l. 236 --></p>
+<p>Thus the sample DFA description above corresponds to the more traditional tabular form \begin{align*} \begin{array}{r||cc} &amp; 0 &amp; 1 \\ \hline \hline \rightarrow 0 &amp; 0 &amp; 1 \\{*}1 &amp; 2 &amp; 3 \\ 2 &amp; 4 &amp; 0 \\ 3 &amp; 1 &amp; 2 \\{*}4 &amp; 3 &amp; 4 \end{array} \end{align*}</p>
+<p><!-- l. 250 --></p>
+<h5 id="j_Project_s1.2.2" class="sectionHead"><span class="titlemark">1.2.2</span> <span id="x1-110001.2.2"></span>Homomorphism</h5>
+<p><!-- l. 252 --></p>
+<p>This only applies to the fifth task. A homomorphism \(h:\Sigma ^*\rightarrow \Gamma ^*\) will be represented in a text file by giving (a) the input alphabet \(\Sigma \), (b) the output alphabet \(\Gamma \), and (c) the values \(h(a)\) for all \(a\in \Sigma \) in increasing ASCII order. For example, if \(\Sigma = \{0,1,2\}\),  \(\Gamma = \{a,b,c,d\}\), and \(h(0) = abd\), \(h(1) = \epsilon \), and \(h(2) = acda\), then the file will look like this:</p>
+<div id="verbatim-2" class="verbatim">
+Input alphabet: 012  <br />
+Output alphabet: abcd  <br />
+abd  <br />
+ <br />
+acda
+</div>
+<p><!-- l. 265 --></p>
+<p>(Notice the blank line denoting the empty string for \(h(1)\).) The format of each of the two lines specifying the alphabets is similar to the format of a DFA alphabet, above, with the same restrictions on the alphabet. Following the alphabet specifications is a series of strings (one per line) giving the value of the homomorphism applied to each of the input alphabet symbols, given in the same order as the symbols in the input alphabet.</p>
+<p><!-- l. 274 --></p>
+<h5 id="j_Project_s1.2.3" class="sectionHead"><span class="titlemark">1.2.3</span> <span id="x1-120001.2.3"></span>Build/Run</h5>
+<p><!-- l. 276 --></p>
+<p>To score your files, you must tell the auto-grader how to build and run your program for each task you have completed. Each build file will be a standard ascii file, named <span class="texttt">simulator.txt</span>, <span class="texttt">minimizer.txt</span>, <span class="texttt">searcher.txt</span>, <span class="texttt">boolop.txt</span>, <span class="texttt">invhom.txt</span>, or <span class="texttt">properties.txt</span>, depending on the corresponding task. The generic file format is:</p>
+<div id="verbatim-3" class="verbatim">
+Build:  <br />
+  &lt;list of commands to compile your program&gt;  <br />
+Run:  <br />
+  &lt;list of commands to run your program&gt;
+</div>
+<p><!-- l. 288 --></p>
+<p><!-- l. 290 --></p>
+<p><span class="cmbx-10x-x-109">Do not forget to end your build file with an empty newline</span></p>
+<p><!-- l. 292 --></p>
+<p>Suppose you implement a DFA simulator (first task, above) in Java, and your main class is called <span class="texttt">MySimulator</span>. Then your submission zip file should include a text file named <span class="texttt">simulator.txt</span> whose contents look like this:</p>
+<div id="verbatim-4" class="verbatim">
+# Lines like these are comments and will be ignored  <br />
+Build:  <br />
+  javac MySimulator.java  <br />
+Run:  <br />
+  java MySimulator  <br />
+# Don’t include command line arguments to the run command!  <br />
+# The indenting is optional.
+</div>
+<p><!-- l. 305 --></p>
+<p>For another example, suppose you implement a DFA minimizer in C as a single compilation unit called <span class="texttt">my_minimizer.c</span>. Then include a file named <span class="texttt">minimizer.txt</span> with something like the following contents:</p>
+<div id="verbatim-5" class="verbatim">
+Build:  <br />
+  gcc my_minimizer.c  <br />
+  mv a.out my_minimizer  <br />
+Run:  <br />
+  ./my_minimizer  <br />
+# Again, no command line arguments, please.  They will be supplied automatically.
+</div>
+<p><!-- l. 318 --></p>
+<p><!-- l. 320 --></p>
+<p>Note that you can have any number of build commands, and they will be executed in order (in the directory containing your source files) before the run command. Always give the Build commands first before the Run command.</p>
+<p><!-- l. 325 --></p>
+<p>Suppose instead that you have several compilation units for your programs, including shared code, and a complicated build procedure, but you have a single Makefile controlling it all, capable of producing an executable called <span class="texttt">my_minimizer</span> and maybe other executables as well. Then the <span class="texttt">minimizer.txt</span> file can just look something like this:</p>
+<div id="verbatim-6" class="verbatim">
+Build:  <br />
+  make my_minimizer  <br />
+Run:  <br />
+  ./my_minimizer
+</div>
+<p><!-- l. 337 --></p>
+<p><!-- l. 339 --></p>
+<p>and similarly for the other program(s) you implement.</p>
+<p><!-- l. 341 --></p>
+<p>As a final example, suppose you implement the inverse homomorphic image closure property in Python, which is a scripting language that can be run directly without a compilation step. Then your <span class="texttt">invhom.txt</span> file might look like this:</p>
+<div id="verbatim-7" class="verbatim">
+Build:  <br />
+Run:  <br />
+  python my_inv_hom_maker.py  <br />
+# You still need to say &quot;Build:&quot; even though there are no build commands.
+</div>
+<p><!-- l. 351 --></p>
+<p><!-- l. 353 --></p>
+<p>Finally, be sure your CSE Dropbox account exists and is accessible. Do this early on to avoid last-minute glitches.</p>
+<p><!-- l. 356 --></p>
+<h4 id="j_Project_s1.3" class="sectionHead"><span class="titlemark">1.3</span> <span id="x1-130001.3"></span>Windows vs. Linux</h4>
+<p><!-- l. 358 --></p>
+<p>Windows-based text files end each line with the two-character sequence <span class="obeylines-h"><span class="verb"><span class="cmtt-10x-x-109">\r\n</span></span></span> (carriage return, newline), and GNU/linux/Mac OS X and similar systems expect only an <span class="obeylines-h"><span class="verb"><span class="cmtt-10x-x-109">\n</span></span></span> ending each line. We strongly recommend against doing your development on a Windows box, but if you absolutely must, be aware that the files <span class="texttt">simulator.txt</span>, etc. may not work properly with the test script if they are just copied over without newline conversion. (This is the cause of many mysterious failures when running the test script.) Our linux boxes support the <span class="texttt">scc</span> command. Running</p>
+<div id="verbatim-8" class="verbatim">
+    scc my_text_file.txt
+</div>
+<p><!-- l. 370 --></p>
+<p><!-- l. 372 --></p>
+<p>converts all <span class="obeylines-h"><span class="verb"><span class="cmtt-10x-x-109">\r\n</span></span></span> sequences to <span class="obeylines-h"><span class="verb"><span class="cmtt-10x-x-109">\n</span></span></span> in <span class="texttt">my_text_file.txt</span>. (Note that this command alters the contents of the file and does <span class="cmti-10x-x-109">not</span> produce a backup copy.)</p>
+<p><!-- l. 377 --></p>
+<h3 id="j_Project_s2" class="sectionHead"><span class="titlemark">2</span> <span id="x1-140002"></span>Notes and hints</h3>
+<p><!-- l. 379 --></p>
+<p>One way to check if \(L(A)=\emptyset \) for some DFA \(A\) is to first minimize it then check if the result is the \(1\)-state DFA with no accepting states. (More generally, an efficient way to check whether two DFAs are equivalent is to minimize both of them, then check whether the results are isomorphic (which is fairly quick, since there can be at most one isomophism between any two sane DFAs).) Minimizing also helps for checking whether \(L(A)\) is finite. There can be at most one dead state (from which no final state is reachable) in a minimal DFA, so it it easy to isolate. A minimal DFA recognizes an infinite language if and only if it has a cycle not involving the dead state.</p>
+<p><!-- l. 391 --></p>
+<p>Generally, you cannot assume any <span class="cmti-10x-x-109">a priori</span> bounds on the number of states of a DFA or the length of \(h(a)\) where \(h\) is a homomorphism and \(a\) is a symbol in the input alphabet of \(h\). In other words, a DFA may less than \(10\) states or more than \(10,000\) states. Similarly, the length of \(h(a)\) may be \(0\) or over \(10,000\) So you will not be able to declare a buffer to hold \(h(a)\) values whose length is known at compile time.</p>
+<p><!-- l. 399 --></p>
+<h3 id="j_Project_s3" class="sectionHead"><span class="titlemark">3</span> <span id="x1-150003"></span>Testing and Grading</h3>
+<p><!-- l. 401 --></p>
+<p>As we mentioned, your project will be graded automatically. We will use the supplied testing program located on the course website and test files in a test suite directory to test and grade your project. <span class="cmti-10x-x-109">All these files are available to you soon from the project homepage,</span> so that you can see how your code will be tested and even run the test program yourself to see in advance how well you do. Just to be perfectly clear: we will grade your project by running it through an automated testing program. We will not run your code personally. The comments produced by that program will determine your grade. This means that you will not get credit for attempting to do something. You will only get credit for what actually works, as determined by the test’s output.</p>
+<p><!-- l. 414 --></p>
+<p>Generally, your output does not have to match the solution output exactly. For example, if you minimize a DFA, your output (a minimal DFA) only needs to match our solution up to relabeling (actually, re-ordering) of states. If two DFAs are the same up to relabeling/re-ordering of states, we say that they are <span class="cmti-10x-x-109">isomorphic</span>. The Myhill-Nerode theorem says that two minimal DFAs are equivalent if and only if they are isomorphic; therefore, the minimal DFA is unique <span class="cmti-10x-x-109">up to isomorphism</span>. We have a program (that we also make available to you) that tests whether two DFAs are isomorphic, and we will use this program to compare your output with ours. For another example, if you implement the fourth task, which requires you to build a DFA for the intersection \(L(A)\cap L(B)\) for two given DFAs \(A\) and \(B\), we will only check that your output DFA is <span class="cmti-10x-x-109">equivalent</span> to the product construction, which suffices to recognize \(L(A)\cap L(B)\). Since the product construction does this already, the number of states of your output DFA should be <span class="cmti-10x-x-109">no more</span> than the product of the sizes of the state sets of \(A\) and of \(B\).</p>
+<p><!-- l. 433 --></p>
+<h3 id="j_Project_s4" class="sectionHead"><span class="titlemark">4</span> <span id="x1-160004"></span>Submission</h3>
+<p><!-- l. 435 --></p>
+<p>Submission will be via CSE Departmental Dropbox (Moodle). Upload a single file, either a.zip file or a.tar.gz file, containing</p>
+<p><!-- l. 438 --></p>
+<ol>
+<li><span id="x1-16002x1">all your source code files, which should all be in the same directory, i.e., no subdirectories (and no automatically generated files, please),</span></li>
+<li><span id="x1-16004x2">a README file indicating which two of the options above you are implementing for full credit, along with anything else you want to tell us (we will read this with our own eyes), and</span></li>
+<li><span id="x1-16006x3">for each task you implement, a “build/run” text file giving commands to compile and/or run the program performing the task (see Section <a href="#x1-120001.2.3">1.2.3<!-- tex4ht:ref: sec:build-format  --></a> for more information).</span></li>
+</ol>
+<p><!-- l. 454 --></p>
+<p>IMPORTANT NOTE:You <span class="cmti-10x-x-109">must</span> use either the ZIP format (file extension ‘.zip’) or the GZIPPED TAR format (file extension ‘.tar.gz’) for your submission file. Your file will be de-archived either with <span class="texttt">unzip</span> or with <span class="texttt">gunzip; tar -xf</span>, depending on your file name’s extension. Do not use any other archive format, particularly the RAR format, which is proprietary to Windows (I personally do not have Windows on any machine I use). If you deviate from the allowed formats, you risk getting zero credit for the entire assignment.</p>
+<p><!-- l. 464 --></p>
+<h3 id="j_Project_s5" class="sectionHead"><span class="titlemark">5</span> <span id="x1-170005"></span>Do your own work</h3>
+<p><!-- l. 466 --></p>
+<p>The code you write and submit must be yours alone. You may discuss the homework with others at the conceptual level only, but you may not copy code directly from any other source, even if you modify it afterwards. Likewise, you must take reasonable precautions not to let your code be copied by anyone else. Violating this policy constitutes a violation of the Carolina Honor Code, and will have serious consequences, including, but not limited to, failure of the course.</p>
+<p><!-- l. 474 --></p>
+<p>If you have any questions about what this policy means, please ask.</p>
+<div class="footnotes">
+<!-- l. 76 -->
+<p><span class="footnote-mark"><a href="#fn1x0-bk" id="fn1x0"><sup>1</sup></a></span><span class="cmr-9">It’s OK if we need to invoke the JVM by preceding your main class name with “java” on the command line.</span></p>
+<!-- l. 161 -->
+<p><span class="footnote-mark"><a href="#fn2x0-bk" id="fn2x0"><sup>2</sup></a></span><span class="cmr-9">We call the three I/O streams open by default on GNU/Linux programs</span> <span class="cmti-9">standard input</span> <span class="cmr-9">(buffered keyboard input by default),</span> <span class="cmti-9">standard output</span> <span class="cmr-9">(buffered screen output by default), and</span> <span class="cmti-9">standard error</span> <span class="cmr-9">(unbuffered output sent to the screen by default, even if standard output is redirected by the system). Some programming environments may use different names for these streams, e.g., C programs using stdio.h for high-level I/O call these stdin, stdout, and stderr, respectively; C++ programs typically use cin, cout, and cerr for the same purpose.</span></p>
+</div>
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../js/tocbot.min.js"></script>
+<script src="../js/toc.js"></script>
+
+    </body>
+</html>
+

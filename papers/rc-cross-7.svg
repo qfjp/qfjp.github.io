@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no"?> 
+<?xml-stylesheet href="rc-cross.css" type="text/css"?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127.82327pt" height="127.82327pt" viewBox="-13.41231 -114.41096 127.82327 127.82327 "> 
+<g transform="translate(0, 13.41231 ) scale(1,-1) translate(0,114.41096 )"> 
+    </p>
+    <g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <g stroke="#d9d9d9" fill="#d9d9d9">
+ <path d=" M 113.81097 0.0 M 113.81097 0.0 L 113.81097 -56.90549 L 113.81097 -56.90549 L 113.81097 0.0 Z M 113.81097 -56.90549  " stroke="none"/>
+ </g>
+ <g stroke="#d9d9d9" fill="#d9d9d9">
+ <path d=" M 56.90549 -56.90549 M 56.90549 -56.90549 L 56.90549 -113.81097 L 113.81097 -113.81097 L 113.81097 -56.90549 Z M 113.81097 -113.81097  " stroke="none"/>
+ </g>
+ <g stroke-width="1.2">
+ <path d=" M 0.0 0.0 M 0.0 -113.81097 L 113.81097 -113.81097 M 0.0 -56.90549 L 113.81097 -56.90549 M 0.0 -0.01 L 113.81097 -0.01 M 0.0 -113.81097 L 0.0 0.0 M 56.90549 -113.81097 L 56.90549 0.0 M 113.80098 -113.81097 L 113.80098 0.0 M 113.81097 -113.81097  " fill="none"/>
+ </g>
+ <path d=" M 0.0 -42.67911 L 42.67911 -42.67911  " fill="none"/>
+ <path d=" M 42.67911 0.0 L 42.67911 -42.67911  " fill="none"/>
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 0.0 M 0.0 0.0 L 0.0 -113.81097 L 5.69046 -113.81097 L 5.69046 0.0 Z M 5.69046 -113.81097  " stroke="none"/>
+ </g>
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 0.0 M 0.0 0.0 L 0.0 -5.69046 L 113.81097 -5.69046 L 113.81097 0.0 Z M 113.81097 -5.69046  " stroke="none"/>
+ </g>
+ <g stroke-width="1.2">
+ <path d=" M 5.69046 -5.69046 M 5.69046 -5.69046 L 5.69046 -113.81097 L 5.69046 -113.81097 L 5.69046 -5.69046 Z M 5.69046 -113.81097  " fill="none"/>
+ </g>
+ <g stroke-width="1.2">
+ <path d=" M 5.69046 0.0 M 5.69046 0.0 L 5.69046 -5.69046 L 113.81097 -5.69046 L 113.81097 0.0 Z M 113.81097 -5.69046  " fill="none"/>
+ </g>
+ <g stroke="#fff" fill="#fff">
+ <path d=" M 0.0 0.0 M 0.0 0.0 L 0.0 -4.83691 L 113.81097 -4.83691 L 113.81097 0.0 Z M 113.81097 -4.83691  " stroke="none"/>
+ </g>
+ <g stroke-width="1.2">
+ <path d=" M 0.0 0.0 M 0.0 0.0 L 0.0 -113.81097 L 113.81097 -113.81097 L 113.81097 0.0 Z M 113.81097 -113.81097  " fill="none"/>
+ </g>
+ <g transform="translate(26.64719,-31.8694)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(1.80556,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> I</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(24.68886,-53.20895)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.76389,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> Ir</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(45.76453,-31.8694)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.02777,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> Ic</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(22.75829,-88.77489)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(5.69446,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> III</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(79.80267,-88.77489)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(5.55556,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> IV </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(81.60823,-31.8694)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(3.75,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> II </g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="matrix(0.0,1.0,-1.0,0.0,-3.24602,-68.84996)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(11.94447,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> Spine</g> </g>
+ </text> 
+</g>
+ </g>
+ <g transform="translate(44.96101,3.24602)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(11.94447,0)" text-anchor="middle"  font-size="10"> 
+<g fill="#000">
+ <g stroke="none"> Spine</g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ 
+                                      </g> 
+</svg> 

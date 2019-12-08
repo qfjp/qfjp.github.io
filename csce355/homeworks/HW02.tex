@@ -1,0 +1,292 @@
+\documentclass[11pt]{article}
+\usepackage{ifpdf}
+\makeatletter
+\edef\texforht{TT\noexpand\fi
+  \@ifpackageloaded{tex4ht}
+    {\noexpand\iftrue}
+    {\noexpand\iffalse}}
+\makeatother
+\ifpdf
+  \usepackage[framemethod=TikZ]{mdframed}
+\else
+  \usepackage{framed}
+  \def\pgfsysdriver{pgfsys-tex4ht-alt.def}
+\fi
+\usepackage{amsfonts,amssymb,amsmath,amsthm,epsfig,mathtools,bm}
+\usepackage{tikz, float}
+\usepackage{parskip}
+\usepackage{advdate}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+
+\usetikzlibrary{shapes.geometric, arrows, automata, positioning, fit}
+\tikzset {
+    child/.style = {isosceles triangle, draw, shape border rotate = 90, anchor=north}
+}
+
+\newcommand{\nums}{\mathbb{N}}
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexes}{\mathbb{C}}
+\newcommand{\cpxs}{\mathbb{C}}
+\newcommand{\floor}[1]{{\lfloor{#1}\rfloor}}
+\newcommand{\ceiling}[1]{{\lceil{#1}\rceil}}
+\newcommand{\tuple}[1]{{\langle{#1}\rangle}}
+\newcommand{\set}[1]{{\left\{{#1}\right\}}}
+\newcommand{\bigfloor}[1]{{\left\lfloor{#1}\right\rfloor}}
+\newcommand{\bigceiling}[1]{{\left\lceil{#1}\right\rceil}}
+\newcommand{\bigtuple}[1]{{\left\langle{#1}\right\rangle}}
+\newcommand{\card}[1]{{\|{#1}\|}}
+\newcommand{\bigcard}[1]{{\left\|{#1}\right\|}}
+\newcommand{\st}{\mathrel{:}}
+\newcommand{\symdiff}{\mathop{\triangle}}
+\newcommand{\emptystr}{\varepsilon}
+\newcommand{\eclose}{\textsc{eclose}}
+\newcommand{\tb}[1]{\textbf{#1}}
+\newcommand{\merge}[2]{{{#1}\mathop{\textit{merge}}{#2}}}
+\newcommand{\blank}{\text{\textvisiblespace}}
+\newcommand{\Tau}{T}
+\newcommand{\myand}{\mathrel{\wedge}}
+\newcommand{\myor}{\mathrel{\vee}}
+\newcommand{\mynot}{\neg}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\mn}{\textup{min}}
+\newcommand{\map}[3]{{{#1}:{#2}\rightarrow{#3}}}
+\newcommand{\regexp}{\textup{REG}}
+\newcommand{\push}[1]{{\textup{push}\;{#1}}}
+\newcommand{\pop}{{\textup{pop}}}
+\newcommand{\turnstile}{\vdash}
+\newcommand{\Turnstile}[1]{\underset{#1}{\turnstile}}
+\newcommand{\turnstar}{\overset{*}{\vdash}}
+\newcommand{\Turnstar}[1]{\underset{#1}{\overset{*}{\vdash}}}
+\newcommand{\derives}{\Rightarrow}
+\newcommand{\Derives}[1]{\underset{#1}{\Rightarrow}}
+\newcommand{\derivestar}{\overset{*}{\derives}}
+\newcommand{\Derivestar}[1]{\underset{#1}{\overset{*}{\derives}}}
+\newcommand{\height}{\textup{height}}
+\newcommand{\tup}[1]{\langle{#1}\rangle}
+\newcommand{\powset}[1]{\mathcal{P}\left({#1}\right)}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{fact}{Fact}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{exercise}[definition]{Exercise}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{example}{Example}[section]
+
+\newenvironment{remark}{\paragraph{Remark.}}{}
+\newenvironment{automaton}{%
+\begin{tikzpicture}[->, >=stealth', shorten >=1pt, auto, node distance=2.8cm, semithick, on grid]
+    \tikzset{every state/.style={minimum size=1.8pt}}
+    \tikzset{every state/.style={inner sep=1.8pt}}
+    \tikzset{accepting/.style={double distance=2pt}}
+}{%
+\end{tikzpicture}
+}
+
+\ifpdf
+  \newenvironment{Framed}[1]{%
+    \mdfsetup{
+      frametitle={\colorbox{white}{\space #1 \space}},
+      innertopmargin=10pt,
+      frametitleaboveskip=-\ht\strutbox,
+      frametitlealignment=\center,
+    }
+    \begin{mdframed}[roundcorner=10pt]
+      \vspace{-5mm}
+  }{
+    \end{mdframed}
+  }
+\else
+  \newenvironment{Framed}[1]{%
+    \begin{framed}
+  }{
+    \end{framed}
+  }
+\fi
+\newenvironment{soln}[0]{%
+  \begin{Framed}{Solution}
+}{
+  \end{Framed}
+}
+\title{Assignment 2: Basic Set Operations}
+\date{Due: \AdvanceDate[4]\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{Framed}{Instructions}
+    Make sure to submit your homework on \textbf{SINGLE-SIDED 8.5$\times$11
+    INCH PAPER}. Write your \textbf{NAME ON EVERY PAGE} and
+    \textbf{DO NOT STAPLE OR FOLD} the sheets.
+
+    In this and future homeworks, questions marked as optional will not be used for quizzes or final exam questions.
+\end{Framed}
+\begin{enumerate}
+    \item
+        Find a counterexample to the statement, ``All odd natural numbers are
+        prime.''  What is the least counterexample (NOTE:\@ 1 is \textbf{NOT} prime)?
+    \item
+        Here are some standard definitions of set operations.  I'm using the
+        symbol ``$:=$'' to mean ``equals by definition.''  For any sets
+        $A$ and $B$,
+        \begin{description}
+            \item[Union:] $A\cup B := \{ x \st x\in A \myor x\in B \}$.
+            \item[Intersection:] $A\cap B := \{ x \st x\in A \myand x\in B \}$.
+            \item[Difference (Relative Complement):] $A-B := \{ x \st x\in A
+                \myand x\notin B \}$.
+            \item[Symmetric Difference:] $A\symdiff B = (A-B)\cup(B-A)$.
+        \end{description}
+        For each of the four operations above, redraw the Venn diagram below,
+        shading the region corresponding to the result of the operation.
+        \begin{figure}[H]
+          \centering
+          \begin{tikzpicture}
+            \def\radius{2cm};
+
+            \coordinate (ceni);
+            \coordinate[xshift=1.25*\radius] (cenii);
+            \draw (ceni) circle (\radius);
+            \draw (cenii) circle (\radius);
+            \node[yshift=.8*\radius] at (ceni) {$A$};
+            \node[yshift=.8*\radius] at (cenii) {$B$};
+
+            \draw ([xshift=-20pt, yshift=20pt] current bounding box.north west)
+              rectangle ([xshift=20pt, yshift=-20pt] current bounding box.south east);
+          \end{tikzpicture}
+        \end{figure}
+    \item
+        Illustrate via a venn diagram the following identity for any sets $A$ and $B$.
+        \[ A\symdiff B = (A\cup B) - (A\cap B). \]
+    \item
+        Prove the identity in the last problem directly for any sets $A$ and $B$.
+    \item
+        Let $A$ and $B$ be any sets.  Which of the following sets must
+        be empty?  For each of those that need not be, give a specific,
+        concrete example where it is not (your examples should be as small as possible).
+        \begin{enumerate}
+            \item
+                $A\cup\emptyset$
+            \item
+                $A\cap\emptyset$
+            \item
+                $A-\emptyset$
+            \item
+                $A\times\emptyset$
+            \item
+                $A-B$
+            \item
+                $A-A$
+            \item
+                $(A-B)\cap(B-A)$
+            \item
+                $(A-B)-(B-A)$
+            \item
+                $A-(B-A)$
+            \item
+                $A-(A-B)$
+            \item
+                $A-(A-A)$
+            \item
+                $(A-B)\cap B$
+        \end{enumerate}
+    %\item
+    %    Prove directly that if $A$, $B$, and $C$ are any sets, then
+    %    \[ A\times (B\cup C) = (A\times B)\cup(A\times C). \]
+    %    That is, Cartesian product distributes over union.
+    %\item
+    %    Prove directly that if $A$, $B$, and $C$ are any sets, then
+    %    \[ A\times (B\cap C) = (A\times B)\cap(A\times C). \]
+    %    That is, Cartesian product distributes over intersection.
+    %\item
+    %    How many functions are there mapping $\{1,2\}$ into $\{1,2,3\}$?  How about $\{1,2,3\}$ into $\{1,2\}$?
+    %\item
+    %    This question generalizes the previous one.  Let $A$ and $B$ be any finite sets, with $\card A = m$ and $\card B = n$, for some $m,n\in\nums$.  In terms of $m$ and $n$, how many functions are there mapping $A$ into $B$?  That is, how many functions $f$ are there with domain $A$ such that $f(a) \in B$ for all $a\in A$?  [Hint: For each $a\in A$, how many choices are there for $f(a)$?]  Note: For any sets $A$ and $B$, we usually let $B^A$ denote the set of all functions mapping $A$ into $B$.
+    %\item
+    %    Here we give some basic definitions from graph theory.  A \emph{graph} is a pair $G = (V,E)$, where $V$ is a finite set (whose elements are called the \emph{vertices} of $G$) and $E$ is some collection of two-element subsets of $V$ (called the \emph{edges} of $G$).  If $u$ and $v$ are vertices of $G$ and $e = \{u,v\}$ is an edge of $G$, then we must have $u\ne v$, and we say that $u$ and $v$ are \emph{adjacent}.  In this case, we also say that $e$ is the edge \emph{connecting} $u$ with $v$.  (Also note that $e = \{v,u\}$ as well, so the order of $u$ and $v$ in the edge does not matter.)  For every vertex $u$ of $G$, the \emph{degree} of $u$ is the number of vertices adjacent to $u$.  Notice that if $G$ has $n$ vertices, then the degree of each vertex of $G$ must be a natural number at most $n-1$.
+
+    %    Prove that any graph with $n\ge 2$ vertices must have two distinct vertices with the same degree.  An equivalent formulation of this problem is: Given a room with $n\ge 2$ people, any pair of which might or might not shake hands, there must be two different people who shake the same number of hands.  [Hint: Consider two cases: (i) there exists a vertex of degree $n-1$ (equivalently, there is someone who shakes everybody else's hand); (ii) there is no such vertex.  Use the pigeonhole principle.]
+
+    %\item (Optional)
+    %    [See the previous question for graph theory definitions.]  A \emph{complete graph on $n$ vertices} is a graph with $n$ vertices where every two distinct vertices are adjacent (so all possible edges are present in the graph).
+    %    \begin{enumerate}
+    %        \item
+    %            Start with a complete graph $G$ on $5$ vertices.  $G$ has 10 edges.  Assign a color--- either red or blue---to each edge of $G$ in such a way that no set of three vertices of $G$ have the three edges connecting them all the same color.  (That is, there are no ``triangles'' that are all red or all blue.)
+    %        \item
+    %            Show that no such assignment is possible for a complete graph on $6$ vertices.  [Hint: By strong pigeonhole principle, a vertex must have at least three edges of the same color touching it.]
+    %    \end{enumerate}
+        %\item
+        %Consider the binary string \texttt{1001101}.  Which of the following
+        %languages (``problems'') over the binary alphabet $\{0,1\}$ does it
+        %belong to?  (If necessary, interpret $w$ as a natural number in binary.)
+        %\begin{enumerate}
+        %\item $\{ w \st \mbox{$w$ represents a multiple of $11$}\}$
+        %\item $\{w \st \mbox{$|w|$ is odd}\}$
+        %\item $\{w \st \mbox{$w$ is a palindrome}\}$
+        %\end{enumerate}
+        %\item
+        %How many binary strings are there of length $3$?  List them all.
+        %How many are there of length $4$?  How many are there of length $n$
+        %for any natural number $n$?
+        %\item
+        %Let $x$ and $y$ be strings over some fixed alphabet $\Sigma$.  We say
+        %that
+        %\begin{itemize}
+        %\item
+        %$x$ is a \emph{prefix} of $y$ iff there is some string $w$ over
+        %$\Sigma$ such that $xw=y$,
+        %\item
+        %$x$ is a \emph{suffix} of $y$ if there is some string $w$ over
+        %  $\Sigma$ such that $wx=y$, and
+        %\item
+        %$x$ is a \emph{substring} of $y$ if there are strings $w_1,w_2$ over
+        %  $\Sigma$ such that $w_1xw_2 = y$.
+        %\end{itemize}
+        %Which of the following statements are true for all strings $x$, $y$,
+        %and $z$ over $\Sigma$?  For those that are true, give direct proofs.
+        %For those that are false, give counterexamples.
+        %(Assume that $\Sigma$ has at least two symbols, say, \texttt{0} and
+        %\texttt{1}, and possibly others.  Recall that $\emptystr$ denotes the
+        %empty string over any alphabet.)
+        %\begin{enumerate}
+        %\item
+        %$\emptystr$ is a prefix of $x$.
+        %\item
+        %$x$ is a prefix of $x$.
+        %\item
+        %If $x$ is a prefix of $y$, then $y$ is a prefix of $x$.
+        %\item
+        %If $x$ is a prefix of $y$, then $y$ is a suffix of $x$.
+        %\item
+        %If $x$ is a prefix of $y$ and $y$ is a prefix of $x$, then $x=y$.
+        %\item
+        %If $x$ is a prefix of $y$ and $y$ is a prefix of $z$, then $x$ is a
+        %prefix of $z$.
+        %\item
+        %$x$ has the same number of prefixes as suffixes.
+        %\item
+        %If $x$ and $y$ are both prefixes of $z$, then either $x$ is a prefix
+        %of $y$ or $y$ is a prefix of $x$.
+        %\item
+        %$x$ is a substring of $y$ iff $x$ is prefix of some suffix of $y$.
+        %\item
+        %$x$ is a substring of $y$ iff $x$ is a suffix of some prefix of $y$.
+        %\item
+        %If $x$ and $y$ are both substrings of $z$, then either $x$ is a
+        %substring of $y$ or $y$ is a substring of $x$.
+        %\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

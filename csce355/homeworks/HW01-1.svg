@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="no" ?> 
+<?xml-stylesheet href="HW01.css" type="text/css" ?> 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="148.0381pt" height="95.41795pt" viewBox="-59.66614 -84.5434 148.0381 95.41795 "> 
+<g transform="translate(0, 10.87456 ) scale(1,-1) translate(0,84.5434 )"> 
+                <g stroke="#000" fill="#000">
+ <g stroke-width="0.4">
+ <path d=" M 10.67456 0.0 C 10.67456 5.89546 5.89546 10.67456 0.0 10.67456 C -5.89546 10.67456 -10.67456 5.89546 -10.67456 0.0 C -10.67456 -5.89546 -5.89546 -10.67456 0.0 -10.67456 C 5.89546 -10.67456 10.67456 -5.89546 10.67456 0.0 Z M 0.0 0.0  " fill="none"></path>
+ <g transform="translate(-4.10625,-3.74124)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(4.10625,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> N</g> </g>
+ </text> 
+</g>
+ </g>
+ <path d=" M -42.67899 -43.20181 L -59.46614 -83.73167 L -25.89183 -83.73167 Z  " fill="none"></path>
+ <g transform="translate(-49.01389,-78.43977)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3349,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">T</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="8">1</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <path d=" M -7.68947 -7.68947 L -42.6791 -42.67912  " fill="none"></path>
+ <path d=" M 0.00014 -43.20181 L -16.78702 -83.73167 L 16.7873 -83.73167 Z  " fill="none"></path>
+ <g transform="translate(-6.33476,-78.43977)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.3349,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">T</tspan><tspan baseline-shift="sub"><tspan font-family="cmr" font-size="8">2</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <path d=" M 0.0 -10.87456 L 0.00003 -42.67912  " fill="none"></path>
+ <path d=" M 71.1318 -43.20268 L 54.09164 -84.3434 L 88.17197 -84.3434 Z  " fill="none"></path>
+ <g transform="translate(64.60246,-78.91008)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(6.52934,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none"> <tspan font-family="cmmi" font-size="10">T</tspan><tspan baseline-shift="sub"><tspan font-family="cmmi" font-size="8">k</tspan></tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ <path d=" M 9.32457 -5.59474 L 71.1319 -42.67912  " fill="none"></path>
+ <g transform="translate(24.85121,-78.22298)">
+ <g fill="#000">
+ <text style="stroke:none" transform="scale(1,-1) translate(10.6458,0)" text-anchor="middle" font-size="10.95"> 
+<g fill="#000">
+ <g stroke="none">  <tspan font-family="cmsy" font-size="10">&#x02218; &#x02218;&#x02218;</tspan></g> </g>
+ </text> 
+</g>
+ </g>
+ </g>
+ </g>
+ 
+                  </g> 
+</svg> 

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade HW02</title>
+      <link rel="stylesheet" href="../../css/hakyll.css" />
+      <link rel="stylesheet" href="../../css/latex.css">
+      <link rel="stylesheet" href="../../css/responsive.css">
+      <link rel="stylesheet" href="../../css/tocbot.css">
+      <link rel="stylesheet" href="../../css/pygments.css">
+      
+      <link rel="stylesheet" href="HW02.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../../csce355.html">CSCE 355</a>
+            </div>
+            <nav>
+                <a href="../../index.html">Home</a>
+                <a href="../../csce355/Syllabus.html">Syllabus</a>
+                <a href="../../csce355/Project.html">Project</a>
+                <a href="../../csce355/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./HW02.pdf">pdf</a>,
+                    <a href="./HW02.tex">TeX</a>
+                </section>
+                
+
+                <article>
+  <section class="header">
+    
+    Due: December 12, 2019
+    
+    
+  </section>
+  <section>
+    <div class="maketitle">
+<h2 class="titleHead">Assignment 2: Basic Set Operations</h2>
+<div class="author">
+
+</div>
+<br />
+
+<div class="date">
+<span class="cmr-12">Due: December 12, 2019</span>
+</div>
+</div>
+<div id="framed-1" class="framedenv">
+<!-- l. 130 -->
+<p>Make sure to submit your homework on <span class="cmbx-10x-x-109">SINGLE-SIDED 8.5</span>\(\times \)<span class="cmbx-10x-x-109">11 INCH</span> <span class="cmbx-10x-x-109">PAPER</span>. Write your <span class="cmbx-10x-x-109">NAME ON EVERY PAGE</span> and <span class="cmbx-10x-x-109">DO NOT STAPLE OR FOLD</span> the sheets.</p>
+<!-- l. 134 -->
+<p>In this and future homeworks, questions marked as optional will not be used for quizzes or final exam questions.</p>
+</div>
+<dl>
+<dt>1.</dt>
+<dd>Find a counterexample to the statement, “All odd natural numbers are prime.” What is the least counterexample (NOTE: 1 is <span class="cmbx-10x-x-109">NOT</span> prime)?
+</dd>
+<dt>2.</dt>
+<dd><p>Here are some standard definitions of set operations. I’m using the symbol “\(:=\)” to mean “equals by definition.” For any sets \(A\) and \(B\),</p>
+<dl>
+<dt><span class="cmbx-10x-x-109">Union:</span></dt>
+<dd>\(A\cup B := \{ x \st x\in A \myor x\in B \}\).
+</dd>
+<dt><span class="cmbx-10x-x-109">Intersection:</span></dt>
+<dd>\(A\cap B := \{ x \st x\in A \myand x\in B \}\).
+</dd>
+<dt><span class="cmbx-10x-x-109">Difference (Relative Complement):</span></dt>
+<dd>\(A-B := \{ x \st x\in A \myand x\notin B \}\).
+</dd>
+<dt><span class="cmbx-10x-x-109">Symmetric Difference:</span></dt>
+<dd>\(A\symdiff B = (A-B)\cup (B-A)\).
+</dd>
+</dl>
+<p><!-- l. 151 --></p>
+<p>For each of the four operations above, redraw the Venn diagram below, shading the region corresponding to the result of the operation.</p>
+<figure class="figure">
+<object height="207.1472" type="image/svg+xml" width="301.98932" data="HW02-1.svg">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+</dd>
+<dt>3.</dt>
+<dd>Illustrate via a venn diagram the following identity for any sets \(A\) and \(B\). \[ A\symdiff B = (A\cup B) - (A\cap B). \]
+</dd>
+<dt>4.</dt>
+<dd>Prove the identity in the last problem directly for any sets \(A\) and \(B\).
+</dd>
+<dt>5.</dt>
+<dd>Let \(A\) and \(B\) be any sets. Which of the following sets must be empty? For each of those that need not be, give a specific, concrete example where it is not (your examples should be as small as possible).
+<dl>
+<dt>(a)</dt>
+<dd>\(A\cup \emptyset \)
+</dd>
+<dt>(b)</dt>
+<dd>\(A\cap \emptyset \)
+</dd>
+<dt>(c)</dt>
+<dd>\(A-\emptyset \)
+</dd>
+<dt>(d)</dt>
+<dd>\(A\times \emptyset \)
+</dd>
+<dt>(e)</dt>
+<dd>\(A-B\)
+</dd>
+<dt>(f)</dt>
+<dd>\(A-A\)
+</dd>
+<dt>(g)</dt>
+<dd>\((A-B)\cap (B-A)\)
+</dd>
+<dt>(h)</dt>
+<dd>\((A-B)-(B-A)\)
+</dd>
+<dt>(i)</dt>
+<dd>\(A-(B-A)\)
+</dd>
+<dt>(j)</dt>
+<dd>\(A-(A-B)\)
+</dd>
+<dt>(k)</dt>
+<dd>\(A-(A-A)\)
+</dd>
+<dt>(l)</dt>
+<dd>\((A-B)\cap B\)
+</dd>
+</dl>
+</dd>
+</dl>
+  </section>
+</article>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../../js/tocbot.min.js"></script>
+<script src="../../js/toc.js"></script>
+
+    </body>
+</html>
+

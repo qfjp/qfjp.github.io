@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+    <head>
+      <script type="text/x-mathjax-config"> MathJax.Hub.Config({
+        skipStartupTypeset: true,
+
+        lazytex2jax: {
+          displayMath: [['$','$'], ['\\[','\\]'], ['\\begin{align*}', '\\end{align*}']],
+          inlineMath: [['\\(','\\)']],
+        },
+
+        TeX: {
+          extensions: ["color.js","AMSmath.js"],
+          equationNumbers: { autoNumber: "AMS" }
+        },
+        extensions: ["tex2jax.js"],
+
+        TeX: {
+          MAXBUFFER: 40*1024,
+            Macros : {
+             // RC-cross
+             NP:          '\\lang{NP}',
+             PSPACE:      '\\lang{PSPACE}',
+             p:           '\\varphi',
+             0:           '\\mathbf{0}',
+             1:           '\\mathbf{1}',
+             2:           '\\mathbf{2}',
+             True:        '\\textsc{True}',
+             False:       '\\textsc{False}',
+             reducp:      ['{{#1} \\le_p {#2}}', 2],
+
+             // Generic
+             relax:       '{}',
+             setlength:  ['{}', 2],
+             allowbreak:  '{}',
+             nums:        '{\\mathbb{N}}',
+             ints:        '{\\mathbb{Z}}',
+             rats:        '{\\mathbb{Q}}',
+             reals:       '{\\mathbb{R}}',
+             cpxs:        '{\\mathbb{C}}',
+             floor:      ['{\\lfloor{#1}\\rfloor}', 1],
+             ceiling:    ['{\\lceil{#1}\\rceil}', 1],
+             set:        ['{{\\{#1}\\}}', 1],
+             tuple:      ['{\\langle{#1}\\rangle}', 1],
+             tup:        ['{\\langle{#1}\\rangle}', 1],
+             bigfloor:   ['{\\left\\lfloor{#1}\\right\\rfloor}', 1],
+             //bigceiling: ['{\\left\\lceil{#1}\\right\\rceil}', 1],
+             bigtuple:   ['{\\left\\langle{#1}\\right\\rangle}', 1],
+             myand:       '{\\mathrel{\\text{ and }}}',
+             myor:        '{\\mathrel{\\text{ or }}}',
+             card:       ['{\\|{#1}\\|}', 1],
+             //bigcard:    ['{\\left\\|{#1}\\right\\|}', 1],
+             st:          '{\\mathrel{\\;:\\;}}',
+             symdiff:     '{\\mathop{\\triangle}}',
+             emptystr:    '{\\varepsilon}',
+             eclose:      '{\\textsc{eclose}}',
+             tb:         ['{\\textbf{#1}}',1],
+             merge:      ['{{#1}\\mathop{\\textit{merge}}{#2}}', 2],
+             coloneqq:    ':=',
+             bs:         ['{\\boldsymbol{#1}}', 1],
+           }}, });
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="../../js/mathjax-lazyload.min.js"></script>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Pade HW09</title>
+      <link rel="stylesheet" href="../../css/hakyll.css" />
+      <link rel="stylesheet" href="../../css/latex.css">
+      <link rel="stylesheet" href="../../css/responsive.css">
+      <link rel="stylesheet" href="../../css/tocbot.css">
+      <link rel="stylesheet" href="../../css/pygments.css">
+      
+      <link rel="stylesheet" href="HW09.css" />
+      
+    </head>
+    <body>
+        <header>
+    <div class="row">
+        <div class="col-1">
+            
+            <div class="container is-position-fixed">
+                <input id="toggle" type="checkbox">
+                <label class="toggle-container" for="toggle">
+                    <span class="button button-toggle"></span>
+                </label>
+                <div class="js-toc toc is-position-fixed nav"></div>
+            </div>
+            
+        </div>
+        <div class="col-2">
+            <div class="logo">
+                <a href="../../csce355.html">CSCE 355</a>
+            </div>
+            <nav>
+                <a href="../../index.html">Home</a>
+                <a href="../../csce355/Syllabus.html">Syllabus</a>
+                <a href="../../csce355/Project.html">Project</a>
+                <a href="../../csce355/homeworks.html">Homework</a>
+            </nav>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</header>
+
+<div class="row">
+    <main role="main">
+        <div class="col-1">
+        </div>
+        <div class="js-toc-content col-2">
+            <div class="paper">
+                
+                <section class="header">
+                    Download as
+                    <a href="./HW09.pdf">pdf</a>,
+                    <a href="./HW09.tex">TeX</a>
+                </section>
+                
+
+                <article>
+  <section class="header">
+    
+    Due: December 15, 2019
+    
+    
+  </section>
+  <section>
+    <div class="maketitle">
+<h2 class="titleHead">CSCE 355, Spring 2016, Assignment 9</h2>
+<div class="author">
+
+</div>
+<br />
+
+<div class="date">
+<span class="cmr-12">Due: December 15, 2019</span>
+</div>
+</div>
+<div id="framed-1" class="framedenv">
+<!-- l. 129 -->
+<p>Make sure to submit your homework on <span class="cmbx-10x-x-109">SINGLE-SIDED 8.5x11 INCH PAPER</span>. Write your <span class="cmbx-10x-x-109">NAME ON EVERY PAGE</span> and <span class="cmbx-10x-x-109">DO NOT STAPLE OR FOLD</span> the sheets.</p>
+<!-- l. 133 -->
+<p>In this and future homeworks, questions marked as optional will not be used for quizzes or final exam questions.</p>
+</div>
+<p><!-- l. 137 --></p>
+<p>The Exercises are taken out of Hopcroft, with their difficulty annotations preserved.</p>
+<dl>
+<dt><span class="cmbx-10x-x-109">Exercise 4.2.1:</span></dt>
+<dd>Suppose \(h\) is the homomorphism from the alphabet \(\{0,1,2\}\) to the alphabet \(\{a,b\}\) defined by \(h(0) = a\); \(h(1) = ab\), and \(h(2) = ba\).
+<dl>
+<dt>a)</dt>
+<dd>What is \(h(0120)\)?
+</dd>
+<dt>b)</dt>
+<dd>What is \(h(21120)\)?
+</dd>
+<dt>c)</dt>
+<dd>If \(L\) is the language \(L(\tb 0 \tb 1^*\tb 2)\), what is \(h(L)\)?
+</dd>
+<dt>d)</dt>
+<dd>If \(L\) is the language \(L(\tb 0 + \tb{12})\), what is \(h(L)\)?
+</dd>
+<dt>e)</dt>
+<dd>Suppose \(L\) is the language \(\{ababa\}\), that is, the language consisting of only the one string \(ababa\). What is \(h^{-1}(L)\)?
+</dd>
+<dt>f)</dt>
+<dd>If \(L\) is the language \(L(\tb a(\tb{ba})^*)\), what is \(h^{-1}(L)\)?
+</dd>
+</dl>
+</dd>
+<dt><span class="cmbx-10x-x-109">(not in text):</span></dt>
+<dd>Let \(h\) be the homomorphism mapping strings in \(\{a,b,c\}^*\) to strings in \(\{0,1\}^*\) such that
+<div class="eqnarray">
+\begin{eqnarray*} h(a) &amp; = &amp; 011, \\ h(b) &amp; = &amp; 0, \\ h(c) &amp; = &amp; 110. \end{eqnarray*}
+</div>
+<dl>
+<dt>a)</dt>
+<dd>Find \(h^{-1}(L)\), where \(L = \{ 00110, 000111 \}\).
+</dd>
+<dt>b)</dt>
+<dd>Using the transformation described in class, give a regular expression for \(h(M)\), where \(M\) is the regular language denoted by \(a^*(bc + ca)^*\).
+</dd>
+<dt>c)</dt>
+<dd><p>Using the construction described in class, construct a DFA for \(h^{-1}(N)\), where \(N\) is recognized by the following DFA:</p>
+<figure class="figure">
+<object width="242.25911" data="HW09-1.svg" height="185.48073" type="image/svg+xml">
+<p>SVG-Viewer needed.</p>
+</object>
+</figure>
+</dd>
+</dl>
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">! Exercise 4.2.6: (optional)</tspan></dt>
+<dd><p>Show that the regular languages are closed under the following operations:</p>
+<dl>
+<dt>a)</dt>
+<dd>\(\textit{min}(L) = \{w\mid \mbox{$w$ is in $L$, but no proper prefix of $w$ is in $L$} \}\).
+</dd>
+<dt>b)</dt>
+<dd>\(\textit{max}(L) = \{w\mid \mbox{$w$ is in $L$ and for no string $x$ other than $\emptystr $ is $wx$ in $L$} \}\).
+</dd>
+<dt>c)</dt>
+<dd>\(\textit{init}(L) = \{ w\mid \mbox{for some string $x$, $wx$ is in $L$} \}\).
+</dd>
+</dl>
+<p><!-- l. 228 --></p>
+<p><tspan font-family="cmti" font-size="10">Hint</tspan>: Like Exercise 4.2.2, it is easiest to start with a DFA for \(L\) and perform a construction to get the desired language.</p>
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">*!! Exercise</tspan><tspan font-family="cmbx" font-size="10"> 4.2.8 (optional):</tspan></dt>
+<dd>Let \(L\) be a language. Define \(\textit{half}(L)\) to be the set of first halves of strings in \(L\), that is, \(\{ w \mid \) for some \(x\) such that \(|x|=|w|\), we have \(wx\) in \(L\}\). For example, if \(L = \{\emptystr ,0010,011,010110\}\) then \(\textit{half}(L) = \{\emptystr ,00,010\}\). Notice that odd-length strings do not contribute to \(\textit{half}(L)\). Prove that if \(L\) is a regular language, so is \(\textit{half}(L)\).
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">!! (not in text; optional):</tspan></dt>
+<dd><p>Let \(L\) be a language. Define \(\sqrt L\) to be the set \(\{ w\mid \mbox{$ww$ is in $L$} \}\). Prove that if \(L\) is regular, then so is \(\sqrt L\). <tspan font-family="cmti" font-size="10">Hint:</tspan> Given a DFA for \(L\) with \(n\) many states, one can build a DFA for \(\sqrt L\) with \(n^n\) many states. <!-- l. 245 --></p>
+<p>More generally, for \(k\ge 1\), define \(\sqrt [k]{L}\) to be the set \(\{ w \mid \mbox{$w^k$ is in $L$} \}\). Also define \(\sqrt [*]{L}\) to be the set \(\{ w \mid \mbox{$w$ is in $\sqrt [k]{L}$ for some $k\ge 1$} \}\). Similar constructions prove that if \(L\) is regular, then all these other languages are regular.</p>
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">! Exercise</tspan><tspan font-family="cmbx" font-size="10"> 4.2.13:</tspan></dt>
+<dd>We can use closure properties to help prove certain languages are not regular. Start with the fact that the language \[ L_{0n1n} = \{0^n1^n \mid n\ge 0\} \] is not regular. Prove the following languages not to be regular by transforming them, using operations known to preserve regularity, to \(L_{0n1n}\):
+<dl>
+<dt>a)</dt>
+<dd>\(\{0^i1^j \mid i\ne j\}\).
+</dd>
+<dt>b)</dt>
+<dd>\(\{0^n1^m2^{n-m} \mid n\ge m \ge 0\}\).
+</dd>
+</dl>
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">Exercise</tspan><tspan font-family="cmbx" font-size="10"> 4.2.14:</tspan></dt>
+<dd>In Theorem 4.8, we described the “product construction” that took two DFAs and constructed one DFA whose languages is the intersection of the languages of the first two.
+<dl>
+<dt>3.</dt>
+<dd>Show how to modify the product construction so the resulting DFA recognizes the difference of the languages of the two given DFAs.
+</dd>
+<dt>4.</dt>
+<dd>Show how to modify the product construction so the resulting DFA recognizes the union of the languages of the two given DFAs.
+</dd>
+</dl>
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">(not in text):</tspan></dt>
+<dd>Let \(L\) be a language. Define \(\textit{subseq}(L)\) to be the set of all strings obtained by removing zero or more symbols (anywhere) from a string in \(L\) and closing up the gaps. For example, if \(L = \{aabc,cab\}\), then \[ \textit{subseq}(L) = \{\emptystr ,a,b,c,aa,ab,ac,bc,aab,aac,abc,ca,cb,cab\}. \] Prove that if \(L\) is regular, then so is \(\textit{subseq}(L)\). (\(\textit{subseq}\) is short for “subsequence.” Actually, it is known that if \(L\) is <tspan font-family="cmti" font-size="10">any language whatsoever</tspan>, then \(\textit{subseq}(L)\) is regular.) <tspan font-family="cmti" font-size="10">Hint</tspan>: You can do this either by transforming regular expressions or by transforming \(\emptystr \)-NFAs.
+</dd>
+<dt><tspan font-family="cmbx" font-size="10">! (not in the text; optional)</tspan></dt>
+<dd><p>Let \(x\) and \(y\) be any two strings. A <tspan font-family="cmti" font-size="10">merge</tspan> of \(x\) and \(y\) is any string obtained by merging the symbols of \(x\) with those of \(y\) in some arbitrary way, maintaining the order of the symbols from each string. More exactly, if \(|x|=m\) and \(|y|=n\), then a string \(z = z_1\cdots z_k\) is a merge of \(x\) and \(y\) if and only if</p>
+<ul>
+<li>\(k = m+n\),</li>
+<li>there exist \(1\le i_1&lt;i_2&lt;\cdots &lt;i_m\le k\) such that \(x = z_{i_1}z_{i_2}\cdots z_{i_m}\),</li>
+<li>there exist \(1\le j_1&lt;j_2&lt;\cdots &lt;j_n\le k\) such that \(y = z_{j_1}z_{j_2}\cdots z_{j_n}\), and</li>
+<li>\(\{i_1,\ldots ,i_m\} \cap \{j_1,\ldots ,j_n\} = \emptyset \).</li>
+</ul>
+<p><!-- l. 302 --></p>
+<p>For example, there are five different merges of the strings \(ab\) and \(bc\): \[ abbc \;\; abcb \;\; babc \;\; bacb \;\; bcab \]</p>
+<p><!-- l. 306 --></p>
+<p>Let \(A\) and \(B\) be any languages over the same input alphabet \(\Sigma \). Define \begin{align*} \merge{A}{B} \coloneqq \{ z\in \Sigma ^* \mid \mbox{$z$ is a merge of some $x\in A$ and some $y\in B$} \}. \end{align*}</p>
+<p><!-- l. 312 --></p>
+<p>Show that if \(A\) and \(B\) are regular, then so is \(\merge{A}{B}\). <tspan font-family="cmti" font-size="10">Hint</tspan>: Given a DFA for \(A\) with \(r\) many states and an DFA for \(B\) with \(s\) many states, you can construct an <tspan font-family="cmti" font-size="10">NFA</tspan> for \(\merge{A}{B}\) with \(rs\) many states.</p>
+</dd>
+</dl>
+  </section>
+</article>
+
+            </div>
+        </div>
+        <div class="col-3">
+        </div>
+    </main>
+</div>
+
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-2">
+        <footer>
+            Site generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </div>
+    <div class="col-3">
+    </div>
+</div>
+<script src="../../js/tocbot.min.js"></script>
+<script src="../../js/toc.js"></script>
+
+    </body>
+</html>
+
